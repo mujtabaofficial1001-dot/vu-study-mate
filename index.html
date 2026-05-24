@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VU Study Mate - The Ultimate Offline Study App for VU Students</title>
+    <meta name="description" content="Download VU Study Mate - Access Virtual University books, offline textbook reader with night mode, bookmarks, study notes, Urdu announcement support, and concurrent downloads.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4169E1;
+            --primary-dark: #002366;
+            --accent: #FFD700;
+            --bg-dark: #0B0F19;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --glass-bg: rgba(11, 15, 25, 0.7);
+            --glow-color: rgba(65, 105, 225, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .nav-logo {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* --- Ambient Lighting Glows --- */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--glow-color) 0%, rgba(11, 15, 25, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            top: 600px;
+            left: -300px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(156, 39, 176, 0.08) 0%, rgba(11, 15, 25, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            display: inline-block;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(65, 105, 225, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            padding: 180px 8% 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            min-height: 90vh;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            max-width: 650px;
+            z-index: 10;
+        }
+
+        .badge {
+            background: rgba(65, 105, 225, 0.12);
+            border: 1px solid rgba(65, 105, 225, 0.3);
+            color: #60A5FA;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #60A5FA;
+            border-radius: 50%;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(96, 165, 250, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            max-width: 580px;
+        }
+
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2563EB 100%);
+            color: #FFFFFF;
+            padding: 16px 36px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 30px rgba(65, 105, 225, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(65, 105, 225, 0.5);
+            background: linear-gradient(135deg, #4F46E5 0%, var(--primary) 100%);
+        }
+
+        .download-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover svg {
+            transform: translateY(2px);
+        }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            border-top: 1px solid var(--card-border);
+            padding-top: 30px;
+        }
+
+        .stat-item h4 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .stat-item h4 span {
+            color: var(--accent);
+        }
+
+        .stat-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* --- Phone Mockup Section --- */
+        .hero-mockup {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 280px;
+            height: 570px;
+            background: #111827;
+            border: 10px solid #1F2937;
+            border-radius: 40px;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 
+                        0 0 40px rgba(65, 105, 225, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-screen {
+            flex: 1;
+            background: #F4F6F9;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            position: relative;
+        }
+
+        /* Mock App UI Elements */
+        .mock-header {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to bottom, #0D47A1, #1976D2);
+            border-radius: 18px;
+            padding: 12px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .mock-title {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .mock-tabs {
+            display: flex;
+            gap: 12px;
+            font-size: 9px;
+            opacity: 0.8;
+        }
+
+        .mock-card {
+            background: white;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            margin-bottom: 12px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .mock-card-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mock-icon {
+            width: 32px;
+            height: 32px;
+            background: #FFECEE;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mock-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: #D32F2F;
+        }
+
+        .mock-info {
+            flex: 1;
+        }
+
+        .mock-info-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .mock-info-sub {
+            font-size: 8px;
+            color: #94A3B8;
+        }
+
+        .mock-btn {
+            margin-top: 10px;
+            width: 100%;
+            height: 28px;
+            background: #0D47A1;
+            border-radius: 8px;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .mock-btn-blue {
+            background: #0D47A1;
+        }
+
+        .mock-btn-orange {
+            background: #FF9800;
+        }
+
+        .mock-progress-container {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .mock-progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+            color: #1976D2;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .mock-progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #E3F2FD;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .mock-progress-fill {
+            width: 65%;
+            height: 100%;
+            background: #1976D2;
+            border-radius: 10px;
+            animation: animateFill 3s infinite alternate;
+        }
+
+        @keyframes animateFill {
+            0% { width: 20%; }
+            100% { width: 85%; }
+        }
+
+        .phone-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 610px;
+            background: rgba(65, 105, 225, 0.08);
+            border-radius: 46px;
+            filter: blur(20px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 100px 8%;
+            background-color: rgba(15, 23, 42, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 36px 30px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(65, 105, 225, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(65, 105, 225, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background: rgba(65, 105, 225, 0.1);
+            border: 1px solid rgba(65, 105, 225, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .feature-icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* --- Install Guide / Safe Warning Section --- */
+        .install-guide {
+            padding: 100px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .guide-content {
+            flex: 1.2;
+        }
+
+        .guide-title {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .guide-desc {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .step-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .step-details h5 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .step-details p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        .guide-alert-card {
+            flex: 0.8;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.1) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 28px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .guide-alert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(10px);
+        }
+
+        .alert-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .alert-icon-wrap {
+            width: 48px;
+            height: 48px;
+            background: rgba(239, 68, 68, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alert-icon-wrap svg {
+            width: 22px;
+            height: 22px;
+            fill: #EF4444;
+        }
+
+        .alert-header h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #FCA5A5;
+        }
+
+        .guide-alert-card p {
+            font-size: 14px;
+            color: #F87171;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .alert-tip {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .alert-tip h6 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .alert-tip p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 8% 40px;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-main);
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .footer-disclaimer {
+            font-size: 11px;
+            color: rgba(148, 163, 184, 0.4);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 968px) {
+            nav {
+                padding: 0 5%;
+            }
+            .hero {
+                flex-direction: column;
+                padding-top: 140px;
+                text-align: center;
+                gap: 60px;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-title {
+                font-size: 42px;
+            }
+            .hero-desc {
+                margin: 0 auto 30px;
+            }
+            .cta-group {
+                justify-content: center;
+            }
+            .stats {
+                justify-content: center;
+            }
+            .install-guide {
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Ambient Glows -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- Navigation Header -->
+    <nav>
+        <div class="nav-logo">
+            VU Study Mate<span class="logo-dot"></span>
+        </div>
+        <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="nav-btn">Download APK</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-pulse"></span>
+                v1.0.0 Stable Release
+            </div>
+            <h1 class="hero-title">Your Ultimate Offline <span>VU Study Partner</span></h1>
+            <p class="hero-desc">Access textbooks, reference notes, and study sheets completely offline. Read smoothly with our pro-level native PDF reader equipped with night mode, custom Urdu fonts, and interactive study bookmarks.</p>
+            
+            <div class="cta-group">
+                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="download-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                    </svg>
+                    Download App (15.8 MB)
+                </a>
+                <a href="#install" class="nav-btn" style="background: transparent;">How to Install</a>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <h4>0<span>%</span></h4>
+                    <p>Ads & Interruptions</p>
+                </div>
+                <div class="stat-item">
+                    <h4>0<span>/68</span></h4>
+                    <p>VirusTotal Detections</p>
+                </div>
+                <div class="stat-item">
+                    <h4>100<span>%</span></h4>
+                    <p>Free for Students</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phone Mockup -->
+        <div class="hero-mockup">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="mock-header">
+                        <span class="mock-title">📚 CS101 - Computer Science</span>
+                        <div class="mock-tabs">
+                            <span>Midterm Prep</span>
+                            <span style="font-weight: 700; border-bottom: 1.5px solid gold;">Finalterm Prep</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mock-card">
+                        <div class="mock-card-top">
+                            <div class="mock-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zm5.5 3h1v-4h-1v4z"/></svg>
+                            </div>
+                            <div class="mock-info">
+                                <span class="mock-info-title">CS101 Grand Quiz Book</span>
+                                <span class="mock-info-sub">Size: 4.8 MB • PDF Document</span>
+                            </div>
+                        </div>
+                        <div class="mock-progress-container">
+                            <div class="mock-progress-info">
+                                <span>Downloading...</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="mock-progress-bar">
+                                <div class="mock-progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mock-card" style="opacity: 0.85;">
+                        <div class="mock-card-top">
+                            <div class="mock-icon" style="background: #E3F2FD;">
+                                <svg viewBox="0 0 24 24" style="fill: #1976D2;"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm-9 12l-5-5h10l-5 5z"/></svg>
+                            </div>
+                            <div class="mock-info">
+                                <span class="mock-info-title">CS101 Short Video Lecture</span>
+                                <span class="mock-info-sub">YouTube Video Link</span>
+                            </div>
+                        </div>
+                        <div class="mock-btn mock-btn-blue">
+                            Play Lecture Video 🎥
+                        </div>
+                    </div>
+
+                    <div class="mock-card" style="opacity: 0.7;">
+                        <div class="mock-card-top">
+                            <div class="mock-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                            </div>
+                            <div class="mock-info">
+                                <span class="mock-info-title">CS101 Handouts (Complete)</span>
+                                <span class="mock-info-sub">Offline PDF</span>
+                            </div>
+                        </div>
+                        <div class="mock-btn mock-btn-orange">
+                            Import to Library 📂
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-glow"></div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Crafted with Premium Features</h2>
+            <p>We built VU Study Mate specifically to solve Virtual University students' problems, offering a beautiful user experience with low hardware footprint.</p>
+        </div>
+        
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M19 18H5V6h14v12zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                <h3>1. Offline Book Library</h3>
+                <p>Download handouts and midterm/finalterm files directly inside the app specific storage. Once downloaded, read them anytime, anywhere, completely offline.</p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                </div>
+                <h3>2. Custom Urdu Typography</h3>
+                <p>First-class integration of the elegant Urdu font family. Urgent announcements and notifications adapt dynamically, offering stunning bilingual readability.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                </div>
+                <h3>3. Pro Native PDF Viewer</h3>
+                <p>Read comfortbly with true Night Mode rendering. Jump to page progress indicators, bookmark important pages, and write quick local study notes instantly.</p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M18 10.25c0-2.62-1.4-4.89-3.5-6.13V2.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v1.62C9.4 4.86 8 7.13 8 10.25v5.75l-2 2v1h16v-1l-2-2v-5.75zM12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/></svg>
+                </div>
+                <h3>4. Safe, Lightweight & Fast</h3>
+                <p>Optimized with FIFO concurrent queues supporting 3 active slots, and offloaded async tasks. Zero background services, zero tracking ads, and zero battery drain.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation & Sideloading Guide -->
+    <section class="install-guide" id="install">
+        <div class="guide-content">
+            <h2 class="guide-title">How to Install VU Study Mate</h2>
+            <p class="guide-desc">Since we are sharing this app directly through GitHub for students to use completely free, you must manually install it on your Android phone. Follow these quick steps:</p>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <div class="step-num">01</div>
+                    <div class="step-details">
+                        <h5>Download the APK file</h5>
+                        <p>Click the prominent "Download App" button at the top to download the official secure `VU.STUDY.MATE.apk` directly to your phone.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-num">02</div>
+                    <div class="step-details">
+                        <h5>Enable Unknown Sources</h5>
+                        <p>If prompted by your browser (Chrome/Edge), tap on "Settings" and toggle "Allow from this source" to allow sideloading installation.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-num">03</div>
+                    <div class="step-details">
+                        <h5>Click Install & Enjoy</h5>
+                        <p>Open the downloaded file, click "Install", enter your program & semester profile details, and start exploring your study files offline!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safe Warning Card -->
+        <div class="guide-alert-card">
+            <div class="alert-header">
+                <div class="alert-icon-wrap">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                </div>
+                <h4>Google Play Protect Notice</h4>
+            </div>
+            <p>Because this release APK is distributed directly outside the Google Play Store on GitHub, Google Play Protect might show a warning message saying <strong>"Blocked by Play Protect (Unsafe App)"</strong> on installation.</p>
+            
+            <div class="alert-tip">
+                <h6>Don't Worry! It is 100% Secure.</h6>
+                <p>This is a standard warning for direct sideloaded APK files that are not registered on the Play Store yet. Our app has <strong>0/68 detections on VirusTotal</strong>. We have officially submitted the certificate to Google for verification, which will remove the warning for everyone within 24-72 hours!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            VU Study Mate<span class="logo-dot"></span>
+        </div>
+        <div class="footer-socials">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/923135939659" class="social-link" title="Contact Developer on WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.714-1.466L0 24zm6.273-3.834a9.886 9.886 0 0 0 5.732 1.8c5.568 0 10.099-4.526 10.103-10.091a9.881 9.881 0 0 0-2.955-7.143 9.88 9.88 0 0 0-7.155-2.946C6.446.79 1.916 5.316 1.912 10.885c-.001 2.01.523 3.975 1.517 5.707l-.991 3.616 3.892-.992zM17.91 14.945c-.247-.123-1.462-.72-1.69-.8-.227-.084-.393-.123-.558.123-.165.247-.64.8-.784.966-.145.165-.29.185-.537.062a7.355 7.355 0 0 1-1.99-1.225 8.12 8.12 0 0 1-1.378-1.71c-.145-.247-.016-.38.109-.504.111-.112.247-.29.37-.435.124-.145.165-.247.247-.412.083-.165.042-.31-.02-.433-.062-.124-.558-1.345-.765-1.84-.2-.486-.396-.412-.558-.42-.16-.008-.347-.008-.53-.008-.184 0-.485.07-.74.348-.253.279-.968.948-.968 2.316 0 1.368.993 2.69 1.117 2.855.124.165 1.953 2.983 4.73 4.179.66.284 1.176.454 1.58.582.663.21 1.267.18 1.745.109.53-.08 1.462-.598 1.67-.175.206-.418.31-.774.31-1.127z"/></svg>
+            </a>
+            <!-- Email -->
+            <a href="mailto:mujtabaofficial1001@gmail.com" class="social-link" title="Email Developer">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+        </div>
+        <p class="footer-copyright">Developed with ❤️ by <strong>Mujtaba</strong></p>
+        <p class="footer-disclaimer">Disclaimer: VU Study Mate is an independent educational utility application built for students. It is not officially associated with, endorsed by, or affiliated with the Virtual University of Pakistan.</p>
+    </footer>
+
+</body>
+</html>
