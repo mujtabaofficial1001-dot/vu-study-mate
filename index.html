@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Study Mate - The Ultimate Offline Study App for VU Students</title>
-    <meta name="description" content="Download VU Study Mate - Access Virtual University books, offline textbook reader with night mode, bookmarks, study notes, Urdu announcement support, and concurrent downloads.">
+    <title>VU Study Mate - The Ultimate Offline Study Companion for VU Students</title>
+    <meta name="description" content="Download VU Study Mate - Access Virtual University books, offline textbook reader with night mode, bookmarks, study notes, and video lectures.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,16 +12,16 @@
     
     <style>
         :root {
-            --primary: #4169E1;
-            --primary-dark: #002366;
-            --accent: #FFD700;
-            --bg-dark: #0B0F19;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --text-main: #F1F5F9;
-            --text-muted: #94A3B8;
-            --glass-bg: rgba(11, 15, 25, 0.7);
-            --glow-color: rgba(65, 105, 225, 0.15);
+            --primary: #1976D2;
+            --primary-dark: #0D47A1;
+            --accent: #FFC107;
+            --bg-light: #F4F6F9;
+            --card-bg: #FFFFFF;
+            --card-border: rgba(0, 35, 102, 0.08);
+            --text-main: #263238;
+            --text-muted: #64748B;
+            --shadow-soft: 0 10px 30px -5px rgba(13, 71, 161, 0.06);
+            --shadow-hover: 0 20px 40px -10px rgba(13, 71, 161, 0.12);
         }
 
         * {
@@ -32,7 +32,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--bg-light);
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
@@ -47,37 +47,14 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
+            background: var(--bg-light);
         }
         ::-webkit-scrollbar-thumb {
-            background: #1E293B;
+            background: #CBD5E1;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary);
-        }
-
-        /* --- Ambient Lighting Glows --- */
-        .ambient-glow-1 {
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--glow-color) 0%, rgba(11, 15, 25, 0) 70%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .ambient-glow-2 {
-            position: absolute;
-            top: 600px;
-            left: -300px;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(156, 39, 176, 0.08) 0%, rgba(11, 15, 25, 0) 70%);
-            z-index: 0;
-            pointer-events: none;
         }
 
         /* --- Navigation --- */
@@ -87,7 +64,7 @@
             left: 0;
             width: 100%;
             height: 80px;
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--card-border);
@@ -96,13 +73,14 @@
             align-items: center;
             padding: 0 8%;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
         .nav-logo {
             font-size: 24px;
             font-weight: 800;
             letter-spacing: 0.5px;
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 30%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: flex;
@@ -120,10 +98,10 @@
         }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 10px 20px;
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            color: #FFFFFF;
+            padding: 10px 22px;
             border-radius: 12px;
             font-weight: 600;
             font-size: 14px;
@@ -132,16 +110,15 @@
         }
 
         .nav-btn:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            box-shadow: 0 4px 20px rgba(65, 105, 225, 0.4);
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
             transform: translateY(-2px);
         }
 
         /* --- Hero Section --- */
         .hero {
-            position: relative;
-            padding: 180px 8% 100px;
+            padding: 160px 8% 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -156,9 +133,9 @@
         }
 
         .badge {
-            background: rgba(65, 105, 225, 0.12);
-            border: 1px solid rgba(65, 105, 225, 0.3);
-            color: #60A5FA;
+            background: rgba(25, 118, 210, 0.08);
+            border: 1px solid rgba(25, 118, 210, 0.2);
+            color: var(--primary-dark);
             padding: 6px 16px;
             border-radius: 50px;
             font-size: 13px;
@@ -174,33 +151,34 @@
         .badge-pulse {
             width: 8px;
             height: 8px;
-            background-color: #60A5FA;
+            background-color: var(--primary);
             border-radius: 50%;
             animation: pulse 1.8s infinite;
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(96, 165, 250, 0); }
-            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); }
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.4); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(25, 118, 210, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(25, 118, 210, 0); }
         }
 
         .hero-title {
-            font-size: 56px;
+            font-size: 54px;
             font-weight: 800;
             line-height: 1.15;
             letter-spacing: -1px;
             margin-bottom: 20px;
+            color: var(--primary-dark);
         }
 
         .hero-title span {
-            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, var(--primary) 100%);
+            background: linear-gradient(135deg, #FFB300 0%, #FF8F00 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--text-muted);
             margin-bottom: 36px;
             max-width: 580px;
@@ -217,7 +195,7 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--primary) 0%, #2563EB 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: #FFFFFF;
             padding: 16px 36px;
             font-size: 16px;
@@ -225,14 +203,14 @@
             border-radius: 16px;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 30px rgba(65, 105, 225, 0.3);
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .download-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 35px rgba(65, 105, 225, 0.5);
-            background: linear-gradient(135deg, #4F46E5 0%, var(--primary) 100%);
+            box-shadow: 0 12px 30px rgba(13, 71, 161, 0.35);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
         }
 
         .download-btn svg {
@@ -250,14 +228,14 @@
             display: flex;
             gap: 40px;
             margin-top: 50px;
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid rgba(0,0,0,0.06);
             padding-top: 30px;
         }
 
         .stat-item h4 {
             font-size: 28px;
             font-weight: 700;
-            color: var(--text-main);
+            color: var(--primary-dark);
         }
 
         .stat-item h4 span {
@@ -283,11 +261,11 @@
             position: relative;
             width: 280px;
             height: 570px;
-            background: #111827;
-            border: 10px solid #1F2937;
+            background: #FFFFFF;
+            border: 10px solid #E2E8F0;
             border-radius: 40px;
-            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 
-                        0 0 40px rgba(65, 105, 225, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(13, 71, 161, 0.08), 
+                        0 0 30px rgba(13, 71, 161, 0.04);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -332,9 +310,9 @@
             background: white;
             border-radius: 14px;
             padding: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             margin-bottom: 12px;
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.01);
         }
 
         .mock-card-top {
@@ -346,7 +324,7 @@
         .mock-icon {
             width: 32px;
             height: 32px;
-            background: #FFECEE;
+            background: #E3F2FD;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -356,7 +334,7 @@
         .mock-icon svg {
             width: 16px;
             height: 16px;
-            fill: #D32F2F;
+            fill: #1976D2;
         }
 
         .mock-info {
@@ -393,8 +371,9 @@
             background: #0D47A1;
         }
 
-        .mock-btn-orange {
-            background: #FF9800;
+        .mock-btn-grey {
+            background: #E8F5E9;
+            color: #2E7D32;
         }
 
         .mock-progress-container {
@@ -420,7 +399,7 @@
         }
 
         .mock-progress-fill {
-            width: 65%;
+            width: 75%;
             height: 100%;
             background: #1976D2;
             border-radius: 10px;
@@ -428,8 +407,8 @@
         }
 
         @keyframes animateFill {
-            0% { width: 20%; }
-            100% { width: 85%; }
+            0% { width: 30%; }
+            100% { width: 90%; }
         }
 
         .phone-glow {
@@ -439,7 +418,7 @@
             transform: translate(-50%, -50%);
             width: 320px;
             height: 610px;
-            background: rgba(65, 105, 225, 0.08);
+            background: rgba(13, 71, 161, 0.03);
             border-radius: 46px;
             filter: blur(20px);
             z-index: -1;
@@ -449,9 +428,11 @@
         /* --- Features Section --- */
         .features {
             padding: 100px 8%;
-            background-color: rgba(15, 23, 42, 0.5);
+            background-color: #FFFFFF;
             position: relative;
             z-index: 10;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
         .section-header {
@@ -461,9 +442,10 @@
         }
 
         .section-header h2 {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 800;
             margin-bottom: 16px;
+            color: var(--primary-dark);
         }
 
         .section-header p {
@@ -478,43 +460,27 @@
         }
 
         .feature-card {
-            background: var(--card-bg);
+            background: #F8FAFC;
             border: 1px solid var(--card-border);
             padding: 36px 30px;
             border-radius: 24px;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            box-shadow: var(--shadow-soft);
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(65, 105, 225, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(65, 105, 225, 0.15) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
+            background: #FFFFFF;
+            border-color: rgba(25, 118, 210, 0.2);
+            box-shadow: var(--shadow-hover);
         }
 
         .feature-icon-wrapper {
             width: 56px;
             height: 56px;
-            background: rgba(65, 105, 225, 0.1);
-            border: 1px solid rgba(65, 105, 225, 0.2);
+            background: rgba(25, 118, 210, 0.06);
+            border: 1px solid rgba(25, 118, 210, 0.15);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -532,12 +498,12 @@
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 12px;
-            color: var(--text-main);
+            color: var(--primary-dark);
         }
 
         .feature-card p {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 14.5px;
             line-height: 1.6;
         }
 
@@ -560,11 +526,13 @@
             font-size: 38px;
             font-weight: 800;
             margin-bottom: 18px;
+            color: var(--primary-dark);
         }
 
         .guide-desc {
             color: var(--text-muted);
             margin-bottom: 30px;
+            font-size: 15.5px;
         }
 
         .step-list {
@@ -576,10 +544,11 @@
         .step-item {
             display: flex;
             gap: 20px;
-            background: rgba(255, 255, 255, 0.02);
+            background: #FFFFFF;
             border: 1px solid var(--card-border);
             padding: 20px;
             border-radius: 16px;
+            box-shadow: var(--shadow-soft);
         }
 
         .step-num {
@@ -594,6 +563,7 @@
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 6px;
+            color: var(--primary-dark);
         }
 
         .step-details p {
@@ -603,24 +573,12 @@
 
         .guide-alert-card {
             flex: 0.8;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.1) 100%);
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.02) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.15);
             border-radius: 28px;
             padding: 40px 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(13, 71, 161, 0.03);
             position: relative;
-        }
-
-        .guide-alert-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(10px);
         }
 
         .alert-header {
@@ -633,7 +591,7 @@
         .alert-icon-wrap {
             width: 48px;
             height: 48px;
-            background: rgba(239, 68, 68, 0.2);
+            background: rgba(239, 68, 68, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -643,38 +601,42 @@
         .alert-icon-wrap svg {
             width: 22px;
             height: 22px;
-            fill: #EF4444;
+            fill: #DC2626;
         }
 
         .alert-header h4 {
             font-size: 18px;
             font-weight: 700;
-            color: #FCA5A5;
+            color: #B91C1C;
         }
 
         .guide-alert-card p {
             font-size: 14px;
-            color: #F87171;
+            color: #DC2626;
             margin-bottom: 24px;
             line-height: 1.6;
         }
 
         .alert-tip {
-            background: rgba(255, 255, 255, 0.05);
+            background: #FFFFFF;
             border-radius: 12px;
             padding: 16px;
             border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow-soft);
+            border-top: 1px solid rgba(0,0,0,0.01);
+            border-right: 1px solid rgba(0,0,0,0.01);
+            border-bottom: 1px solid rgba(0,0,0,0.01);
         }
 
         .alert-tip h6 {
             font-size: 13px;
             font-weight: 700;
-            color: var(--accent);
+            color: #D97706;
             margin-bottom: 4px;
         }
 
         .alert-tip p {
-            font-size: 12px;
+            font-size: 12.5px;
             color: var(--text-muted);
             margin-bottom: 0;
             line-height: 1.5;
@@ -683,17 +645,18 @@
         /* --- Footer --- */
         footer {
             padding: 60px 8% 40px;
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid rgba(0,0,0,0.05);
             text-align: center;
             position: relative;
             z-index: 10;
+            background-color: #FFFFFF;
         }
 
         .footer-logo {
             font-size: 20px;
             font-weight: 800;
             margin-bottom: 16px;
-            color: var(--text-main);
+            color: var(--primary-dark);
         }
 
         .footer-logo span {
@@ -710,7 +673,7 @@
         .social-link {
             width: 44px;
             height: 44px;
-            background: rgba(255, 255, 255, 0.03);
+            background: #F1F5F9;
             border: 1px solid var(--card-border);
             border-radius: 50%;
             display: flex;
@@ -724,13 +687,18 @@
             background: var(--primary);
             border-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
         }
 
         .social-link svg {
             width: 18px;
             height: 18px;
-            fill: var(--text-main);
+            fill: var(--primary-dark);
+            transition: fill 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            fill: #FFFFFF;
         }
 
         .footer-copyright {
@@ -741,9 +709,10 @@
 
         .footer-disclaimer {
             font-size: 11px;
-            color: rgba(148, 163, 184, 0.4);
+            color: rgba(100, 116, 139, 0.5);
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.5;
         }
 
         /* --- Responsive Styles --- */
@@ -761,7 +730,7 @@
                 max-width: 100%;
             }
             .hero-title {
-                font-size: 42px;
+                font-size: 40px;
             }
             .hero-desc {
                 margin: 0 auto 30px;
@@ -781,10 +750,6 @@
 </head>
 <body>
 
-    <!-- Ambient Ambient Glows -->
-    <div class="ambient-glow-1"></div>
-    <div class="ambient-glow-2"></div>
-
     <!-- Navigation Header -->
     <nav>
         <div class="nav-logo">
@@ -801,7 +766,7 @@
                 v1.0.0 Stable Release
             </div>
             <h1 class="hero-title">Your Ultimate Offline <span>VU Study Partner</span></h1>
-            <p class="hero-desc">Access textbooks, reference notes, and study sheets completely offline. Read smoothly with our pro-level native PDF reader equipped with night mode, custom Urdu fonts, and interactive study bookmarks.</p>
+            <p class="hero-desc">Access reference books, finalterm/midterm prep notes, and handouts completely offline. Learn peacefully with our pro-level built-in PDF reader, short video lectures, and live alerts.</p>
             
             <div class="cta-group">
                 <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="download-btn">
@@ -810,13 +775,13 @@
                     </svg>
                     Download App (15.8 MB)
                 </a>
-                <a href="#install" class="nav-btn" style="background: transparent;">How to Install</a>
+                <a href="#install" class="nav-btn" style="background: transparent; color: var(--primary-dark); border-color: var(--primary-dark);">How to Install</a>
             </div>
 
             <div class="stats">
                 <div class="stat-item">
                     <h4>0<span>%</span></h4>
-                    <p>Ads & Interruptions</p>
+                    <p>Ads & Distractions</p>
                 </div>
                 <div class="stat-item">
                     <h4>0<span>/68</span></h4>
@@ -848,13 +813,13 @@
                             </div>
                             <div class="mock-info">
                                 <span class="mock-info-title">CS101 Grand Quiz Book</span>
-                                <span class="mock-info-sub">Size: 4.8 MB • PDF Document</span>
+                                <span class="mock-info-sub">Size: 4.8 MB • PDF Handout</span>
                             </div>
                         </div>
                         <div class="mock-progress-container">
                             <div class="mock-progress-info">
                                 <span>Downloading...</span>
-                                <span>65%</span>
+                                <span>75%</span>
                             </div>
                             <div class="mock-progress-bar">
                                 <div class="mock-progress-fill"></div>
@@ -862,7 +827,7 @@
                         </div>
                     </div>
 
-                    <div class="mock-card" style="opacity: 0.85;">
+                    <div class="mock-card">
                         <div class="mock-card-top">
                             <div class="mock-icon" style="background: #E3F2FD;">
                                 <svg viewBox="0 0 24 24" style="fill: #1976D2;"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm-9 12l-5-5h10l-5 5z"/></svg>
@@ -877,18 +842,18 @@
                         </div>
                     </div>
 
-                    <div class="mock-card" style="opacity: 0.7;">
+                    <div class="mock-card" style="opacity: 0.9;">
                         <div class="mock-card-top">
                             <div class="mock-icon">
-                                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2z"/></svg>
                             </div>
                             <div class="mock-info">
                                 <span class="mock-info-title">CS101 Handouts (Complete)</span>
                                 <span class="mock-info-sub">Offline PDF</span>
                             </div>
                         </div>
-                        <div class="mock-btn mock-btn-orange">
-                            Import to Library 📂
+                        <div class="mock-btn mock-btn-grey">
+                            ✓ Saved in Library 📂
                         </div>
                     </div>
                 </div>
@@ -900,7 +865,7 @@
     <!-- Key Features Section -->
     <section class="features" id="features">
         <div class="section-header">
-            <h2>Crafted with Premium Features</h2>
+            <h2>App Features Designed for You</h2>
             <p>We built VU Study Mate specifically to solve Virtual University students' problems, offering a beautiful user experience with low hardware footprint.</p>
         </div>
         
@@ -911,25 +876,25 @@
                     <svg viewBox="0 0 24 24"><path d="M19 18H5V6h14v12zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
                 </div>
                 <h3>1. Offline Book Library</h3>
-                <p>Download handouts and midterm/finalterm files directly inside the app specific storage. Once downloaded, read them anytime, anywhere, completely offline.</p>
+                <p>Download Virtual University reference handouts, past papers, and midterm/finalterm prep files directly to your device. Read them anytime, anywhere, completely offline.</p>
             </div>
             
             <!-- Feature 2 -->
             <div class="feature-card">
                 <div class="feature-icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
                 </div>
-                <h3>2. Custom Urdu Typography</h3>
-                <p>First-class integration of the elegant Urdu font family. Urgent announcements and notifications adapt dynamically, offering stunning bilingual readability.</p>
+                <h3>2. Built-In Pro PDF Reader</h3>
+                <p>Features a custom reading companion containing real-time night mode, page-jumping bookmarks, local study notes saving, and automatic reading page progress tracking.</p>
             </div>
 
             <!-- Feature 3 -->
             <div class="feature-card">
                 <div class="feature-icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm-9 12l-5-5h10l-5 5z"/></svg>
                 </div>
-                <h3>3. Pro Native PDF Viewer</h3>
-                <p>Read comfortbly with true Night Mode rendering. Jump to page progress indicators, bookmark important pages, and write quick local study notes instantly.</p>
+                <h3>3. Short Video Lectures</h3>
+                <p>Access and play Virtual University short video lectures directly within the app specific views, providing an integrated learning setup without switching between screens.</p>
             </div>
 
             <!-- Feature 4 -->
@@ -937,8 +902,8 @@
                 <div class="feature-icon-wrapper">
                     <svg viewBox="0 0 24 24"><path d="M18 10.25c0-2.62-1.4-4.89-3.5-6.13V2.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v1.62C9.4 4.86 8 7.13 8 10.25v5.75l-2 2v1h16v-1l-2-2v-5.75zM12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/></svg>
                 </div>
-                <h3>4. Safe, Lightweight & Fast</h3>
-                <p>Optimized with FIFO concurrent queues supporting 3 active slots, and offloaded async tasks. Zero background services, zero tracking ads, and zero battery drain.</p>
+                <h3>4. Real-time Announcements</h3>
+                <p>Receive urgent university alerts, notice boards, date sheets announcements, and greetings from the administrator instantly via our real-time database sync.</p>
             </div>
         </div>
     </section>
