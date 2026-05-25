@@ -264,151 +264,18 @@
             background: #FFFFFF;
             border: 10px solid #E2E8F0;
             border-radius: 40px;
-            box-shadow: 0 25px 50px -12px rgba(13, 71, 161, 0.08), 
-                        0 0 30px rgba(13, 71, 161, 0.04);
+            box-shadow: 0 25px 50px -12px rgba(13, 71, 161, 0.1), 
+                        0 0 30px rgba(13, 71, 161, 0.05);
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        .phone-screen {
-            flex: 1;
-            background: #F4F6F9;
-            display: flex;
-            flex-direction: column;
-            padding: 16px;
-            position: relative;
-        }
-
-        /* Mock App UI Elements */
-        .mock-header {
+        .phone-screen-img {
             width: 100%;
-            height: 80px;
-            background: linear-gradient(to bottom, #0D47A1, #1976D2);
-            border-radius: 18px;
-            padding: 12px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .mock-title {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .mock-tabs {
-            display: flex;
-            gap: 12px;
-            font-size: 9px;
-            opacity: 0.8;
-        }
-
-        .mock-card {
-            background: white;
-            border-radius: 14px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            margin-bottom: 12px;
-            border: 1px solid rgba(0,0,0,0.01);
-        }
-
-        .mock-card-top {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mock-icon {
-            width: 32px;
-            height: 32px;
-            background: #E3F2FD;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mock-icon svg {
-            width: 16px;
-            height: 16px;
-            fill: #1976D2;
-        }
-
-        .mock-info {
-            flex: 1;
-        }
-
-        .mock-info-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: #334155;
-        }
-
-        .mock-info-sub {
-            font-size: 8px;
-            color: #94A3B8;
-        }
-
-        .mock-btn {
-            margin-top: 10px;
-            width: 100%;
-            height: 28px;
-            background: #0D47A1;
-            border-radius: 8px;
-            color: white;
-            font-size: 9px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-        }
-
-        .mock-btn-blue {
-            background: #0D47A1;
-        }
-
-        .mock-btn-grey {
-            background: #E8F5E9;
-            color: #2E7D32;
-        }
-
-        .mock-progress-container {
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .mock-progress-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 8px;
-            color: #1976D2;
-            font-weight: 700;
-            margin-bottom: 3px;
-        }
-
-        .mock-progress-bar {
-            width: 100%;
-            height: 4px;
-            background: #E3F2FD;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .mock-progress-fill {
-            width: 75%;
             height: 100%;
-            background: #1976D2;
-            border-radius: 10px;
-            animation: animateFill 3s infinite alternate;
-        }
-
-        @keyframes animateFill {
-            0% { width: 30%; }
-            100% { width: 90%; }
+            object-fit: cover;
+            border-radius: 30px;
         }
 
         .phone-glow {
@@ -418,17 +285,66 @@
             transform: translate(-50%, -50%);
             width: 320px;
             height: 610px;
-            background: rgba(13, 71, 161, 0.03);
+            background: rgba(13, 71, 161, 0.04);
             border-radius: 46px;
             filter: blur(20px);
             z-index: -1;
             pointer-events: none;
         }
 
+        /* --- App Showcase Gallery --- */
+        .showcase {
+            padding: 80px 8%;
+            background-color: #FFFFFF;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .showcase-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .showcase-desc {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .gallery-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            background: rgba(25, 118, 210, 0.06);
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+
         /* --- Features Section --- */
         .features {
             padding: 100px 8%;
-            background-color: #FFFFFF;
+            background-color: #F8FAFC;
             position: relative;
             z-index: 10;
             border-top: 1px solid rgba(0,0,0,0.03);
@@ -460,7 +376,7 @@
         }
 
         .feature-card {
-            background: #F8FAFC;
+            background: #FFFFFF;
             border: 1px solid var(--card-border);
             padding: 36px 30px;
             border-radius: 24px;
@@ -471,7 +387,6 @@
 
         .feature-card:hover {
             transform: translateY(-5px);
-            background: #FFFFFF;
             border-color: rgba(25, 118, 210, 0.2);
             box-shadow: var(--shadow-hover);
         }
@@ -507,6 +422,36 @@
             line-height: 1.6;
         }
 
+        /* --- Poster Promo Section --- */
+        .poster-section {
+            padding: 80px 8%;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .poster-card {
+            max-width: 800px;
+            width: 100%;
+            background: #FFFFFF;
+            border: 1px solid var(--card-border);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px -15px rgba(13, 71, 161, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .poster-img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            display: block;
+        }
+
         /* --- Install Guide / Safe Warning Section --- */
         .install-guide {
             padding: 100px 8%;
@@ -516,6 +461,7 @@
             gap: 60px;
             position: relative;
             z-index: 10;
+            background-color: #F8FAFC;
         }
 
         .guide-content {
@@ -794,71 +740,37 @@
             </div>
         </div>
 
-        <!-- Phone Mockup -->
+        <!-- Phone Mockup inside Hero -->
         <div class="hero-mockup">
             <div class="phone-frame">
-                <div class="phone-screen">
-                    <div class="mock-header">
-                        <span class="mock-title">📚 CS101 - Computer Science</span>
-                        <div class="mock-tabs">
-                            <span>Midterm Prep</span>
-                            <span style="font-weight: 700; border-bottom: 1.5px solid gold;">Finalterm Prep</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mock-card">
-                        <div class="mock-card-top">
-                            <div class="mock-icon">
-                                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zm5.5 3h1v-4h-1v4z"/></svg>
-                            </div>
-                            <div class="mock-info">
-                                <span class="mock-info-title">CS101 Grand Quiz Book</span>
-                                <span class="mock-info-sub">Size: 4.8 MB • PDF Handout</span>
-                            </div>
-                        </div>
-                        <div class="mock-progress-container">
-                            <div class="mock-progress-info">
-                                <span>Downloading...</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="mock-progress-bar">
-                                <div class="mock-progress-fill"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mock-card">
-                        <div class="mock-card-top">
-                            <div class="mock-icon" style="background: #E3F2FD;">
-                                <svg viewBox="0 0 24 24" style="fill: #1976D2;"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm-9 12l-5-5h10l-5 5z"/></svg>
-                            </div>
-                            <div class="mock-info">
-                                <span class="mock-info-title">CS101 Short Video Lecture</span>
-                                <span class="mock-info-sub">YouTube Video Link</span>
-                            </div>
-                        </div>
-                        <div class="mock-btn mock-btn-blue">
-                            Play Lecture Video 🎥
-                        </div>
-                    </div>
-
-                    <div class="mock-card" style="opacity: 0.9;">
-                        <div class="mock-card-top">
-                            <div class="mock-icon">
-                                <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2z"/></svg>
-                            </div>
-                            <div class="mock-info">
-                                <span class="mock-info-title">CS101 Handouts (Complete)</span>
-                                <span class="mock-info-sub">Offline PDF</span>
-                            </div>
-                        </div>
-                        <div class="mock-btn mock-btn-grey">
-                            ✓ Saved in Library 📂
-                        </div>
-                    </div>
-                </div>
+                <!-- Using 2.jpeg as the stunning Home Screen mockup -->
+                <img src="2.jpeg" alt="VU Study Mate Home Screen" class="phone-screen-img">
             </div>
             <div class="phone-glow"></div>
+        </div>
+    </section>
+
+    <!-- App Showcase Gallery Section -->
+    <section class="showcase">
+        <h2 class="showcase-title">Visual Showcase</h2>
+        <p class="showcase-desc">Designed with high fidelity interfaces that look and feel premium on your smartphone. Take a look at the actual app layout.</p>
+        
+        <div class="gallery-container">
+            <!-- Home Screen Mockup -->
+            <div class="gallery-item">
+                <div class="phone-frame">
+                    <img src="2.jpeg" alt="App Home Screen Mockup" class="phone-screen-img">
+                </div>
+                <div class="gallery-label">Home Screen Dashboard</div>
+            </div>
+
+            <!-- Semester Selection Mockup -->
+            <div class="gallery-item">
+                <div class="phone-frame">
+                    <img src="4.jpeg" alt="App Semester Selection Mockup" class="phone-screen-img">
+                </div>
+                <div class="gallery-label">Semester File Selection</div>
+            </div>
         </div>
     </section>
 
@@ -905,6 +817,14 @@
                 <h3>4. Real-time Announcements</h3>
                 <p>Receive urgent university alerts, notice boards, date sheets announcements, and greetings from the administrator instantly via our real-time database sync.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Poster Promo Section -->
+    <section class="poster-section">
+        <div class="poster-card">
+            <!-- Using 3.png as the stunning high-impact cartoon poster -->
+            <img src="3.png" alt="VU Study Mate Poster" class="poster-img">
         </div>
     </section>
 
@@ -961,7 +881,9 @@
     <!-- Footer -->
     <footer>
         <div class="footer-logo">
-            VU Study Mate<span class="logo-dot"></span>
+            <!-- Using vu_study_mate.jpeg as the small footer brand logo -->
+            <img src="vu_study_mate.jpeg" alt="Logo" style="width: 48px; height: 48px; border-radius: 50%; vertical-align: middle; margin-right: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            VU Study Mate
         </div>
         <div class="footer-socials">
             <!-- WhatsApp -->
