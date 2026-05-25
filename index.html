@@ -12,22 +12,27 @@
     
     <style>
         :root {
-            --primary: #1976D2;
-            --primary-dark: #0D47A1;
-            --accent: #FFC107;
-            --bg-light: #F4F6F9;
+            --primary: #4169E1;        /* Royal Blue Light */
+            --primary-dark: #002366;   /* Royal Blue Pure */
+            --accent: #FFD700;         /* Royal Gold */
+            --accent-dark: #FFB300;    /* Deep Gold */
+            --bg-light: #F8FAFC;       /* Soft Premium Light BG */
             --card-bg: #FFFFFF;
             --card-border: rgba(0, 35, 102, 0.08);
-            --text-main: #263238;
-            --text-muted: #64748B;
-            --shadow-soft: 0 10px 30px -5px rgba(13, 71, 161, 0.06);
-            --shadow-hover: 0 20px 40px -10px rgba(13, 71, 161, 0.12);
+            --text-main: #1E293B;      /* Slate 800 */
+            --text-muted: #64748B;     /* Slate 500 */
+            --shadow-soft: 0 10px 30px -5px rgba(0, 35, 102, 0.06);
+            --shadow-hover: 0 20px 40px -10px rgba(0, 35, 102, 0.12);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -38,7 +43,7 @@
             line-height: 1.6;
         }
 
-        h1, h2, h3, .nav-logo {
+        h1, h2, h3, h4, .nav-logo {
             font-family: 'Outfit', sans-serif;
         }
 
@@ -76,8 +81,23 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 35, 102, 0.15);
+            border: 2px solid var(--primary-dark);
+        }
+
         .nav-logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 800;
             letter-spacing: 0.5px;
             background: linear-gradient(135deg, var(--primary-dark) 30%, var(--primary) 100%);
@@ -85,45 +105,66 @@
             -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
 
         .logo-dot {
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent);
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-dark);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
+            box-shadow: 0 0 8px var(--accent-dark);
             display: inline-block;
         }
 
-        .nav-btn {
-            background: var(--primary);
-            border: 1px solid var(--primary);
-            color: #FFFFFF;
-            padding: 10px 22px;
-            border-radius: 12px;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-main);
             font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border: none;
+            color: #FFFFFF !important;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-weight: 700;
             font-size: 14px;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 35, 102, 0.2);
         }
 
         .nav-btn:hover {
-            background: var(--primary-dark);
-            border-color: var(--primary-dark);
-            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 35, 102, 0.3);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
         }
 
         /* --- Hero Section --- */
         .hero {
-            padding: 160px 8% 80px;
+            padding: 150px 8% 80px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 50px;
-            min-height: 90vh;
+            gap: 60px;
+            min-height: 95vh;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(65, 105, 225, 0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 40%);
         }
 
         .hero-content {
@@ -133,19 +174,19 @@
         }
 
         .badge {
-            background: rgba(25, 118, 210, 0.08);
-            border: 1px solid rgba(25, 118, 210, 0.2);
+            background: rgba(65, 105, 225, 0.06);
+            border: 1px solid rgba(65, 105, 225, 0.2);
             color: var(--primary-dark);
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 700;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 24px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .badge-pulse {
@@ -157,31 +198,38 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.4); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(25, 118, 210, 0); }
-            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(25, 118, 210, 0); }
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(65, 105, 225, 0.4); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(65, 105, 225, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(65, 105, 225, 0); }
         }
 
         .hero-title {
             font-size: 54px;
             font-weight: 800;
             line-height: 1.15;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
             margin-bottom: 20px;
             color: var(--primary-dark);
         }
 
         .hero-title span {
-            background: linear-gradient(135deg, #FFB300 0%, #FF8F00 100%);
+            background: linear-gradient(135deg, var(--accent-dark) 0%, #E65100 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
 
         .hero-desc {
-            font-size: 17px;
+            font-size: 16px;
             color: var(--text-muted);
             margin-bottom: 36px;
             max-width: 580px;
+            line-height: 1.7;
+        }
+
+        .hero-desc span {
+            color: var(--primary-dark);
+            font-weight: 600;
         }
 
         .cta-group {
@@ -203,13 +251,13 @@
             border-radius: 16px;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 35, 102, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .download-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(13, 71, 161, 0.35);
+            box-shadow: 0 12px 30px rgba(0, 35, 102, 0.35);
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
         }
 
@@ -224,27 +272,45 @@
             transform: translateY(2px);
         }
 
+        .secondary-btn {
+            background: transparent;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary-dark);
+            padding: 14px 30px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(0, 35, 102, 0.05);
+            transform: translateY(-2px);
+        }
+
         .stats {
             display: flex;
             gap: 40px;
             margin-top: 50px;
-            border-top: 1px solid rgba(0,0,0,0.06);
+            border-top: 1px solid rgba(0, 35, 102, 0.06);
             padding-top: 30px;
         }
 
         .stat-item h4 {
             font-size: 28px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary-dark);
         }
 
         .stat-item h4 span {
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .stat-item p {
             font-size: 13px;
             color: var(--text-muted);
+            font-weight: 500;
         }
 
         /* --- Phone Mockup Section --- */
@@ -259,23 +325,40 @@
 
         .phone-frame {
             position: relative;
-            width: 280px;
-            height: 570px;
-            background: #FFFFFF;
-            border: 10px solid #E2E8F0;
+            width: 270px;
+            height: 550px;
+            background: #000000;
+            border: 12px solid #1E293B;
             border-radius: 40px;
-            box-shadow: 0 25px 50px -12px rgba(13, 71, 161, 0.1), 
-                        0 0 30px rgba(13, 71, 161, 0.05);
+            box-shadow: 0 25px 60px -15px rgba(0, 35, 102, 0.2), 
+                        0 0 40px rgba(0, 35, 102, 0.05);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-8px) rotate(1deg);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 22px;
+            background: #1E293B;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 20;
         }
 
         .phone-screen-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 30px;
         }
 
         .phone-glow {
@@ -284,71 +367,18 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 320px;
-            height: 610px;
-            background: rgba(13, 71, 161, 0.04);
+            height: 600px;
+            background: radial-gradient(circle, rgba(65, 105, 225, 0.15) 0%, transparent 70%);
             border-radius: 46px;
             filter: blur(20px);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- App Showcase Gallery --- */
-        .showcase {
-            padding: 80px 8%;
-            background-color: #FFFFFF;
-            text-align: center;
-            border-top: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .showcase-title {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-        }
-
-        .showcase-desc {
-            color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 50px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .gallery-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .gallery-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .gallery-label {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            background: rgba(25, 118, 210, 0.06);
-            padding: 6px 16px;
-            border-radius: 20px;
-        }
-
-        /* --- Features Section --- */
-        .features {
+        /* --- Section Styling --- */
+        section {
             padding: 100px 8%;
-            background-color: #F8FAFC;
-            position: relative;
-            z-index: 10;
-            border-top: 1px solid rgba(0,0,0,0.03);
-            border-bottom: 1px solid rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0, 35, 102, 0.03);
         }
 
         .section-header {
@@ -360,42 +390,604 @@
         .section-header h2 {
             font-size: 38px;
             font-weight: 800;
-            margin-bottom: 16px;
             color: var(--primary-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header h2 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-header p {
             color: var(--text-muted);
             font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* --- Showcase Section --- */
+        .showcase {
+            background-color: #FFFFFF;
+        }
+
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .gallery-label {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            background: rgba(65, 105, 225, 0.08);
+            padding: 8px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 35, 102, 0.02);
+            border: 1px solid rgba(65, 105, 225, 0.15);
+        }
+
+        /* --- Interactive Simulators Section --- */
+        .simulator-section {
+            background-color: #0F172A; /* Rich Slate 900 for high-contrast dashboard */
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            border-radius: 40px;
+            margin: 0 4% 80px;
+            padding: 80px 6%;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .simulator-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .simulator-panel {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .sim-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 16px;
+        }
+
+        .sim-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #10B981;
+        }
+
+        .sim-status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10B981;
+        }
+
+        .sim-controls-title {
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .sim-desc {
+            color: #94A3B8;
+            font-size: 14.5px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Tabs styling */
+        .sim-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sim-tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 16px 20px;
+            color: #94A3B8;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14.5px;
+        }
+
+        .sim-tab-btn:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #FFFFFF;
+        }
+
+        .sim-tab-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            box-shadow: 0 8px 20px rgba(65, 105, 225, 0.25);
+        }
+
+        .sim-tab-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .sim-tab-btn.active .sim-tab-icon {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .sim-tab-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #94A3B8;
+            transition: fill 0.3s ease;
+        }
+
+        .sim-tab-btn.active .sim-tab-icon svg,
+        .sim-tab-btn:hover .sim-tab-icon svg {
+            fill: #FFFFFF;
+        }
+
+        .sim-tab-content-wrapper {
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- Simulator Screen Renderers --- */
+        
+        /* 1. Tez Search Simulator */
+        .search-sim-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-sim-input-wrap {
+            position: relative;
+        }
+
+        .search-sim-input {
+            width: 100%;
+            background: #0F172A;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 12px 16px 12px 42px;
+            color: #FFFFFF;
+            font-size: 13.5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-sim-input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-sim-input-wrap svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            fill: #64748B;
+        }
+
+        .search-sim-results {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .search-card-sim {
+            background: #0F172A;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .search-card-sim:hover {
+            transform: translateX(4px);
+            border-color: rgba(65, 105, 225, 0.3);
+        }
+
+        .search-card-info h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .search-card-info p {
+            font-size: 11.5px;
+            color: #64748B;
+            margin-top: 2px;
+        }
+
+        .badge-sim-download {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* 2. My Library Simulator */
+        .library-sim-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .library-continue-card {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .lib-card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .lib-card-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lib-card-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #FFFFFF;
+        }
+
+        .lib-card-meta h6 {
+            font-size: 10px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .lib-card-meta h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .lib-progress-wrap {
+            margin-top: 10px;
+        }
+
+        .lib-progress-texts {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .lib-progress-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .lib-progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 25%;
+            border-radius: 10px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lib-sim-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lib-sim-btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 10px;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .lib-sim-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 3. Pro PDF Reader Simulator */
+        .pdf-sim-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .pdf-sim-viewport {
+            background: #FFFFFF;
+            color: #1E293B;
+            border-radius: 16px;
+            padding: 24px;
+            min-height: 220px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .pdf-sim-viewport.night-mode {
+            background: #121212;
+            color: #E2E8F0;
+        }
+
+        .pdf-sim-header-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 700;
+            color: #64748B;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+        }
+
+        .pdf-sim-viewport.night-mode .pdf-sim-header-meta {
+            color: #475569;
+            border-bottom-color: rgba(255,255,255,0.06);
+        }
+
+        .pdf-sim-title {
+            font-weight: 800;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .pdf-sim-body {
+            font-size: 11.5px;
+            line-height: 1.6;
+        }
+
+        .pdf-sim-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pdf-sim-toggle-btn {
+            background: #2563EB;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .pdf-sim-toggle-btn:hover {
+            background: #1D4ED8;
+        }
+
+        .pdf-sim-note-btn {
+            background: #10B981;
+        }
+
+        .pdf-sim-note-btn:hover {
+            background: #059669;
+        }
+
+        /* 4. LMS Custom Tab Simulator */
+        .lms-sim-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .lms-app-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .lms-app-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .lms-app-btn:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(65, 105, 225, 0.3);
+        }
+
+        .lms-custom-tab-mockup {
+            display: none;
+            background: #0F172A;
+            border: 1.5px solid rgba(65, 105, 225, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(15px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .ct-browser-header {
+            background: var(--primary-dark);
+            height: 38px;
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ct-browser-dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
+        .ct-browser-address {
+            flex: 1;
+            background: rgba(0,0,0,0.25);
+            border-radius: 20px;
+            font-size: 10px;
+            color: rgba(255,255,255,0.7);
+            padding: 4px 12px;
+            font-family: monospace;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .ct-browser-body {
+            background: #FFFFFF;
+            color: #1E293B;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ct-browser-loader {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(65, 105, 225, 0.15);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Features Section --- */
+        .features {
+            padding: 100px 8%;
+            background-color: #F8FAFC;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
         .feature-card {
             background: #FFFFFF;
             border: 1px solid var(--card-border);
-            padding: 36px 30px;
+            padding: 40px 32px;
             border-radius: 24px;
             transition: all 0.3s ease;
             position: relative;
             box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(25, 118, 210, 0.2);
+            border-color: rgba(65, 105, 225, 0.2);
             box-shadow: var(--shadow-hover);
         }
 
         .feature-icon-wrapper {
             width: 56px;
             height: 56px;
-            background: rgba(25, 118, 210, 0.06);
-            border: 1px solid rgba(25, 118, 210, 0.15);
+            background: rgba(65, 105, 225, 0.06);
+            border: 1px solid rgba(65, 105, 225, 0.15);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -411,7 +1003,7 @@
 
         .feature-card h3 {
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 12px;
             color: var(--primary-dark);
         }
@@ -420,6 +1012,31 @@
             color: var(--text-muted);
             font-size: 14.5px;
             line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .feature-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-bullets li {
+            font-size: 13.5px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .bullet-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
         }
 
         /* --- Poster Promo Section --- */
@@ -432,16 +1049,18 @@
         }
 
         .poster-card {
-            max-width: 800px;
+            max-width: 850px;
             width: 100%;
             background: #FFFFFF;
             border: 1px solid var(--card-border);
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(13, 71, 161, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-shadow: 0 30px 60px -15px rgba(0, 35, 102, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .poster-card:hover {
+            transform: scale(1.01);
         }
 
         .poster-img {
@@ -460,7 +1079,6 @@
             justify-content: space-between;
             gap: 60px;
             position: relative;
-            z-index: 10;
             background-color: #F8FAFC;
         }
 
@@ -477,8 +1095,9 @@
 
         .guide-desc {
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin-bottom: 36px;
             font-size: 15.5px;
+            line-height: 1.7;
         }
 
         .step-list {
@@ -492,14 +1111,19 @@
             gap: 20px;
             background: #FFFFFF;
             border: 1px solid var(--card-border);
-            padding: 20px;
-            border-radius: 16px;
+            padding: 22px;
+            border-radius: 18px;
             box-shadow: var(--shadow-soft);
+            transition: transform 0.2s ease;
+        }
+
+        .step-item:hover {
+            transform: translateX(4px);
         }
 
         .step-num {
             font-family: 'Outfit', sans-serif;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
@@ -507,7 +1131,7 @@
 
         .step-details h5 {
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 6px;
             color: var(--primary-dark);
         }
@@ -515,6 +1139,7 @@
         .step-details p {
             font-size: 13.5px;
             color: var(--text-muted);
+            line-height: 1.5;
         }
 
         .guide-alert-card {
@@ -523,7 +1148,7 @@
             border: 1px solid rgba(239, 68, 68, 0.15);
             border-radius: 28px;
             padding: 40px 30px;
-            box-shadow: 0 15px 35px rgba(13, 71, 161, 0.03);
+            box-shadow: 0 15px 35px rgba(0, 35, 102, 0.03);
             position: relative;
         }
 
@@ -552,7 +1177,7 @@
 
         .alert-header h4 {
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 800;
             color: #B91C1C;
         }
 
@@ -561,13 +1186,14 @@
             color: #DC2626;
             margin-bottom: 24px;
             line-height: 1.6;
+            font-weight: 500;
         }
 
         .alert-tip {
             background: #FFFFFF;
-            border-radius: 12px;
-            padding: 16px;
-            border-left: 4px solid var(--accent);
+            border-radius: 14px;
+            padding: 18px;
+            border-left: 4px solid var(--accent-dark);
             box-shadow: var(--shadow-soft);
             border-top: 1px solid rgba(0,0,0,0.01);
             border-right: 1px solid rgba(0,0,0,0.01);
@@ -575,38 +1201,45 @@
         }
 
         .alert-tip h6 {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 13.5px;
+            font-weight: 800;
             color: #D97706;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .alert-tip p {
             font-size: 12.5px;
             color: var(--text-muted);
             margin-bottom: 0;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-weight: 500;
         }
 
         /* --- Footer --- */
         footer {
             padding: 60px 8% 40px;
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(0, 35, 102, 0.05);
             text-align: center;
             position: relative;
-            z-index: 10;
             background-color: #FFFFFF;
         }
 
         .footer-logo {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 800;
             margin-bottom: 16px;
             color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .footer-logo span {
-            color: var(--accent);
+        .footer-logo-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 35, 102, 0.1);
         }
 
         .footer-socials {
@@ -633,7 +1266,7 @@
             background: var(--primary);
             border-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
         }
 
         .social-link svg {
@@ -648,9 +1281,14 @@
         }
 
         .footer-copyright {
-            font-size: 13px;
+            font-size: 13.5px;
             color: var(--text-muted);
             margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .footer-copyright strong {
+            color: var(--primary-dark);
         }
 
         .footer-disclaimer {
@@ -658,13 +1296,17 @@
             color: rgba(100, 116, 139, 0.5);
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-weight: 500;
         }
 
         /* --- Responsive Styles --- */
         @media (max-width: 968px) {
             nav {
                 padding: 0 5%;
+            }
+            .nav-links {
+                display: none; /* Hide standard links on mobile */
             }
             .hero {
                 flex-direction: column;
@@ -687,6 +1329,15 @@
             .stats {
                 justify-content: center;
             }
+            .simulator-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .simulator-section {
+                margin: 0 0 60px;
+                border-radius: 0;
+                padding: 60px 5%;
+            }
             .install-guide {
                 flex-direction: column;
                 gap: 50px;
@@ -698,10 +1349,19 @@
 
     <!-- Navigation Header -->
     <nav>
-        <div class="nav-logo">
-            VU Study Mate<span class="logo-dot"></span>
+        <a href="#" class="nav-logo-container">
+            <img src="vu_study_mate.jpeg" alt="VU Study Mate Icon" class="nav-logo-img">
+            <div class="nav-logo">
+                VU Study Mate<span class="logo-dot"></span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#showcase" class="nav-link">Showcase</a>
+            <a href="#simulator" class="nav-link">Interactive Demo</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#install" class="nav-link">Install Guide</a>
+            <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="nav-btn">Download APK</a>
         </div>
-        <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="nav-btn">Download APK</a>
     </nav>
 
     <!-- Hero Section -->
@@ -712,7 +1372,11 @@
                 v1.0.0 Stable Release
             </div>
             <h1 class="hero-title">Your Ultimate Offline <span>VU Study Partner</span></h1>
-            <p class="hero-desc">Access reference books, finalterm/midterm prep notes, and handouts completely offline. Learn peacefully with our pro-level built-in PDF reader, short video lectures, and live alerts.</p>
+            <p class="hero-desc">
+                Access Virtual University reference books, finalterm/midterm prep notes, and handouts completely offline. Learn peacefully with our pro-level built-in PDF reader, short video lectures portal, and live notifications.
+                <br><br>
+                <span>Pakistani VU students ke liye banaya gaya offline study app - Bilkul free aur bina kisi ads ke!</span>
+            </p>
             
             <div class="cta-group">
                 <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="download-btn">
@@ -721,7 +1385,7 @@
                     </svg>
                     Download App (15.8 MB)
                 </a>
-                <a href="#install" class="nav-btn" style="background: transparent; color: var(--primary-dark); border-color: var(--primary-dark);">How to Install</a>
+                <a href="#simulator" class="secondary-btn">Try Interactive Demo</a>
             </div>
 
             <div class="stats">
@@ -731,7 +1395,7 @@
                 </div>
                 <div class="stat-item">
                     <h4>0<span>/68</span></h4>
-                    <p>VirusTotal Detections</p>
+                    <p>VirusTotal Safe Detections</p>
                 </div>
                 <div class="stat-item">
                     <h4>100<span>%</span></h4>
@@ -743,79 +1407,279 @@
         <!-- Phone Mockup inside Hero -->
         <div class="hero-mockup">
             <div class="phone-frame">
+                <div class="phone-notch"></div>
                 <!-- Using 2.jpeg as the stunning Home Screen mockup -->
-                <img src="2.jpeg" alt="VU Study Mate Home Screen" class="phone-screen-img">
+                <img src="2.jpeg" alt="VU Study Mate Home Screen Layout" class="phone-screen-img">
             </div>
             <div class="phone-glow"></div>
         </div>
     </section>
 
     <!-- App Showcase Gallery Section -->
-    <section class="showcase">
-        <h2 class="showcase-title">Visual Showcase</h2>
-        <p class="showcase-desc">Designed with high fidelity interfaces that look and feel premium on your smartphone. Take a look at the actual app layout.</p>
+    <section class="showcase" id="showcase">
+        <div class="section-header">
+            <h2>Designed to Look <span>Sleek & Premium</span></h2>
+            <p>Built with Jetpack Compose, the app boasts a highly optimized royal theme that feels smooth, elegant, and native. Look at the actual high-fidelity app screenshots.</p>
+        </div>
         
         <div class="gallery-container">
             <!-- Home Screen Mockup -->
             <div class="gallery-item">
                 <div class="phone-frame">
+                    <div class="phone-notch"></div>
                     <img src="2.jpeg" alt="App Home Screen Mockup" class="phone-screen-img">
                 </div>
-                <div class="gallery-label">Home Screen Dashboard</div>
+                <div class="gallery-label">Premium Home Screen Dashboard</div>
             </div>
 
             <!-- Semester Selection Mockup -->
             <div class="gallery-item">
                 <div class="phone-frame">
+                    <div class="phone-notch"></div>
                     <img src="4.jpeg" alt="App Semester Selection Mockup" class="phone-screen-img">
                 </div>
-                <div class="gallery-label">Semester File Selection</div>
+                <div class="gallery-label">Semester File Selection Screen</div>
             </div>
+        </div>
+    </section>
+
+    <!-- Interactive App Simulators Section -->
+    <section class="simulator-section" id="simulator">
+        <div class="simulator-grid">
+            
+            <!-- Left Side: Interactive Simulator Display Panel -->
+            <div class="simulator-panel">
+                <div class="sim-header">
+                    <div class="sim-status">
+                        <span class="sim-status-dot"></span>
+                        LIVE APP FEATURE SIMULATOR
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: #64748B; font-family: monospace;">PORT: 8080</div>
+                </div>
+                
+                <div class="sim-tab-content-wrapper">
+                    
+                    <!-- Search Simulator Renderer -->
+                    <div id="sim-content-search" class="sim-render-block search-sim-container">
+                        <div class="search-sim-input-wrap">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                            <input type="text" id="sim-search-input" class="search-sim-input" placeholder="Type subject code (e.g. cs101, mth301, eng101)..." onkeyup="filterSearchSimulator()">
+                        </div>
+                        
+                        <div class="search-sim-results" id="sim-search-list">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                    
+                    <!-- Library Simulator Renderer -->
+                    <div id="sim-content-library" class="sim-render-block library-sim-container" style="display: none;">
+                        <div class="library-continue-card">
+                            <div class="lib-card-top">
+                                <div class="lib-card-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55z"/></svg>
+                                </div>
+                                <div class="lib-card-meta">
+                                    <h6 id="lib-sim-label">LAST READ BOOK</h6>
+                                    <h4 id="lib-sim-book-title">CS302 - Digital Logic Design Handout</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="lib-progress-wrap">
+                                <div class="lib-progress-texts">
+                                    <span id="lib-sim-percent">Reading Progress: 25%</span>
+                                    <span id="lib-sim-page-count">Page 12 of 48</span>
+                                </div>
+                                <div class="lib-progress-track">
+                                    <div class="lib-progress-bar" id="lib-sim-progress-bar" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="lib-sim-actions">
+                            <button class="lib-sim-btn" onclick="advanceLibraryPage()">Advance Page (+1)</button>
+                            <button class="lib-sim-btn" onclick="resetLibraryPage()">Reset Progress</button>
+                            <button class="lib-sim-btn" onclick="switchLibraryBook()" style="background: rgba(65, 105, 225, 0.15); border-color: rgba(65, 105, 225, 0.3);">Switch Subject</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Pro PDF Reader Simulator Renderer -->
+                    <div id="sim-content-pdf" class="sim-render-block pdf-sim-container" style="display: none;">
+                        <div class="pdf-sim-viewport" id="pdf-sim-box">
+                            <div class="pdf-sim-header-meta">
+                                <span>MTH301_Handout.pdf</span>
+                                <span>Page 14 / 86</span>
+                            </div>
+                            <div class="pdf-sim-title">Theorem 3.2 - Directional Derivatives</div>
+                            <div class="pdf-sim-body">
+                                Let f(x, y) be a differentiable function at P(x0, y0). The directional derivative of f in the direction of the unit vector u = cos(θ)i + sin(θ)j is given by the dot product of the gradient vector ∇f and the unit direction u. 
+                                <br><br>
+                                <strong style="color: #2563EB;" id="pdf-highlight-text">∇f(x, y) = fx(x, y)i + fy(x, y)j</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="pdf-sim-controls">
+                            <button class="pdf-sim-toggle-btn" onclick="togglePdfNightMode()">
+                                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: white;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                                Toggle Eye Comfort Night Mode
+                            </button>
+                            <button class="pdf-sim-toggle-btn pdf-sim-note-btn" onclick="triggerNoteAlert()">
+                                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: white;"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                                Add SQLite Note
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- LMS Portal Simulator Renderer -->
+                    <div id="sim-content-lms" class="sim-render-block lms-sim-container" style="display: none;">
+                        <div class="lms-app-buttons">
+                            <div class="lms-app-btn" onclick="launchCustomTabSim('VU LMS Portal', 'https://vulms.vu.edu.pk/LMS_LP.aspx', '#FF9800')">🌐 VU LMS Login</div>
+                            <div class="lms-app-btn" onclick="launchCustomTabSim('VU Datesheet Portal', 'https://datesheet.vu.edu.pk/', '#9C27B0')">📅 Date Sheet Manager</div>
+                            <div class="lms-app-btn" onclick="launchCustomTabSim('VU Notice Board', 'https://vulms.vu.edu.pk/NoticeBoard/NoticeBoard2.aspx', '#E91E63')">📢 Notices & Announcements</div>
+                            <div class="lms-app-btn" onclick="launchCustomTabSim('Official VU Website', 'https://www.vu.edu.pk/', '#4CAF50')">🏛️ Official VU Website</div>
+                        </div>
+                        
+                        <!-- Simulated Chrome Custom Tab Browser Viewport -->
+                        <div class="lms-custom-tab-mockup" id="custom-tab-simulator">
+                            <div class="ct-browser-header" id="ct-header-color">
+                                <div style="display: flex; gap: 4px;">
+                                    <span class="ct-browser-dot"></span>
+                                    <span class="ct-browser-dot"></span>
+                                </div>
+                                <div class="ct-browser-address" id="ct-url-text">https://vulms.vu.edu.pk</div>
+                                <span style="color: white; font-size: 10px; cursor: pointer; font-weight: 700;" onclick="closeCustomTabSim()">✕</span>
+                            </div>
+                            <div class="ct-browser-body">
+                                <div class="ct-browser-loader"></div>
+                                <h5 style="font-size: 13.5px; font-weight: 700; color: #1E293B;" id="ct-portal-title">Connecting to VU LMS Portal...</h5>
+                                <p style="font-size: 11px; color: #64748B; margin-top: 4px;">Launched inside App Chrome Custom Tab securely</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Right Side: Interactive Feature Selector Controllers -->
+            <div>
+                <h3 class="sim-controls-title">Experience the App <span>Live & Interactive</span></h3>
+                <p class="sim-desc">Humne app ke high-end Kotlin logic aur features ko HTML5 simulation widgets me convert kiya hai. Niche diye gaye modules par tap karein aur app ki performance aur capability ko yahin test karein!</p>
+                
+                <div class="sim-tabs">
+                    <button class="sim-tab-btn active" id="tab-search" onclick="switchSimulatorTab('search')">
+                        <div class="sim-tab-icon">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        </div>
+                        <div>
+                            <div>Reactive Tez Search Demo</div>
+                            <div style="font-size: 11.5px; color: #64748B; font-weight: normal; margin-top: 2px;">Filters CS101, MTH301 etc. with zero UI lag</div>
+                        </div>
+                    </button>
+                    
+                    <button class="sim-tab-btn" id="tab-library" onclick="switchSimulatorTab('library')">
+                        <div class="sim-tab-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4 4H9v-2h10v2z"/></svg>
+                        </div>
+                        <div>
+                            <div>Continue Reading Library Demo</div>
+                            <div style="font-size: 11.5px; color: #64748B; font-weight: normal; margin-top: 2px;">Tracks progress and resumes your last PDF card</div>
+                        </div>
+                    </button>
+                    
+                    <button class="sim-tab-btn" id="tab-pdf" onclick="switchSimulatorTab('pdf')">
+                        <div class="sim-tab-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6h-4v2h4v2h-4v2h4v2H9V7h6v2z"/></svg>
+                        </div>
+                        <div>
+                            <div>Pro PDF Night Mode Reader</div>
+                            <div style="font-size: 11.5px; color: #64748B; font-weight: normal; margin-top: 2px;">Offline eye-comfort inverting layout tool</div>
+                        </div>
+                    </button>
+                    
+                    <button class="sim-tab-btn" id="tab-lms" onclick="switchSimulatorTab('lms')">
+                        <div class="sim-tab-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                        </div>
+                        <div>
+                            <div>LMS & Portals Launcher</div>
+                            <div style="font-size: 11.5px; color: #64748B; font-weight: normal; margin-top: 2px;">Simulate app Custom Tab launcher channels</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
         </div>
     </section>
 
     <!-- Key Features Section -->
     <section class="features" id="features">
         <div class="section-header">
-            <h2>App Features Designed for You</h2>
-            <p>We built VU Study Mate specifically to solve Virtual University students' problems, offering a beautiful user experience with low hardware footprint.</p>
+            <h2>Fully Featured <span>Designed for VU Students</span></h2>
+            <p>Virtual University students ke daily hurdles ko dekhte hue, VU Study Mate app me heavy optimization aur features dale gaye hain, taake aap offline bina kisi battery drain ke parh sakein.</p>
         </div>
         
         <div class="features-grid">
             <!-- Feature 1 -->
             <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M19 18H5V6h14v12zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <div>
+                    <div class="feature-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M19 18H5V6h14v12zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                    </div>
+                    <h3>1. My Library & Progress Tracker</h3>
+                    <p>A smart, centralized hub to manage and organize all your downloaded handouts and textbooks dynamically offline.</p>
                 </div>
-                <h3>1. Offline Book Library</h3>
-                <p>Download Virtual University reference handouts, past papers, and midterm/finalterm prep files directly to your device. Read them anytime, anywhere, completely offline.</p>
+                <ul class="feature-bullets">
+                    <li><span class="bullet-dot"></span> <strong>Continue Reading Card:</strong> Resume the last opened PDF in 1-click.</li>
+                    <li><span class="bullet-dot"></span> <strong>Category Filter Chips:</strong> Filter books instantly by course code (CS101, etc.).</li>
+                    <li><span class="bullet-dot"></span> <strong>Precise Reading Stats:</strong> Shows active progress bar with page count (e.g. 12/50).</li>
+                </ul>
             </div>
             
             <!-- Feature 2 -->
             <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                <div>
+                    <div class="feature-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 8c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                    </div>
+                    <h3>2. Built-In Pro PDF Reader</h3>
+                    <p>Read heavy documents smoothly with a custom built-in engine that runs offline with zero context memory leaks.</p>
                 </div>
-                <h3>2. Built-In Pro PDF Reader</h3>
-                <p>Features a custom reading companion containing real-time night mode, page-jumping bookmarks, local study notes saving, and automatic reading page progress tracking.</p>
+                <ul class="feature-bullets">
+                    <li><span class="bullet-dot"></span> <strong>True Night/Dark Mode:</strong> Inverts page colors to reduce late-night eye strain.</li>
+                    <li><span class="bullet-dot"></span> <strong>Study Notes & Bookmarks:</strong> Save custom formulas or notes to jump back instantly.</li>
+                    <li><span class="bullet-dot"></span> <strong>Auto Page Saving:</strong> Automatically remembers your last read page on screen close.</li>
+                </ul>
             </div>
 
             <!-- Feature 3 -->
             <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm-9 12l-5-5h10l-5 5z"/></svg>
+                <div>
+                    <div class="feature-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"/></svg>
+                    </div>
+                    <h3>3. Short Video Lectures & Portal</h3>
+                    <p>An all-in-one student portal. Seamlessly play your VU short video lectures directly within the app.</p>
                 </div>
-                <h3>3. Short Video Lectures</h3>
-                <p>Access and play Virtual University short video lectures directly within the app specific views, providing an integrated learning setup without switching between screens.</p>
+                <ul class="feature-bullets">
+                    <li><span class="bullet-dot"></span> <strong>Integrated Short Lectures:</strong> Play YouTube VU lectures inside secure views.</li>
+                    <li><span class="bullet-dot"></span> <strong>Quick Access Shortcuts:</strong> 1-click links for **LMS**, **Datesheet**, and **Notices**.</li>
+                    <li><span class="bullet-dot"></span> <strong>History WebView Navigation:</strong> Use back buttons without losing active login sessions.</li>
+                </ul>
             </div>
 
             <!-- Feature 4 -->
             <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M18 10.25c0-2.62-1.4-4.89-3.5-6.13V2.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v1.62C9.4 4.86 8 7.13 8 10.25v5.75l-2 2v1h16v-1l-2-2v-5.75zM12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/></svg>
+                <div>
+                    <div class="feature-icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3>4. Concurrency Download Queue</h3>
+                    <p>Download massive textbooks and 10+ reference sheets simultaneously without lagging or crashing your device.</p>
                 </div>
-                <h3>4. Real-time Announcements</h3>
-                <p>Receive urgent university alerts, notice boards, date sheets announcements, and greetings from the administrator instantly via our real-time database sync.</p>
+                <ul class="feature-bullets">
+                    <li><span class="bullet-dot"></span> <strong>3-Slot FIFO Queue Pooling:</strong> Schedules downloads automatically to save battery.</li>
+                    <li><span class="bullet-dot"></span> <strong>Throttled Progress UI:</strong> Throttles updates to prevent UI lags and ANRs.</li>
+                    <li><span class="bullet-dot"></span> <strong>Clean Cancel Cleanup:</strong> Permanently deletes partial downloads on cancellation.</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -824,7 +1688,7 @@
     <section class="poster-section">
         <div class="poster-card">
             <!-- Using 3.png as the stunning high-impact cartoon poster -->
-            <img src="3.png" alt="VU Study Mate Poster" class="poster-img">
+            <img src="3.png" alt="VU Study Mate Character Banner Poster" class="poster-img">
         </div>
     </section>
 
@@ -873,7 +1737,7 @@
             
             <div class="alert-tip">
                 <h6>Don't Worry! It is 100% Secure.</h6>
-                <p>This is a standard warning for direct sideloaded APK files that are not registered on the Play Store yet. Our app has <strong>0/68 detections on VirusTotal</strong>. We have officially submitted the certificate to Google for verification, which will remove the warning for everyone within 24-72 hours!</p>
+                <p>This is a standard warning for direct sideloaded APK files that are not registered on the Play Store yet. Our app has **0/68 detections on VirusTotal** (100% Clean). We have officially submitted the certificate to Google for verification, which will remove the warning for everyone within 24-72 hours!</p>
             </div>
         </div>
     </section>
@@ -882,9 +1746,10 @@
     <footer>
         <div class="footer-logo">
             <!-- Using vu_study_mate.jpeg as the small footer brand logo -->
-            <img src="vu_study_mate.jpeg" alt="Logo" style="width: 48px; height: 48px; border-radius: 50%; vertical-align: middle; margin-right: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <img src="vu_study_mate.jpeg" alt="Logo" class="footer-logo-img">
             VU Study Mate
         </div>
+        
         <div class="footer-socials">
             <!-- WhatsApp -->
             <a href="https://wa.me/923135939659" class="social-link" title="Contact Developer on WhatsApp">
@@ -898,6 +1763,162 @@
         <p class="footer-copyright">Developed with ❤️ by <strong>Mujtaba</strong></p>
         <p class="footer-disclaimer">Disclaimer: VU Study Mate is an independent educational utility application built for students. It is not officially associated with, endorsed by, or affiliated with the Virtual University of Pakistan.</p>
     </footer>
+
+    <!-- Interactive Simulator Javascript Engine -->
+    <script>
+        // Global state data for simulators
+        const searchDatabase = [
+            { code: "CS101", title: "Introduction to Computing", size: "3.8 MB", type: "Handout", count: "12,410 downloads" },
+            { code: "CS201", title: "Introduction to Programming", size: "4.6 MB", type: "Reference Book", count: "8,950 downloads" },
+            { code: "CS302", title: "Digital Logic Design", size: "5.1 MB", type: "Handout", count: "6,200 downloads" },
+            { code: "MTH301", title: "Calculus II", size: "6.2 MB", type: "Reference Book", count: "7,410 downloads" },
+            { code: "MTH101", title: "Calculus & Analytical Geometry", size: "5.8 MB", type: "Handout", count: "14,800 downloads" },
+            { code: "ENG101", title: "English Comprehension", size: "2.5 MB", type: "Handout", count: "11,200 downloads" },
+            { code: "MGMT625", title: "Change Management", size: "4.1 MB", type: "Special Notes", count: "3,110 downloads" },
+            { code: "ISL201", title: "Islamic Studies", size: "1.8 MB", type: "Handout", count: "9,850 downloads" },
+            { code: "CS601", title: "Software Engineering-I", size: "4.4 MB", type: "Handout", count: "5,300 downloads" }
+        ];
+
+        const libraryDatabase = [
+            { code: "CS302", title: "CS302 - Digital Logic Design Handout", totalPages: 48, current: 12, startPercent: 25 },
+            { code: "MTH301", title: "MTH301 - Calculus II Reference Guide", totalPages: 86, current: 14, startPercent: 16 },
+            { code: "ENG101", title: "ENG101 - English Comprehension Notes", totalPages: 30, current: 18, startPercent: 60 }
+        ];
+
+        let activeLibIndex = 0;
+        let pdfNightMode = false;
+
+        // Initialize simulator contents on page load
+        window.onload = function() {
+            filterSearchSimulator();
+        };
+
+        // Tab Switching Engine
+        function switchSimulatorTab(tabId) {
+            // Deactivate all tabs
+            document.querySelectorAll('.sim-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.sim-render-block').forEach(block => block.style.display = 'none');
+            
+            // Activate current tab
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('sim-content-' + tabId).style.display = 'flex';
+
+            // Custom actions on tab load
+            if (tabId === 'search') {
+                filterSearchSimulator();
+            }
+        }
+
+        // 1. Search Simulator Filtering Logic
+        function filterSearchSimulator() {
+            const query = document.getElementById('sim-search-input').value.trim().toLowerCase();
+            const listContainer = document.getElementById('sim-search-list');
+            listContainer.innerHTML = '';
+
+            const filtered = searchDatabase.filter(item => 
+                item.code.toLowerCase().includes(query) || 
+                item.title.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = `
+                    <div style="text-align: center; color: #64748B; padding: 20px; font-size: 13px;">
+                        No matching subjects found in memory cache.
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'search-card-sim';
+                card.innerHTML = `
+                    <div class="search-card-info">
+                        <h5>${item.code} - ${item.title}</h5>
+                        <p>${item.type} • ${item.size} • ${item.count}</p>
+                    </div>
+                    <span class="badge-sim-download">Offline Ready</span>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        // 2. Library Simulator Logic
+        function advanceLibraryPage() {
+            let activeBook = libraryDatabase[activeLibIndex];
+            if (activeBook.current < activeBook.totalPages) {
+                activeBook.current++;
+                let newPercent = Math.round((activeBook.current / activeBook.totalPages) * 100);
+                
+                // Update UI elements
+                document.getElementById('lib-sim-page-count').innerText = `Page ${activeBook.current} of ${activeBook.totalPages}`;
+                document.getElementById('lib-sim-percent').innerText = `Reading Progress: ${newPercent}%`;
+                document.getElementById('lib-sim-progress-bar').style.width = `${newPercent}%`;
+            } else {
+                alert("Superb! You have completed reading this entire file. 🎉");
+            }
+        }
+
+        function resetLibraryPage() {
+            let activeBook = libraryDatabase[activeLibIndex];
+            activeBook.current = 1;
+            let newPercent = Math.round((1 / activeBook.totalPages) * 100);
+            
+            // Update UI elements
+            document.getElementById('lib-sim-page-count').innerText = `Page 1 of ${activeBook.totalPages}`;
+            document.getElementById('lib-sim-percent').innerText = `Reading Progress: ${newPercent}%`;
+            document.getElementById('lib-sim-progress-bar').style.width = `${newPercent}%`;
+        }
+
+        function switchLibraryBook() {
+            activeLibIndex = (activeLibIndex + 1) % libraryDatabase.length;
+            let activeBook = libraryDatabase[activeLibIndex];
+            let percent = Math.round((activeBook.current / activeBook.totalPages) * 100);
+
+            // Animate card swap details
+            document.getElementById('lib-sim-book-title').innerText = activeBook.title;
+            document.getElementById('lib-sim-page-count').innerText = `Page ${activeBook.current} of ${activeBook.totalPages}`;
+            document.getElementById('lib-sim-percent').innerText = `Reading Progress: ${percent}%`;
+            document.getElementById('lib-sim-progress-bar').style.width = `${percent}%`;
+        }
+
+        // 3. Pro PDF Night Mode Simulator
+        function togglePdfNightMode() {
+            pdfNightMode = !pdfNightMode;
+            const pdfViewport = document.getElementById('pdf-sim-box');
+            const highlightText = document.getElementById('pdf-highlight-text');
+            
+            if (pdfNightMode) {
+                pdfViewport.classList.add('night-mode');
+                highlightText.style.color = '#60A5FA'; // Lighter cyan for night mode eye comfort
+            } else {
+                pdfViewport.classList.remove('night-mode');
+                highlightText.style.color = '#2563EB'; // Pure blue for light mode
+            }
+        }
+
+        function triggerNoteAlert() {
+            const userNote = prompt("Enter a customized study note to attach to this page (SQLite room-database stored):", "Imp theorem for finals!");
+            if (userNote !== null) {
+                alert(`Study Note Saved Successfully! 📝\nAttached: "${userNote}" on Page 14.`);
+            }
+        }
+
+        // 4. LMS Custom Tab Sim Launcher
+        function launchCustomTabSim(title, url, color) {
+            const mockup = document.getElementById('custom-tab-simulator');
+            mockup.style.display = 'block';
+            
+            // Set styles dynamically
+            document.getElementById('ct-header-color').style.backgroundColor = color;
+            document.getElementById('ct-url-text').innerText = url;
+            document.getElementById('ct-portal-title').innerText = `Connecting to ${title}...`;
+        }
+
+        function closeCustomTabSim() {
+            document.getElementById('custom-tab-simulator').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
