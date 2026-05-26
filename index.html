@@ -23,6 +23,19 @@
             --text-muted: #64748B;     /* Slate 500 */
             --shadow-soft: 0 10px 30px -5px rgba(0, 35, 102, 0.06);
             --shadow-hover: 0 20px 40px -10px rgba(0, 35, 102, 0.12);
+            --transition-theme: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        body.dark-theme {
+            --bg-light: #0B0F19;       /* Deep Midnight Dark BG */
+            --card-bg: #151D30;        /* Sleek card bg for dark mode */
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #F1F5F9;      /* Slate 100 */
+            --text-muted: #94A3B8;     /* Slate 400 */
+            --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+            --primary-dark: #5882FA;   /* Invert primary-dark to soft primary for visibility */
+            --primary: #60A5FA;        /* Bright blue */
         }
 
         * {
@@ -41,6 +54,7 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: var(--transition-theme);
         }
 
         h1, h2, h3, h4, .nav-logo {
@@ -79,6 +93,11 @@
             padding: 0 8%;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: var(--transition-theme), background 0.4s ease;
+        }
+
+        body.dark-theme nav {
+            background: rgba(11, 15, 25, 0.85);
         }
 
         .nav-logo-container {
@@ -152,6 +171,234 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 35, 102, 0.3);
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        /* --- Next-Gen UI Enhancements (FAB, Toggle, Blobs & Glassmorphism) --- */
+        
+        /* 1. Theme Toggle Button */
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(65, 105, 225, 0.08);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-main);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .sun-icon { display: none; }
+        .moon-icon { display: block; }
+
+        body.dark-theme .sun-icon { display: block; fill: var(--accent); }
+        body.dark-theme .moon-icon { display: none; }
+        body.dark-theme .theme-toggle svg {
+            transform: rotate(360deg);
+        }
+
+        /* 2. Floating Action Button (Scroll to Top) */
+        .scroll-top-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 35, 102, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+        }
+
+        .scroll-top-fab.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top-fab:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(65, 105, 225, 0.4);
+        }
+
+        .scroll-top-fab svg {
+            width: 20px;
+            height: 20px;
+            fill: #FFFFFF;
+        }
+
+        /* 3. Ambient Glow Blobs */
+        .glow-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(65, 105, 225, 0.03) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -2;
+            pointer-events: none;
+            transition: background 0.5s ease;
+        }
+
+        body.dark-theme .glow-blob {
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.05) 0%, transparent 70%);
+        }
+
+        .blob-1 {
+            top: 5%;
+            right: -10%;
+            animation: drift 25s infinite alternate;
+        }
+
+        .blob-2 {
+            top: 45%;
+            left: -15%;
+            animation: drift 30s infinite alternate-reverse;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(80px, 40px) scale(1.1); }
+            100% { transform: translate(-40px, 80px) scale(0.9); }
+        }
+
+        /* 4. Mockup Switcher Thumbnails */
+        .mockup-switcher {
+            position: absolute;
+            left: -70px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 30;
+        }
+
+        @media (max-width: 968px) {
+            .mockup-switcher {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 20px;
+                left: auto;
+            }
+        }
+
+        .switcher-thumb {
+            width: 48px;
+            height: 90px;
+            border-radius: 10px;
+            border: 2px solid var(--card-border);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: var(--card-bg);
+            padding: 0;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .switcher-thumb:hover, .switcher-thumb.active {
+            border-color: var(--primary);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 18px rgba(65, 105, 225, 0.2);
+        }
+
+        .switcher-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phone-screen-img {
+            transition: opacity 0.3s ease;
+        }
+
+        /* 5. Glassmorphic Dark Theme Overrides */
+        .feature-card, .step-item, .guide-alert-card, .simulator-panel, .library-continue-card, .pdf-sim-viewport, .poster-card {
+            transition: var(--transition-theme);
+        }
+
+        body.dark-theme .feature-card,
+        body.dark-theme .step-item,
+        body.dark-theme .simulator-panel,
+        body.dark-theme .poster-card {
+            background: rgba(21, 29, 48, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        body.dark-theme .showcase {
+            background-color: var(--bg-light);
+        }
+
+        body.dark-theme .features {
+            background-color: var(--bg-light);
+        }
+
+        body.dark-theme .poster-section {
+            background-color: var(--bg-light);
+        }
+
+        body.dark-theme .guide-alert-card {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.02) 0%, rgba(239, 68, 68, 0.08) 100%);
+            border-color: rgba(239, 68, 68, 0.25);
+        }
+
+        body.dark-theme .alert-tip {
+            background: rgba(21, 29, 48, 0.8);
+            border-color: rgba(255, 255, 255, 0.03);
+            border-left-color: var(--accent-dark);
+        }
+
+        body.dark-theme .cta-group .secondary-btn {
+            color: #FFFFFF;
+            border-color: #FFFFFF;
+        }
+
+        body.dark-theme .cta-group .secondary-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        body.dark-theme footer {
+            background-color: #0B0F19;
+        }
+
+        body.dark-theme .social-link {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-theme .social-link svg {
+            fill: #FFFFFF;
+        }
+
+        body.dark-theme .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
         }
 
         /* --- Hero Section --- */
@@ -1347,6 +1594,10 @@
 </head>
 <body>
 
+    <!-- Ambient background glow blobs -->
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+
     <!-- Navigation Header -->
     <nav>
         <a href="#" class="nav-logo-container">
@@ -1360,6 +1611,13 @@
             <a href="#simulator" class="nav-link">Interactive Demo</a>
             <a href="#features" class="nav-link">Features</a>
             <a href="#install" class="nav-link">Install Guide</a>
+            
+            <!-- Dynamic Theme Toggle -->
+            <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle Theme">
+                <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zm-12.37 12.37a.996.996 0 000-1.41l-1.06-1.06c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06z"/></svg>
+                <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12.3 2a10 10 0 00-1.9 19.5 10 10 0 0011.5-11.5c-.3 0-.6.1-.9.1a10 10 0 01-8.7-8.1z"/></svg>
+            </button>
+
             <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="nav-btn">Download (updated) APK</a>
         </div>
     </nav>
@@ -1390,15 +1648,15 @@
 
             <div class="stats">
                 <div class="stat-item">
-                    <h4>0<span>%</span></h4>
+                    <h4 class="counter-val ads-stat" data-target="0">100<span>%</span></h4>
                     <p>Ads & Distractions</p>
                 </div>
                 <div class="stat-item">
-                    <h4>0<span>/68</span></h4>
+                    <h4 class="counter-val vt-stat" data-target="0">0<span>/68</span></h4>
                     <p>VirusTotal Safe Detections</p>
                 </div>
                 <div class="stat-item">
-                    <h4>100<span>%</span></h4>
+                    <h4 class="counter-val" data-target="100">0<span>%</span></h4>
                     <p>Free for Students</p>
                 </div>
             </div>
@@ -1406,10 +1664,20 @@
 
         <!-- Phone Mockup inside Hero -->
         <div class="hero-mockup">
+            <!-- Dynamic Screenshot Switcher Thumbnails -->
+            <div class="mockup-switcher">
+                <button class="switcher-thumb active" onclick="swapHeroMockup('2.jpeg', this)" title="Home Screen">
+                    <img src="2.jpeg" alt="Dashboard Screen Preview">
+                </button>
+                <button class="switcher-thumb" onclick="swapHeroMockup('4.jpeg', this)" title="Semester File List">
+                    <img src="4.jpeg" alt="Semester Screen Preview">
+                </button>
+            </div>
+
             <div class="phone-frame">
                 <div class="phone-notch"></div>
                 <!-- Using 2.jpeg as the stunning Home Screen mockup -->
-                <img src="2.jpeg" alt="VU Study Mate Home Screen Layout" class="phone-screen-img">
+                <img src="2.jpeg" alt="VU Study Mate Home Screen Layout" class="phone-screen-img" id="hero-phone-img">
             </div>
             <div class="phone-glow"></div>
         </div>
@@ -1918,7 +2186,136 @@
         function closeCustomTabSim() {
             document.getElementById('custom-tab-simulator').style.display = 'none';
         }
+
+        // ========================================================
+        // 🚀 NEXT-GEN INTERACTIONS ENGINE (Theme, Mockup Swaps & Scroll FAB)
+        // ========================================================
+
+        // 1. Dynamic LocalStorage Theme Swapper
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        
+        // Load initial theme from localStorage
+        const storedTheme = localStorage.getItem('theme_preference');
+        if (storedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme_preference', 'dark');
+            } else {
+                localStorage.setItem('theme_preference', 'light');
+            }
+        });
+
+        // 2. Interactive Mockup Swapping Animation
+        function swapHeroMockup(imageSrc, thumbnailEl) {
+            const phoneImg = document.getElementById('hero-phone-img');
+            
+            // Fade out
+            phoneImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                phoneImg.src = imageSrc;
+                // Fade in
+                phoneImg.style.opacity = '1';
+                
+                // Update active thumbnail state
+                document.querySelectorAll('.switcher-thumb').forEach(thumb => {
+                    thumb.classList.remove('active');
+                });
+                thumbnailEl.classList.add('active');
+            }, 250);
+        }
+
+        // 3. Scroll to Top Floating Action Button
+        const scrollTopBtn = document.getElementById('scroll-top-btn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 4. Scroll-Triggered Animated Statistics Count-up
+        const statsSection = document.querySelector('.stats');
+        let animatedStarted = false;
+
+        const countUpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animatedStarted) {
+                    animatedStarted = true;
+                    runStatsCountUp();
+                }
+            });
+        }, { threshold: 0.1 });
+
+        if (statsSection) {
+            countUpObserver.observe(statsSection);
+        }
+
+        function runStatsCountUp() {
+            const counters = document.querySelectorAll('.counter-val');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds animation
+                const startTime = performance.now();
+                
+                // Special animated count-down for Ads (starts at 100% and drops to 0%)
+                const isAdsStat = counter.classList.contains('ads-stat');
+                const isVtStat = counter.classList.contains('vt-stat');
+
+                function updateCount(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Ease-out quad easing function
+                    const easeProgress = progress * (2 - progress);
+
+                    if (isAdsStat) {
+                        // Drops from 100 to 0
+                        const currentVal = Math.floor(100 - (easeProgress * 100));
+                        counter.innerHTML = `${currentVal}<span>%</span>`;
+                    } else if (isVtStat) {
+                        // Ticks up from 0/68 undetected (keeps 0/68 visually but runs count if needed)
+                        counter.innerHTML = `0<span>/68</span>`;
+                    } else {
+                        // Standard count up to target (e.g. 100% Free)
+                        const currentVal = Math.floor(easeProgress * target);
+                        counter.innerHTML = `${currentVal}<span>%</span>`;
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        // Ensure final values are exactly correct
+                        if (isAdsStat) {
+                            counter.innerHTML = `0<span>%</span>`;
+                        } else if (isVtStat) {
+                            counter.innerHTML = `0<span>/68</span>`;
+                        } else {
+                            counter.innerHTML = `${target}<span>%</span>`;
+                        }
+                    }
+                }
+                requestAnimationFrame(updateCount);
+            });
+        }
     </script>
+
+    <!-- Floating Scroll-To-Top FAB -->
+    <button class="scroll-top-fab" id="scroll-top-btn" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+    </button>
 
 </body>
 </html>
