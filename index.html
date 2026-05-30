@@ -1,964 +1,115 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Study Mate - The Ultimate Offline Study Companion for VU Students</title>
-    <meta name="description" content="Download VU Study Mate - Access Virtual University books, offline textbook reader with night mode, bookmarks, study notes, and video lectures.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS frameworks aur customization styling links -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        royal: {
-                            50: '#f0f4ff',
-                            100: '#e1e9ff',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#0f172a',
-                            950: '#020617',
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                        outfit: ['Outfit', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #0f172a;
-            --accent: #d97706;
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            overflow-x: hidden;
-        }
-
-        /* Ambient soft background glow effects */
-        .glow-blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-            filter: blur(80px);
-            z-index: -1;
-            pointer-events: none;
-            animation: drift 20s infinite alternate;
-        }
-        .blob-1 { top: -100px; right: -100px; }
-        .blob-2 { top: 50%; left: -200px; animation-delay: -5s; }
-        .blob-3 { bottom: -100px; right: 20%; animation-delay: -10s; }
-
-        @keyframes drift {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, 30px) scale(1.1); }
-            100% { transform: translate(-30px, 50px) scale(0.9); }
-        }
-
-        /* Continuous looping shine effect naye download header ke liye */
-        @keyframes shine-loop {
-            0% { transform: translateX(-150%); }
-            50% { transform: translateX(150%); }
-            100% { transform: translateX(150%); }
-        }
-        .animate-shine {
-            animation: shine-loop 3.5s infinite ease-in-out;
-        }
-
-        /* Light theme ke glasses effects aur styling */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(15, 23, 42, 0.06);
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.04);
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-        }
-
-        /* Handset mockup outer layers */
-        .phone-mockup {
-            width: 270px;
-            height: 540px;
-            background: #000;
-            border: 10px solid #1e293b;
-            border-radius: 40px;
-            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15), 
-                        0 0 40px rgba(0, 0, 0, 0.03);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition-smooth);
-        }
-        
-        @media (max-width: 360px) {
-            .phone-mockup {
-                width: 240px;
-                height: 480px;
-            }
-        }
-        
-        .phone-mockup:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 35px 60px -12px rgba(15, 23, 42, 0.25);
-        }
-        
-        .phone-dynamic-island {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90px;
-            height: 20px;
-            background: #1e293b;
-            border-radius: 20px;
-            z-index: 50;
-        }
-
-        /* Dynamic fluid scrollbars */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #3b82f6;
-        }
-
-        /* Hover animation controls */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VU Study Mate | 2026 Edition</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Outfit',sans-serif;background:#f8fafc;color:#0f172a}
+.aurora{position:fixed;inset:0;overflow:hidden;z-index:-1}
+.aurora:before,.aurora:after{
+content:'';position:absolute;width:700px;height:700px;border-radius:50%;
+filter:blur(90px);opacity:.25;animation:float 18s infinite alternate}
+.aurora:before{background:#2563eb;top:-150px;right:-100px}
+.aurora:after{background:#06b6d4;bottom:-150px;left:-100px}
+@keyframes float{to{transform:translate(120px,80px) scale(1.2)}}
+.glass{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border:1px solid rgba(15,23,42,.08)}
+.phone{width:280px;border-radius:38px;padding:10px;background:#ffffff;box-shadow:0 30px 80px rgba(37,99,235,.35)}
+.phone img{border-radius:28px}
+.bento{transition:.35s}
+.bento:hover{transform:translateY(-8px)}
+</style>
 </head>
-<body class="font-sans antialiased text-slate-800">
-
-    <!-- Soft Ambient Glow Backdrops -->
-    <div class="glow-blob blob-1"></div>
-    <div class="glow-blob blob-2"></div>
-    <div class="glow-blob blob-3"></div>
-
-    <!-- Navigation Header - Perfectly centered logo and menu layout on responsive screens -->
-    <nav class="fixed top-0 left-0 w-full h-[72px] glass-nav flex justify-between items-center px-6 md:px-12 z-50">
-        <a href="#" class="flex items-center gap-3 group shrink-0">
-            <!-- logo.png -->
-            <img src="logo.png" alt="VU Study Mate Icon" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-slate-200/80 shadow-md group-hover:scale-105 transition-transform">
-            <div class="font-outfit text-base sm:text-lg md:text-xl font-bold tracking-tight text-slate-900 whitespace-nowrap">
-                VU Study Mate<span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-600 ml-0.5"></span>
-            </div>
-        </a>
-        
-        <!-- Desktop Links -->
-        <div class="hidden lg:flex items-center gap-8">
-            <a href="#showcase" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">App Screenshots</a>
-            <a href="#simulator" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Interactive Demo</a>
-            <a href="#features" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">App Features</a>
-            <a href="#install" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Install Guide</a>
-        </div>
-    </nav>
-
-    <!-- Permanent, Stunning, Shining & Highly Attractive Secondary Header Banner -->
-    <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" 
-       class="fixed top-[72px] left-0 w-full h-[54px] bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white flex items-center justify-center gap-3 z-45 shadow-[0_10px_30px_rgba(37,99,235,0.22)] border-b border-blue-500/30 overflow-hidden group">
-        <!-- Automated loop shining reflection sweep effect -->
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full animate-shine pointer-events-none"></div>
-        
-        <img src="logo.png" alt="Logo" class="w-7 h-7 rounded-lg border border-white/20 shadow-lg shrink-0 group-hover:scale-105 transition-transform">
-        <span class="font-outfit text-xs sm:text-sm font-black tracking-widest uppercase flex items-center gap-1.5">
-            Download VU Study Mate
-            <svg class="w-4 h-4 animate-bounce shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"></path>
-            </svg>
-        </span>
-    </a>
-
-    <!-- Hero Section (Top padding set to pt-36 to clear both headers perfectly) -->
-    <section class="relative min-h-screen flex flex-col justify-center pt-36 sm:pt-40 lg:pt-44 pb-16 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
-            <!-- Left Side Content -->
-            <div class="lg:col-span-7 flex flex-col justify-center text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold uppercase tracking-wider text-blue-600 mb-6 mx-auto lg:mx-0">
-                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                    Updated Version Released
-                </div>
-                
-                <h1 class="font-outfit text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900 mb-6">
-                    Your Ultimate <br>
-                    <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800 bg-clip-text text-transparent">Offline VU Study Partner</span>
-                </h1>
-
-                <p class="text-sm sm:text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                    Access Virtual University reference books, finalterm/midterm prep notes, and course handouts <strong class="text-slate-900 font-semibold">completely offline</strong>. Learn comfortably with our custom built-in PDF reader, short video lectures portal, and live notification dashboard.
-                </p>
-
-                <div class="p-5 rounded-2xl bg-blue-500/5 border border-blue-500/10 mb-8 max-w-2xl mx-auto lg:mx-0">
-                    <p class="text-xs sm:text-base font-medium text-blue-700">
-                        An offline study companion built for Virtual University of Pakistan students — 100% free with absolutely zero ads or interruptions!
-                    </p>
-                </div>
-
-                <!-- Action Triggers -->
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12 w-full">
-                    <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" 
-                       class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold flex items-center justify-center gap-3 shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
-                        </svg>
-                        Download App
-                    </a>
-                    <a href="#simulator" 
-                       class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-600 text-slate-700 font-bold flex items-center justify-center gap-2 hover:-translate-y-1 transition-all duration-300">
-                        Try Live Demo
-                    </a>
-                </div>
-
-                <!-- Fast Statistics Counters -->
-                <div class="grid grid-cols-3 gap-2 sm:gap-4 border-t border-slate-200 pt-8 max-w-lg mx-auto lg:mx-0 w-full">
-                    <div>
-                        <div class="font-outfit text-2xl sm:text-3xl font-black text-slate-900" id="ads-counter">100%</div>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">No Ads & Clutter</p>
-                    </div>
-                    <div>
-                        <div class="font-outfit text-2xl sm:text-3xl font-black text-green-600">0/68</div>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">VirusTotal Safe</p>
-                    </div>
-                    <div>
-                        <div class="font-outfit text-2xl sm:text-3xl font-black text-blue-600">Free</div>
-                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Free for Students</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side: Phone mockup with original swap elements -->
-            <div class="lg:col-span-5 flex flex-col md:flex-row items-center justify-center gap-6 relative w-full">
-                
-                <!-- Thumbnails Panel -->
-                <div class="flex md:flex-col gap-3 order-last md:order-first justify-center flex-wrap">
-                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-blue-600 p-0.5 overflow-hidden shadow-md transition-all bg-white" onclick="swapHeroMockup('1.jpg', this)">
-                        <img src="1.jpg" alt="Welcome Thumbnail" class="w-full h-full object-cover rounded-lg">
-                    </button>
-                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('2.jpg', this)">
-                        <img src="2.jpg" alt="Dashboard Thumbnail" class="w-full h-full object-cover rounded-lg">
-                    </button>
-                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('3.jpg', this)">
-                        <img src="3.jpg" alt="Semesters Thumbnail" class="w-full h-full object-cover rounded-lg">
-                    </button>
-                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('4.jpg', this)">
-                        <img src="4.jpg" alt="Subjects Thumbnail" class="w-full h-full object-cover rounded-lg">
-                    </button>
-                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('5.jpg', this)">
-                        <img src="5.jpg" alt="Library Thumbnail" class="w-full h-full object-cover rounded-lg">
-                    </button>
-                </div>
-
-                <!-- Hardware Frame -->
-                <div class="relative animate-float shrink-0">
-                    <div class="phone-mockup bg-white">
-                        <div class="phone-dynamic-island"></div>
-                        
-                        <!-- Screen area showcasing original 2.jpg layout as default active -->
-                        <div class="flex-1 w-full h-full bg-slate-900 overflow-hidden relative">
-                            <img src="2.jpg" alt="VU Study Mate Smartphone Display Preview" class="w-full h-full object-cover transition-opacity duration-300" id="hero-phone-img">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- App Screenshots Gallery Section (Images 1.jpg to 5.jpg) -->
-    <section class="py-24 px-4 sm:px-6 md:px-12 glass-card border-y border-slate-200" id="showcase">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    Sleek & <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Premium UI Interface</span>
-                </h2>
-                <p class="text-slate-600 text-sm sm:text-base">
-                    Built natively with Jetpack Compose. The application offers incredibly smooth rendering, dark UI cards, and responsive navigations. Explore actual app interface frames below:
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 justify-items-center">
-                <!-- Frame 1 - 1.jpg -->
-                <div class="flex flex-col items-center gap-4">
-                    <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
-                        <div class="phone-dynamic-island"></div>
-                        <img src="1.jpg" alt="Welcome App Screen View" class="w-full h-full object-cover">
-                    </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Welcome Screen</span>
-                </div>
-
-                <!-- Frame 2 - 2.jpg -->
-                <div class="flex flex-col items-center gap-4">
-                    <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
-                        <div class="phone-dynamic-island"></div>
-                        <img src="2.jpg" alt="Home Dashboard Screen View" class="w-full h-full object-cover">
-                    </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Home Dashboard</span>
-                </div>
-
-                <!-- Frame 3 - 3.jpg -->
-                <div class="flex flex-col items-center gap-4">
-                    <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
-                        <div class="phone-dynamic-island"></div>
-                        <img src="3.jpg" alt="Semester Roadmap Selection View" class="w-full h-full object-cover">
-                    </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Semester Selector</span>
-                </div>
-
-                <!-- Frame 4 - 4.jpg -->
-                <div class="flex flex-col items-center gap-4">
-                    <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
-                        <div class="phone-dynamic-island"></div>
-                        <img src="4.jpg" alt="Subject Handout Files Download View" class="w-full h-full object-cover">
-                    </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Subject Files List</span>
-                </div>
-
-                <!-- Frame 5 - 5.jpg -->
-                <div class="flex flex-col items-center gap-4">
-                    <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
-                        <div class="phone-dynamic-island"></div>
-                        <img src="5.jpg" alt="Offline Vault Study Library View" class="w-full h-full object-cover">
-                    </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Offline Vault Library</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive App Simulators Section -->
-    <section class="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto" id="simulator">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Left Side: Interactive Screen Sandbox -->
-            <div class="lg:col-span-6 flex flex-col justify-center items-center w-full">
-                <div class="w-full max-w-[340px] bg-[#0c1329] rounded-[36px] p-6 border border-slate-800 relative shadow-2xl shadow-blue-500/10">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-6">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
-                            <span class="text-xs font-semibold uppercase tracking-wider text-green-400">Live Features Simulator</span>
-                        </div>
-                        <span class="text-[10px] font-mono text-slate-500">PORT: 8080</span>
-                    </div>
-
-                    <!-- Sandbox Viewport -->
-                    <div class="min-h-[300px] flex flex-col justify-between" id="interactive-screen-sandbox">
-                        <!-- Rendered via JS -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Side: Interactive Trigger Controls -->
-            <div class="lg:col-span-6 text-center lg:text-left">
-                <h3 class="font-outfit text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    Test the Features <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Live & Instantly</span>
-                </h3>
-                <p class="text-slate-600 text-base mb-8 leading-relaxed">
-                    We have ported our application's native Android components into high-fidelity web sandboxes. Tap on any feature module below to experience the layout logic instantly!
-                </p>
-
-                <!-- Light Theme Triggers -->
-                <div class="flex flex-col gap-4">
-                    
-                    <!-- Search Module Trigger -->
-                    <button class="flex items-start text-left gap-4 p-4 rounded-2xl border-2 border-blue-500/40 bg-blue-500/5 hover:bg-blue-500/10 transition-all duration-300 group" id="btn-sim-search" onclick="activateSimulatorModule('search')">
-                        <div class="p-3 bg-blue-600 text-white rounded-xl group-hover:scale-105 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Reactive Fast Search</h4>
-                            <p class="text-xs text-slate-500 mt-1">Filters CS101, MTH301, and English handouts with zero interface lag.</p>
-                        </div>
-                    </button>
-
-                    <!-- Library Module Trigger -->
-                    <button class="flex items-start text-left gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-slate-200 bg-white hover:bg-slate-50 shadow-sm transition-all duration-300 group" id="btn-sim-library" onclick="activateSimulatorModule('library')">
-                        <div class="p-3 bg-slate-100 text-slate-600 rounded-xl group-hover:scale-105 transition-transform" id="icon-sim-library">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Saved Reading Library</h4>
-                            <p class="text-xs text-slate-500 mt-1">Tracks your study progress and launches your last opened file with one-tap.</p>
-                        </div>
-                    </button>
-
-                    <!-- PDF Reader Mode Trigger -->
-                    <button class="flex items-start text-left gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-slate-200 bg-white hover:bg-slate-50 shadow-sm transition-all duration-300 group" id="btn-sim-pdf" onclick="activateSimulatorModule('pdf')">
-                        <div class="p-3 bg-slate-100 text-slate-600 rounded-xl group-hover:scale-105 transition-transform" id="icon-sim-pdf">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Built-In Pro PDF Reader</h4>
-                            <p class="text-xs text-slate-500 mt-1">Simulate eye-comfort night mode, inverting heavy pages cleanly.</p>
-                        </div>
-                    </button>
-
-                    <!-- LMS Launcher Module Trigger -->
-                    <button class="flex items-start text-left gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-slate-200 bg-white hover:bg-slate-50 shadow-sm transition-all duration-300 group" id="btn-sim-lms" onclick="activateSimulatorModule('lms')">
-                        <div class="p-3 bg-slate-100 text-slate-600 rounded-xl group-hover:scale-105 transition-transform" id="icon-sim-lms">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Portal Custom Web Tabs</h4>
-                            <p class="text-xs text-slate-500 mt-1">Simulate high-speed Chrome Custom Tab triggers directly within app views.</p>
-                        </div>
-                    </button>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Key Features Grid Section -->
-    <section class="py-24 px-4 sm:px-6 md:px-12 glass-card border-y border-slate-200" id="features">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    Excellent Suite Features <br><span class="text-slate-500">Engineered Specifically for VU Handouts</span>
-                </h2>
-                <p class="text-slate-600 text-sm sm:text-base">
-                    Every module in the application is fine-tuned to prevent heavy bandwidth consumption and minimize battery strain.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Feature 1 -->
-                <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">1. Offline Handouts Archive</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Download high-quality Virtual University handouts, solved papers, and reference guides. Keep reading even without an active internet connection.
-                    </p>
-                    <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Fast algorithms find key topics in 0.02 seconds</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Handouts save securely inside internal app folder partitions</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">2. In-App Pro PDF Reader</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Read heavy documents smoothly with a customized built-in layout engine. Optimized for devices of all specifications.
-                    </p>
-                    <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Invert document pages dynamically with the toggleable Comfort Mode</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Auto-save records page location immediately on closure</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">3. Short Lectures & Shortcuts Portal</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Launch and play course lectures directly inside sandboxed overlays, skipping unnecessary navigation paths.
-                    </p>
-                    <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Avoid excessive distraction and save mobile data</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Quick launching hooks to LMS, datesheet portals, and notice boards</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
-                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">4. Multi-Slot Download Manager</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Queue and download up to 10 course books concurrently without experiencing performance locks or layout freeze.
-                    </p>
-                    <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Sequential queue scheduling lowers CPU temperature levels</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Automatically cleans up residual download file garbage on cancel</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Installation & Sideloading Guide -->
-    <section class="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto" id="install">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Installation Steps -->
-            <div class="lg:col-span-7">
-                <h2 class="font-outfit text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    How to Setup & <br><span class="text-slate-500">Sideload the APK File</span>
-                </h2>
-                <p class="text-slate-600 text-sm sm:text-base mb-12 max-w-2xl">
-                    Because this project is distributed completely free on GitHub for Virtual University students, you need to manually install it. The setup is safe and takes 3 simple steps:
-                </p>
-
-                <div class="space-y-6">
-                    <!-- Step 1 -->
-                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-blue-500/20 transition-all">
-                        <div class="font-outfit text-3xl font-black text-blue-600 leading-none">01</div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Download the Installer File</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Click any of the "Download" buttons on this page to securely retrieve the original 'VU.STUDY.MATE.apk' package.</p>
-                        </div>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-blue-500/20 transition-all">
-                        <div class="font-outfit text-3xl font-black text-blue-600 leading-none">02</div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Enable Browser Installation</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">If flagged by Chrome, navigate to Chrome's 'Settings' and toggle the 'Allow from this source' switch.</p>
-                        </div>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="flex gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-blue-500/20 transition-all">
-                        <div class="font-outfit text-3xl font-black text-blue-600 leading-none">03</div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-base">Setup Your Student Profile</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Open the freshly installed application, input your active semester program track, and start reading your handouts offline!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Verification Panel -->
-            <div class="lg:col-span-5">
-                <div class="p-8 rounded-3xl bg-amber-500/5 border border-amber-500/20 shadow-xl relative">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        </div>
-                        <h4 class="font-outfit font-bold text-amber-750 text-lg">Clean & Certified Build</h4>
-                    </div>
-                    <p class="text-sm text-slate-700 leading-relaxed mb-6">
-                        Mobile browsers often display a standard security warning when downloading independent APK installers. You are completely safe! This app demands zero device root hooks or tracking access.
-                    </p>
-                    
-                    <div class="p-5 rounded-2xl bg-white border border-slate-200">
-                        <h6 class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">Google Play Protect Checked</h6>
-                        <p class="text-xs text-slate-500 leading-relaxed">
-                            Every release is fully audited on Virustotal cloud engines (0/68 safe detections), keeping your personal storage and active processes fully clean.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="glass-card border-t border-slate-200 py-16 px-4 sm:px-6 md:px-12 text-center relative z-10">
-        <div class="max-w-4xl mx-auto flex flex-col items-center">
-            
-            <div class="flex items-center gap-3 mb-6">
-                <!-- footer logo -->
-                <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-lg border border-slate-200">
-                <div class="font-outfit text-lg font-bold text-slate-900">VU Study Mate</div>
-            </div>
-
-            <!-- WhatsApp & Contacts Hub -->
-            <div class="flex items-center gap-4 mb-8">
-                <a href="https://wa.me/923135939659" target="_blank" class="w-12 h-12 rounded-full bg-white border border-slate-200 hover:border-green-500/50 hover:bg-green-500/5 flex items-center justify-center text-slate-600 hover:text-green-500 transition-all duration-300 shadow-sm">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.714-1.466L0 24zm6.273-3.834a9.886 9.886 0 0 0 5.732 1.8c5.568 0 10.099-4.526 10.103-10.091a9.881 9.881 0 0 0-2.955-7.143 9.88 9.88 0 0 0-7.155-2.946C6.446.79 1.916 5.316 1.912 10.885c-.001 2.01.523 3.975 1.517 5.707l-.991 3.616 3.892-.992zM17.91 14.945c-.247-.123-1.462-.72-1.69-.8-.227-.084-.393-.123-.558.123-.165.247-.64.8-.784.966-.145.165-.29.185-.537.062a7.355 7.355 0 0 1-1.99-1.225 8.12 8.12 0 0 1-1.378-1.71c-.145-.247-.016-.38.109-.504.111-.112.247-.29.37-.435.124-.145.165-.247.247-.412.083-.165.042-.31-.02-.433-.062-.124-.558-1.345-.765-1.84-.2-.486-.396-.412-.558-.42-.16-.008-.347-.008-.53-.008-.184 0-.485.07-.74.348-.253.279-.968.948-.968 2.316 0 1.368.993 2.69 1.117 2.855.124.165 1.953 2.983 4.73 4.179.66.284 1.176.454 1.58.582.663.21 1.267.18 1.745.109.53-.08 1.462-.598 1.67-.175.206-.418.31-.774.31-1.127z"/></svg>
-                </a>
-                <a href="mailto:mujtabaofficial1001@gmail.com" class="w-12 h-12 rounded-full bg-white border border-slate-200 hover:border-blue-500/50 hover:bg-blue-500/5 flex items-center justify-center text-slate-600 hover:text-blue-500 transition-all duration-300 shadow-sm">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                </a>
-            </div>
-
-            <p class="text-sm text-slate-500 mb-2">Developed with ❤️ by <strong class="text-slate-950 font-semibold">Mujtaba</strong></p>
-            <p class="text-[10px] text-slate-400 max-w-3xl leading-relaxed">
-                Disclaimer: VU Study Mate is an independent, non-commercial educational utility tool designed for student assistance. It is not officially associated with, endorsed by, or affiliated with the Virtual University of Pakistan.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Custom Stylized Overlay Modal -->
-    <div id="custom-modal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/50 backdrop-filter backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
-        <div class="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl scale-95 transition-transform duration-300" id="custom-modal-card">
-            <div class="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 flex items-center justify-center mb-4 mx-auto" id="custom-modal-icon">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            </div>
-            <h4 class="font-outfit text-lg font-bold text-slate-900 text-center mb-2" id="custom-modal-title">Success!</h4>
-            <p class="text-xs text-slate-500 text-center leading-relaxed mb-6" id="custom-modal-desc">Action was completed successfully.</p>
-            <button class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-bold text-xs text-white transition-all shadow-lg shadow-blue-600/20" onclick="closeCustomModal()">
-                Dismiss
-            </button>
-        </div>
-    </div>
-
-    <!-- Scroll-to-Top Floating Action Button -->
-    <button class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/20 opacity-0 pointer-events-none hover:-translate-y-1 active:scale-95 transition-all duration-300 z-40" id="scroll-top-btn">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
-    </button>
-
-    <!-- JavaScript Interactive Engine -->
-    <script>
-        // Search simulation database
-        const searchDatabase = [
-            { code: "CS101", title: "Introduction to Computing", size: "3.8 MB", type: "Handout", count: "12k+" },
-            { code: "CS201", title: "Introduction to Programming", size: "4.6 MB", type: "Reference Book", count: "8k+" },
-            { code: "CS302", title: "Digital Logic Design", size: "5.1 MB", type: "Handout", count: "6k+" },
-            { code: "MTH301", title: "Calculus II", size: "6.2 MB", type: "Reference Book", count: "7k+" },
-            { code: "MTH101", title: "Calculus & Analytical Geometry", size: "5.8 MB", type: "Handout", count: "14k+" },
-            { code: "ENG101", title: "English Comprehension", size: "2.5 MB", type: "Handout", count: "11k+" },
-            { code: "ISL201", title: "Islamic Studies", size: "1.8 MB", type: "Handout", count: "9k+" }
-        ];
-
-        // Library simulation database
-        const libraryDatabase = [
-            { code: "CS302", title: "CS302 - Digital Logic Design Handout", current: 12, max: 48 },
-            { code: "MTH301", title: "MTH301 - Calculus II Reference Guide", current: 14, max: 86 },
-            { code: "ENG101", title: "ENG101 - English Comprehension Notes", current: 18, max: 30 }
-        ];
-
-        let activeLibBookIndex = 0;
-        let isPdfNight = false;
-
-        // Custom Modal Alert
-        function showCustomModal(title, description, isSuccess = true) {
-            const modal = document.getElementById('custom-modal');
-            const card = document.getElementById('custom-modal-card');
-            const iconWrap = document.getElementById('custom-modal-icon');
-            const titleEl = document.getElementById('custom-modal-title');
-            const descEl = document.getElementById('custom-modal-desc');
-
-            titleEl.innerText = title;
-            descEl.innerText = description;
-
-            if (isSuccess) {
-                iconWrap.className = "w-12 h-12 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 flex items-center justify-center mb-4 mx-auto";
-                iconWrap.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
-            } else {
-                iconWrap.className = "w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 flex items-center justify-center mb-4 mx-auto";
-                iconWrap.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`;
-            }
-
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-95');
-            card.classList.add('scale-100');
-        }
-
-        function closeCustomModal() {
-            const modal = document.getElementById('custom-modal');
-            const card = document.getElementById('custom-modal-card');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            card.classList.remove('scale-100');
-            card.classList.add('scale-95');
-        }
-
-        // Swap Device Preview Screen
-        function swapHeroMockup(imageSrc, thumbElement) {
-            const phoneImg = document.getElementById('hero-phone-img');
-            phoneImg.style.opacity = '0';
-            
-            setTimeout(() => {
-                phoneImg.src = imageSrc;
-                phoneImg.style.opacity = '1';
-                
-                document.querySelectorAll('.switcher-thumb').forEach(thumb => {
-                    thumb.className = "switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white";
-                });
-                if (thumbElement) {
-                    thumbElement.className = "switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-blue-600 p-0.5 overflow-hidden active-thumb shadow-md transition-all bg-white";
-                }
-            }, 250);
-        }
-
-        // Tab Selector Engine
-        function activateSimulatorModule(moduleId) {
-            const tabButtons = ['btn-sim-search', 'btn-sim-library', 'btn-sim-pdf', 'btn-sim-lms'];
-            const iconWrappers = ['icon-sim-library', 'icon-sim-pdf', 'icon-sim-lms'];
-
-            tabButtons.forEach(btnId => {
-                const btn = document.getElementById(btnId);
-                btn.className = "flex items-start text-left gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-slate-200 bg-white hover:bg-slate-50 shadow-sm transition-all duration-300 group";
-            });
-            iconWrappers.forEach(iconId => {
-                const ic = document.getElementById(iconId);
-                ic.className = "p-3 bg-slate-100 text-slate-600 rounded-xl group-hover:scale-105 transition-transform";
-            });
-
-            const targetBtn = document.getElementById(`btn-sim-${moduleId}`);
-            targetBtn.className = "flex items-start text-left gap-4 p-4 rounded-2xl border-2 border-blue-500/40 bg-blue-500/5 hover:bg-blue-500/10 transition-all duration-300 group";
-            if (moduleId !== 'search') {
-                document.getElementById(`icon-sim-${moduleId}`).className = "p-3 bg-blue-500/20 text-blue-600 rounded-xl group-hover:scale-105 transition-transform";
-            }
-
-            renderSandboxContent(moduleId);
-        }
-
-        // Render Sandbox Screen
-        function renderSandboxContent(moduleId) {
-            const sandbox = document.getElementById('interactive-screen-sandbox');
-            sandbox.innerHTML = '';
-
-            if (moduleId === 'search') {
-                sandbox.innerHTML = `
-                    <div class="flex flex-col gap-4 animate-[fadeIn_0.3s_ease]">
-                        <div class="relative">
-                            <input type="text" id="sim-input-box" class="w-full bg-[#050814] border border-slate-800 focus:border-blue-500 rounded-xl px-4 py-3 text-xs text-white outline-none transition-all" placeholder="Search course handouts (e.g. cs101, mth)..." onkeyup="filterSimulatedQuery()">
-                        </div>
-                        <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1" id="sim-results-pane">
-                            <!-- Populated Dynamically -->
-                        </div>
-                    </div>`;
-                filterSimulatedQuery();
-            } 
-            else if (moduleId === 'library') {
-                const book = libraryDatabase[activeLibBookIndex];
-                const pct = Math.round((book.current / book.max) * 100);
-                sandbox.innerHTML = `
-                    <div class="flex flex-col h-full justify-between animate-[fadeIn_0.3s_ease] gap-6">
-                        <div class="p-4 rounded-2xl bg-gradient-to-tr from-blue-600/10 to-indigo-600/10 border border-blue-500/20">
-                            <span class="text-[8px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold">Last Handout Opened</span>
-                            <h4 class="font-bold text-sm text-white mt-3" id="sim-lib-title">${book.title}</h4>
-                            <div class="flex justify-between text-[10px] text-gray-400 mt-4 mb-1">
-                                <span id="sim-lib-pages">Page ${book.current} of ${book.max}</span>
-                                <span id="sim-lib-pct">Reading Progress: ${pct}%</span>
-                            </div>
-                            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-blue-500 h-full transition-all duration-300" id="sim-lib-progress-bar" style="width: ${pct}%"></div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-2">
-                            <button class="py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white transition-all active:scale-95" onclick="advanceSimulatedPage()">Next Page (+1)</button>
-                            <button class="py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 font-bold text-xs text-gray-400 transition-all active:scale-95" onclick="swapSimulatedBook()">Switch Handout</button>
-                        </div>
-                    </div>`;
-            } 
-            else if (moduleId === 'pdf') {
-                const containerClass = isPdfNight ? 'bg-[#050814] text-gray-300 border-slate-800' : 'bg-white text-slate-800 border-slate-200';
-                const headerBorder = isPdfNight ? 'border-slate-800' : 'border-slate-200';
-                sandbox.innerHTML = `
-                    <div class="flex flex-col h-full justify-between animate-[fadeIn_0.3s_ease] gap-4">
-                        <div class="p-4 rounded-2xl border min-h-[180px] flex flex-col justify-between transition-all duration-300 ${containerClass}" id="pdf-view-panel">
-                            <div class="flex justify-between items-center border-b pb-2 text-[8px] text-gray-400 ${headerBorder}">
-                                <span>MTH301_Handout_Calculus.pdf</span>
-                                <span>Page 14 of 86</span>
-                            </div>
-                            <div class="py-2 text-left">
-                                <h5 class="text-xs font-bold leading-tight">Theorem 3.2 - Directional Derivatives</h5>
-                                <p class="text-[10px] text-gray-500 mt-2 leading-relaxed">Let f(x, y) be a differentiable function at P(x0, y0). The directional derivative of f in direction u = cos(θ)i + sin(θ)j is given by gradients.</p>
-                            </div>
-                            <span class="text-[9px] font-bold text-blue-500 text-left">∇f(x, y) = fx(x, y)i + fy(x, y)j</span>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button class="py-2.5 rounded-xl bg-blue-600 text-xs font-bold text-white transition-all hover:bg-blue-500 active:scale-95" onclick="toggleSimulatedNightMode()">Comfort Mode</button>
-                            <button class="py-2.5 rounded-xl bg-green-600 text-xs font-bold text-white transition-all hover:bg-green-500 active:scale-95" onclick="savePdfStudyNotes()">Write Study Note</button>
-                        </div>
-                    </div>`;
-            } 
-            else if (moduleId === 'lms') {
-                sandbox.innerHTML = `
-                    <div class="flex flex-col gap-3 animate-[fadeIn_0.3s_ease]">
-                        <div class="grid grid-cols-2 gap-2">
-                            <button class="p-3 bg-slate-900 border border-slate-800 hover:border-blue-500/30 rounded-xl text-center transition-all cursor-pointer" onclick="simulateCustomTabLaunch('VU LMS Login', 'https://vulms.vu.edu.pk')">
-                                <span class="text-[11px] font-bold text-white block">LMS Portal</span>
-                            </button>
-                            <button class="p-3 bg-slate-900 border border-slate-800 hover:border-blue-500/30 rounded-xl text-center transition-all cursor-pointer" onclick="simulateCustomTabLaunch('Datesheet Creator', 'https://datesheet.vu.edu.pk')">
-                                <span class="text-[11px] font-bold text-white block">Datesheets</span>
-                            </button>
-                        </div>
-
-                        <!-- Webview wrapper -->
-                        <div class="hidden rounded-xl border border-blue-500/30 overflow-hidden animate-[slideUp_0.3s_ease]" id="lms-ct-browser">
-                            <div class="bg-blue-600 px-3 py-1.5 flex justify-between items-center text-[8px] text-white font-mono">
-                                <span id="lms-ct-url">https://vulms.vu.edu.pk</span>
-                                <span class="cursor-pointer font-bold" onclick="closeCustomTabSimulated()">✕</span>
-                            </div>
-                            <div class="p-4 bg-white text-slate-800 text-center min-h-[100px] flex flex-col justify-center items-center">
-                                <div class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-2"></div>
-                                <h6 class="text-[10px] font-bold" id="lms-ct-title">Connecting...</h6>
-                                <p class="text-[8px] text-gray-500 mt-1">Launched inside secure Chrome custom tab view</p>
-                            </div>
-                        </div>
-                    </div>`;
-            }
-        }
-
-        // Live Search Handler
-        function filterSimulatedQuery() {
-            const input = document.getElementById('sim-input-box');
-            if (!input) return;
-            const query = input.value.trim().toLowerCase();
-            const resultsPane = document.getElementById('sim-results-pane');
-
-            resultsPane.innerHTML = '';
-
-            const filtered = searchDatabase.filter(item => 
-                item.code.toLowerCase().includes(query) || 
-                item.title.toLowerCase().includes(query)
-            );
-
-            if (filtered.length === 0) {
-                resultsPane.innerHTML = `<div class="text-xs text-gray-500 text-center py-6">No matching handouts found in local cache.</div>`;
-                return;
-            }
-
-            filtered.forEach(item => {
-                const row = document.createElement('div');
-                row.className = "p-2.5 rounded-lg bg-[#0c1329] border border-slate-800/80 flex justify-between items-center text-left hover:border-blue-500/30 transition-all";
-                row.innerHTML = `
-                    <div>
-                        <div class="text-[10px] font-bold text-white">${item.code} - ${item.title}</div>
-                        <div class="text-[8px] text-slate-400 mt-0.5">${item.type} • ${item.size}</div>
-                    </div>
-                    <span class="text-[8px] bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded font-bold">SAVED</span>`;
-                resultsPane.appendChild(row);
-            });
-        }
-
-        // Advance reading page logic
-        function advanceSimulatedPage() {
-            const book = libraryDatabase[activeLibBookIndex];
-            if (book.current < book.max) {
-                book.current++;
-                const newPct = Math.round((book.current / book.max) * 100);
-                
-                document.getElementById('sim-lib-pages').innerText = `Page ${book.current} of ${book.max}`;
-                document.getElementById('sim-lib-pct').innerText = `Reading Progress: ${newPct}%`;
-                document.getElementById('sim-lib-progress-bar').style.width = `${newPct}%`;
-            } else {
-                showCustomModal('Superb Effort! 🏆', `You have successfully completed reading the entire handout of ${book.code}!`, true);
-            }
-        }
-
-        // Swap between simulated handouts
-        function swapSimulatedBook() {
-            activeLibBookIndex = (activeLibBookIndex + 1) % libraryDatabase.length;
-            renderSandboxContent('library');
-        }
-
-        // Dynamic night mode
-        function toggleSimulatedNightMode() {
-            isPdfNight = !isPdfNight;
-            const panel = document.getElementById('pdf-view-panel');
-            if (isPdfNight) {
-                panel.className = "p-4 rounded-2xl border border-slate-800 min-h-[180px] flex flex-col justify-between transition-all duration-300 bg-[#050814] text-gray-300";
-            } else {
-                panel.className = "p-4 rounded-2xl border border-slate-200 min-h-[180px] flex flex-col justify-between transition-all duration-300 bg-white text-slate-800";
-            }
-        }
-
-        // Save study note simulator
-        function savePdfStudyNotes() {
-            const noteText = prompt("Enter a custom study note to attach to Page 14 (SQLite room database stored):", "Imp theorem for midterms!");
-            if (noteText) {
-                showCustomModal('Note Stored!', `"${noteText}" has been permanently attached to MTH301 Handout, Page 14.`, true);
-            }
-        }
-
-        // Custom tab launcher
-        function simulateCustomTabLaunch(title, url) {
-            const browser = document.getElementById('lms-ct-browser');
-            browser.classList.remove('hidden');
-            document.getElementById('lms-ct-url').innerText = url;
-            document.getElementById('lms-ct-title').innerText = `Syncing secure connection to ${title}...`;
-        }
-
-        function closeCustomTabSimulated() {
-            const browser = document.getElementById('lms-ct-browser');
-            browser.classList.add('hidden');
-        }
-
-        // On Load Initializers
-        window.onload = function() {
-            // Set first thumbnail layout preview (Welcome image 1.jpg)
-            swapHeroMockup('1.jpg', document.querySelectorAll('.switcher-thumb')[0]);
-            
-            // Initiate default active simulator component
-            activateSimulatorModule('search');
-
-            // Trigger statistics countdown animation loops
-            animateCustomStats();
-        };
-
-        // Scroll to Top FAB toggler
-        const topBtn = document.getElementById('scroll-top-btn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                topBtn.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                topBtn.classList.add('opacity-0', 'pointer-events-none');
-            }
-        });
-        topBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Numeric stats countdown loops
-        function animateCustomStats() {
-            const counter = document.getElementById('ads-counter');
-            let start = 100;
-            const duration = 2200; // 2.2 seconds animation limit
-            const startTime = performance.now();
-
-            function tick(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const currentVal = Math.floor(start - (progress * 100));
-
-                counter.innerHTML = `${currentVal}<span>%</span>`;
-
-                if (progress < 1) {
-                    requestAnimationFrame(tick);
-                } else {
-                    counter.innerHTML = `0<span>%</span>`;
-                }
-            }
-            requestAnimationFrame(tick);
-        }
-    </script>
+<body>
+<div class="aurora"></div>
+
+<nav class="fixed top-0 left-0 right-0 z-50">
+<div class="max-w-7xl mx-auto m-4 glass rounded-2xl px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<img src="logo.png" class="w-10 h-10 rounded-xl">
+<span class="font-bold text-xl">VU Study Mate</span>
+</div>
+<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"
+class="bg-white border border-blue-200 text-blue-700 px-5 py-3 rounded-xl font-bold">Download APK</a>
+</div>
+</nav>
+
+<section class="min-h-screen flex items-center">
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+<div>
+<div class="inline-block glass px-4 py-2 rounded-full text-sm mb-6">ALL ABOUT VU</div>
+<h1 class="text-6xl font-black leading-tight">
+Everything You Need<br>
+<span class="text-blue-400">For Virtual University</span>
+</h1>
+<p class="text-slate-600 mt-6 text-lg">
+Handouts, Books, PDF Reader, Video Lectures, LMS Access and Study Tools — all in one modern app.
+</p>
+<div class="flex gap-4 mt-8">
+<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"
+class="bg-white border border-blue-200 text-blue-700 px-8 py-4 rounded-2xl font-bold">Download Now</a>
+<a href="#screens" class="glass px-8 py-4 rounded-2xl font-bold">Screenshots</a>
+</div>
+</div>
+
+<div class="flex justify-center">
+<div class="phone border border-slate-200">
+<img id="screen" src="1.jpg" class="w-full">
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-16">
+<div class="grid md:grid-cols-4 gap-6">
+<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">100%</h3><p>Free</p></div>
+<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">0</h3><p>Ads</p></div>
+<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">Offline</h3><p>Reading</p></div>
+<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">Fast</h3><p>Search</p></div>
+</div>
+</section>
+
+<section id="screens" class="max-w-7xl mx-auto px-6 py-20">
+<h2 class="text-5xl font-black text-center mb-12">App Screenshots</h2>
+<div class="grid md:grid-cols-5 gap-4">
+<img src="1.jpg" onclick="show('1.jpg')" class="rounded-3xl cursor-pointer">
+<img src="2.jpg" onclick="show('2.jpg')" class="rounded-3xl cursor-pointer">
+<img src="3.jpg" onclick="show('3.jpg')" class="rounded-3xl cursor-pointer">
+<img src="4.jpg" onclick="show('4.jpg')" class="rounded-3xl cursor-pointer">
+<img src="5.jpg" onclick="show('5.jpg')" class="rounded-3xl cursor-pointer">
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 py-20">
+<h2 class="text-5xl font-black text-center mb-12">Features</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Offline Library</h3><p class="text-slate-600">Read books anytime.</p></div>
+<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">PDF Reader</h3><p class="text-slate-600">Night mode & bookmarks.</p></div>
+<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Video Lectures</h3><p class="text-slate-600">Quick learning access.</p></div>
+<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">LMS Access</h3><p class="text-slate-600">One tap portal access.</p></div>
+<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Fast Search</h3><p class="text-slate-600">Find subjects instantly.</p></div>
+<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Study Notes</h3><p class="text-slate-600">Organize your learning.</p></div>
+</div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 py-24">
+<div class="glass rounded-[40px] p-12 text-center">
+<h2 class="text-5xl font-black">Ready To Boost Your Studies?</h2>
+<p class="text-slate-600 mt-4">Download VU Study Mate and keep everything in one place.</p>
+<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"
+class="inline-block mt-8 bg-white border border-blue-200 text-blue-700 px-10 py-5 rounded-2xl font-bold">Download APK</a>
+</div>
+</section>
+
+<footer class="py-12 text-center text-slate-500">
+<p>Designed & Developed by MUJTABA</p>
+<p class="mt-2">ALL ABOUT VU</p>
+</footer>
+
+<script>
+function show(img){document.getElementById('screen').src=img;}
+</script>
 </body>
 </html>
