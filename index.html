@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Study Mate - VU Students Ke Liye Sabse Behtareen Offline Study App</title>
+    <title>VU Study Mate - The Ultimate Offline Study Companion for VU Students</title>
     <meta name="description" content="Download VU Study Mate - Access Virtual University books, offline textbook reader with night mode, bookmarks, study notes, and video lectures.">
     
     <!-- Google Fonts -->
@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Responsive layout ke liye Tailwind CSS -->
+    <!-- Tailwind CSS for Responsive Grid Layouts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -57,7 +57,7 @@
             overflow-x: hidden;
         }
 
-        /* Ambient Glow Blobs - Light Theme ke mutabik soft blue aur yellow effects */
+        /* Ambient Background Glow Blobs - Customized for Light Theme */
         .glow-blob {
             position: absolute;
             width: 500px;
@@ -79,7 +79,7 @@
             100% { transform: translate(-30px, 50px) scale(0.9); }
         }
 
-        /* Glassmorphism Classes - Light Theme optimized */
+        /* Glassmorphic Cards - Light Theme Optimized */
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(16px);
@@ -89,16 +89,16 @@
         }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(15, 23, 42, 0.06);
         }
 
-        /* Smartphone Frame container */
+        /* Responsive Mobile Mockup Frame */
         .phone-mockup {
-            width: 280px;
-            height: 560px;
+            width: 270px;
+            height: 540px;
             background: #000;
             border: 10px solid #1e293b;
             border-radius: 40px;
@@ -110,23 +110,32 @@
             flex-direction: column;
             transition: var(--transition-smooth);
         }
+        
+        @media (max-width: 360px) {
+            .phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+        }
+        
         .phone-mockup:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 35px 60px -12px rgba(15, 23, 42, 0.25);
         }
+        
         .phone-dynamic-island {
             position: absolute;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
             width: 90px;
-            height: 22px;
+            height: 20px;
             background: #1e293b;
             border-radius: 20px;
             z-index: 50;
         }
 
-        /* Custom Scrollbar colors in light theme */
+        /* Customized Slim Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -141,7 +150,7 @@
             background: #3b82f6;
         }
 
-        /* Mockup hover animation effects */
+        /* Float Animations for Smartphone Display */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -154,21 +163,22 @@
 </head>
 <body class="font-sans antialiased text-slate-800">
 
-    <!-- Background soft glow details -->
+    <!-- Soft Ambient Glow Backdrops -->
     <div class="glow-blob blob-1"></div>
     <div class="glow-blob blob-2"></div>
     <div class="glow-blob blob-3"></div>
 
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 left-0 w-full h-[72px] glass-nav flex justify-between items-center px-6 md:px-12 z-50">
-        <a href="#" class="flex items-center gap-3 group">
-            <!-- logo.png image as defined by user in main requirements -->
-            <img src="logo.png" alt="VU Study Mate Icon" class="w-10 h-10 rounded-xl border border-slate-200/80 shadow-md group-hover:scale-105 transition-transform">
-            <div class="font-outfit text-lg md:text-xl font-bold tracking-tight text-slate-900">
-                VU Study Mate<span class="inline-block w-2 h-2 rounded-full bg-blue-600 ml-1"></span>
+    <!-- Navigation Header - Redesigned to fit narrow and small screens perfectly -->
+    <nav class="fixed top-0 left-0 w-full h-[72px] glass-nav flex justify-between items-center px-4 sm:px-6 md:px-12 z-50">
+        <a href="#" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+            <!-- logo.png -->
+            <img src="logo.png" alt="VU Study Mate Icon" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl border border-slate-200/80 shadow-md group-hover:scale-105 transition-transform">
+            <div class="font-outfit text-base sm:text-lg md:text-xl font-bold tracking-tight text-slate-900 whitespace-nowrap">
+                VU Study Mate<span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-600 ml-0.5"></span>
             </div>
         </a>
         
+        <!-- Desktop Links -->
         <div class="hidden lg:flex items-center gap-8">
             <a href="#showcase" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">App Screenshots</a>
             <a href="#simulator" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Interactive Demo</a>
@@ -176,100 +186,103 @@
             <a href="#install" class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">Install Guide</a>
         </div>
 
-        <div class="flex items-center gap-3">
+        <!-- Aligned Action Button (Optimized paddings to prevent responsive push out) -->
+        <div class="flex items-center gap-2 shrink-0">
             <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" 
-               class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-sm font-bold text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 hover:-translate-y-0.5 transition-all duration-300">
+               class="px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-xs sm:text-sm font-bold text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap">
                 Download APK
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col justify-center pt-24 pb-16 px-6 md:px-12 max-w-7xl mx-auto z-10">
+    <section class="relative min-h-screen flex flex-col justify-center pt-24 pb-16 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            <!-- Left Side: Custom translated UI controls in Latin Urdu/Hindi -->
+            <!-- Left Side Content -->
             <div class="lg:col-span-7 flex flex-col justify-center text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold uppercase tracking-wider text-blue-600 mb-6 mx-auto lg:mx-0">
                     <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                    Naya UPDATED Version Aagaya
+                    Updated Version Released
                 </div>
                 
-                <h1 class="font-outfit text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900 mb-6">
-                    Aapka Sabse Behtareen <br>
+                <h1 class="font-outfit text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900 mb-6">
+                    Your Ultimate <br>
                     <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800 bg-clip-text text-transparent">Offline VU Study Partner</span>
                 </h1>
 
-                <p class="text-base sm:text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                    Virtual University ki reference books, finalterm/midterm prep notes aur handouts ko <strong class="text-slate-900 font-bold">bina internet ke offline</strong> parhein. Humare built-in PDF reader, short video lectures aur live notification system ke sath sukoon se parhein.
+                <p class="text-sm sm:text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Access Virtual University reference books, finalterm/midterm prep notes, and course handouts <strong class="text-slate-900 font-semibold">completely offline</strong>. Learn comfortably with our custom built-in PDF reader, short video lectures portal, and live notification dashboard.
                 </p>
 
                 <div class="p-5 rounded-2xl bg-blue-500/5 border border-blue-500/10 mb-8 max-w-2xl mx-auto lg:mx-0">
-                    <p class="text-sm sm:text-base font-medium text-blue-700">
-                        🇵🇰 Pakistani VU students ke liye banaya gaya offline study app - Bilkul free aur bina kisi ads ke!
+                    <p class="text-xs sm:text-base font-medium text-blue-700">
+                        An offline study companion built for Virtual University of Pakistan students — 100% free with absolutely zero ads or interruptions!
                     </p>
                 </div>
 
-                <!-- Action Button Cluster -->
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
+                <!-- Action Triggers -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12 w-full">
                     <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" 
                        class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold flex items-center justify-center gap-3 shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
                         </svg>
-                         Download  App                   </a>
+                        Download App
+                    </a>
                     <a href="#simulator" 
                        class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:text-blue-600 text-slate-700 font-bold flex items-center justify-center gap-2 hover:-translate-y-1 transition-all duration-300">
-                        Demo Test Karein
+                        Try Live Demo
                     </a>
                 </div>
 
-                <!-- Live stats count visualization -->
-                <div class="grid grid-cols-3 gap-4 border-t border-slate-200 pt-8 max-w-lg mx-auto lg:mx-0">
+                <!-- Fast Statistics Counters -->
+                <div class="grid grid-cols-3 gap-2 sm:gap-4 border-t border-slate-200 pt-8 max-w-lg mx-auto lg:mx-0 w-full">
                     <div>
-                        <div class="font-outfit text-3xl font-black text-slate-900" id="ads-counter">100%</div>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Bina Ads aur Noise Ke</p>
+                        <div class="font-outfit text-2xl sm:text-3xl font-black text-slate-900" id="ads-counter">100%</div>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">No Ads & Clutter</p>
                     </div>
                     <div>
-                        <div class="font-outfit text-3xl font-black text-green-600">0/68</div>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">VirusTotal Safe Detection</p>
+                        <div class="font-outfit text-2xl sm:text-3xl font-black text-green-600">0/68</div>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">VirusTotal Safe</p>
                     </div>
                     <div>
-                        <div class="font-outfit text-3xl font-black text-blue-600">Free</div>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Har Student Ke Liye Free</p>
+                        <div class="font-outfit text-2xl sm:text-3xl font-black text-blue-600">Free</div>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Free for Students</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side: Phone mockup containing original user-provided swap assets -->
-            <div class="lg:col-span-5 flex flex-col md:flex-row items-center justify-center gap-6 relative">
-                <!-- Image switcher elements rendering original images (1.jpg to 5.jpg) -->
+            <!-- Right Side: Phone mockup with original swap elements -->
+            <div class="lg:col-span-5 flex flex-col md:flex-row items-center justify-center gap-6 relative w-full">
+                
+                <!-- Thumbnails Panel -->
                 <div class="flex md:flex-col gap-3 order-last md:order-first justify-center flex-wrap">
-                    <button class="switcher-thumb w-14 h-14 rounded-xl border-2 border-blue-600 p-0.5 overflow-hidden active-thumb shadow-md transition-all bg-white" onclick="swapHeroMockup('1.jpg', this)">
+                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-blue-600 p-0.5 overflow-hidden shadow-md transition-all bg-white" onclick="swapHeroMockup('1.jpg', this)">
                         <img src="1.jpg" alt="Welcome Thumbnail" class="w-full h-full object-cover rounded-lg">
                     </button>
-                    <button class="switcher-thumb w-14 h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('2.jpg', this)">
+                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('2.jpg', this)">
                         <img src="2.jpg" alt="Dashboard Thumbnail" class="w-full h-full object-cover rounded-lg">
                     </button>
-                    <button class="switcher-thumb w-14 h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('3.jpg', this)">
+                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('3.jpg', this)">
                         <img src="3.jpg" alt="Semesters Thumbnail" class="w-full h-full object-cover rounded-lg">
                     </button>
-                    <button class="switcher-thumb w-14 h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('4.jpg', this)">
+                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('4.jpg', this)">
                         <img src="4.jpg" alt="Subjects Thumbnail" class="w-full h-full object-cover rounded-lg">
                     </button>
-                    <button class="switcher-thumb w-14 h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('5.jpg', this)">
+                    <button class="switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white" onclick="swapHeroMockup('5.jpg', this)">
                         <img src="5.jpg" alt="Library Thumbnail" class="w-full h-full object-cover rounded-lg">
                     </button>
                 </div>
 
-                <!-- Premium Mobile frame container displaying images directly -->
-                <div class="relative animate-float">
+                <!-- Hardware Frame -->
+                <div class="relative animate-float shrink-0">
                     <div class="phone-mockup bg-white">
                         <div class="phone-dynamic-island"></div>
                         
-                        <!-- Main Preview screen showing 2.jpg as default (stunning mockup) -->
+                        <!-- Screen area showcasing original 2.jpg layout as default active -->
                         <div class="flex-1 w-full h-full bg-slate-900 overflow-hidden relative">
-                            <img src="2.jpg" alt="VU Study Mate Phone Screen View" class="w-full h-full object-cover" id="hero-phone-img">
+                            <img src="2.jpg" alt="VU Study Mate Smartphone Display Preview" class="w-full h-full object-cover transition-opacity duration-300" id="hero-phone-img">
                         </div>
                     </div>
                 </div>
@@ -278,99 +291,99 @@
         </div>
     </section>
 
-    <!-- App Showcase Gallery Section using images 1.jpg to 5.jpg -->
-    <section class="py-24 px-6 md:px-12 glass-card border-y border-slate-200" id="showcase">
+    <!-- App Screenshots Gallery Section (Images 1.jpg to 5.jpg) -->
+    <section class="py-24 px-4 sm:px-6 md:px-12 glass-card border-y border-slate-200" id="showcase">
         <div class="max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    Sleek Aur <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Premium UI Design</span>
+                    Sleek & <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Premium UI Interface</span>
                 </h2>
                 <p class="text-slate-600 text-sm sm:text-base">
-                    Kotlin Jetpack Compose se bana, yeh app ekdam smooth, tez aur native chalta hai. Niche actual app ke screenshots dekhein:
+                    Built natively with Jetpack Compose. The application offers incredibly smooth rendering, dark UI cards, and responsive navigations. Explore actual app interface frames below:
                 </p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 justify-items-center">
-                <!-- Item 1 - 1.jpg -->
+                <!-- Frame 1 - 1.jpg -->
                 <div class="flex flex-col items-center gap-4">
                     <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
                         <div class="phone-dynamic-island"></div>
-                        <img src="1.jpg" alt="App Welcome Screen" class="w-full h-full object-cover">
+                        <img src="1.jpg" alt="Welcome App Screen View" class="w-full h-full object-cover">
                     </div>
                     <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Welcome Screen</span>
                 </div>
 
-                <!-- Item 2 - 2.jpg -->
+                <!-- Frame 2 - 2.jpg -->
                 <div class="flex flex-col items-center gap-4">
                     <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
                         <div class="phone-dynamic-island"></div>
-                        <img src="2.jpg" alt="App Home Dashboard" class="w-full h-full object-cover">
+                        <img src="2.jpg" alt="Home Dashboard Screen View" class="w-full h-full object-cover">
                     </div>
                     <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Home Dashboard</span>
                 </div>
 
-                <!-- Item 3 - 3.jpg -->
+                <!-- Frame 3 - 3.jpg -->
                 <div class="flex flex-col items-center gap-4">
                     <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
                         <div class="phone-dynamic-island"></div>
-                        <img src="3.jpg" alt="App Semester Route Selection" class="w-full h-full object-cover">
+                        <img src="3.jpg" alt="Semester Roadmap Selection View" class="w-full h-full object-cover">
                     </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Semester Selection Card</span>
+                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Semester Selector</span>
                 </div>
 
-                <!-- Item 4 - 4.jpg -->
+                <!-- Frame 4 - 4.jpg -->
                 <div class="flex flex-col items-center gap-4">
                     <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
                         <div class="phone-dynamic-island"></div>
-                        <img src="4.jpg" alt="App Subject Files Selection" class="w-full h-full object-cover">
+                        <img src="4.jpg" alt="Subject Handout Files Download View" class="w-full h-full object-cover">
                     </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Har Subject Ke Resources</span>
+                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Subject Files List</span>
                 </div>
 
-                <!-- Item 5 - 5.jpg -->
+                <!-- Frame 5 - 5.jpg -->
                 <div class="flex flex-col items-center gap-4">
                     <div class="phone-mockup pointer-events-none scale-95 shadow-md bg-slate-950">
                         <div class="phone-dynamic-island"></div>
-                        <img src="5.jpg" alt="App Offline Study Library" class="w-full h-full object-cover">
+                        <img src="5.jpg" alt="Offline Vault Study Library View" class="w-full h-full object-cover">
                     </div>
-                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Offline Study Library</span>
+                    <span class="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700">Offline Vault Library</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Interactive App Simulators Section (Simulated dark screen overlay within gorgeous light frame) -->
-    <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto" id="simulator">
+    <!-- Interactive App Simulators Section -->
+    <section class="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto" id="simulator">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- Left Side: Phone view showing dynamic simulator states -->
-            <div class="lg:col-span-6 flex flex-col justify-center items-center">
+            <!-- Left Side: Interactive Screen Sandbox -->
+            <div class="lg:col-span-6 flex flex-col justify-center items-center w-full">
                 <div class="w-full max-w-[340px] bg-[#0c1329] rounded-[36px] p-6 border border-slate-800 relative shadow-2xl shadow-blue-500/10">
                     <div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-6">
                         <div class="flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
-                            <span class="text-xs font-semibold uppercase tracking-wider text-green-400">Live App Feature Simulator</span>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-green-400">Live Features Simulator</span>
                         </div>
                         <span class="text-[10px] font-mono text-slate-500">PORT: 8080</span>
                     </div>
 
-                    <!-- Sandbox dynamic HTML viewport inside simulated screen -->
-                    <div class="min-h-[300px] flex flex-col" id="interactive-screen-sandbox">
-                        <!-- Javascript manages rendering here -->
+                    <!-- Sandbox Viewport -->
+                    <div class="min-h-[300px] flex flex-col justify-between" id="interactive-screen-sandbox">
+                        <!-- Rendered via JS -->
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side: Simulation triggers -->
+            <!-- Right Side: Interactive Trigger Controls -->
             <div class="lg:col-span-6 text-center lg:text-left">
                 <h3 class="font-outfit text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    App Ko Live Aur <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Interactive Tarike Se Test Karein</span>
+                    Test the Features <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Live & Instantly</span>
                 </h3>
                 <p class="text-slate-600 text-base mb-8 leading-relaxed">
-                    Humne app ke high-end Kotlin logic ko yahan test karne ke liye HTML5 demo widgets me badla hai. Niche diye gaye buttons par tap karein aur app ki performance ko check karein!
+                    We have ported our application's native Android components into high-fidelity web sandboxes. Tap on any feature module below to experience the layout logic instantly!
                 </p>
 
-                <!-- Trigger selectors styled in crisp premium light colors -->
+                <!-- Light Theme Triggers -->
                 <div class="flex flex-col gap-4">
                     
                     <!-- Search Module Trigger -->
@@ -379,8 +392,8 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-base">Tez Search Demo</h4>
-                            <p class="text-xs text-slate-500 mt-1">Bina kisi lag ke CS101 aur MTH301 files filter karein.</p>
+                            <h4 class="font-bold text-slate-900 text-base">Reactive Fast Search</h4>
+                            <p class="text-xs text-slate-500 mt-1">Filters CS101, MTH301, and English handouts with zero interface lag.</p>
                         </div>
                     </button>
 
@@ -390,8 +403,8 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-base">Saved Library Demo</h4>
-                            <p class="text-xs text-slate-500 mt-1">Aapki reading progress automatically track hoti hai.</p>
+                            <h4 class="font-bold text-slate-900 text-base">Saved Reading Library</h4>
+                            <p class="text-xs text-slate-500 mt-1">Tracks your study progress and launches your last opened file with one-tap.</p>
                         </div>
                     </button>
 
@@ -401,8 +414,8 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-base">Pro PDF Reader Demo</h4>
-                            <p class="text-xs text-slate-500 mt-1">Raat ko parhne ke liye eye-comfort night mode active karein.</p>
+                            <h4 class="font-bold text-slate-900 text-base">Built-In Pro PDF Reader</h4>
+                            <p class="text-xs text-slate-500 mt-1">Simulate eye-comfort night mode, inverting heavy pages cleanly.</p>
                         </div>
                     </button>
 
@@ -412,8 +425,8 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-base">LMS Aur Portals Demo</h4>
-                            <p class="text-xs text-slate-500 mt-1">LMS aur Datesheet ko direct app se launch karein.</p>
+                            <h4 class="font-bold text-slate-900 text-base">Portal Custom Web Tabs</h4>
+                            <p class="text-xs text-slate-500 mt-1">Simulate high-speed Chrome Custom Tab triggers directly within app views.</p>
                         </div>
                     </button>
 
@@ -424,75 +437,75 @@
     </section>
 
     <!-- Key Features Grid Section -->
-    <section class="py-24 px-6 md:px-12 glass-card border-y border-slate-200" id="features">
+    <section class="py-24 px-4 sm:px-6 md:px-12 glass-card border-y border-slate-200" id="features">
         <div class="max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    Khaas Features <br><span class="text-slate-500">Jo VU Students Ke Liye Hi Bane Hain</span>
+                    Excellent Suite Features <br><span class="text-slate-500">Engineered Specifically for VU Handouts</span>
                 </h2>
                 <p class="text-slate-600 text-sm sm:text-base">
-                    App ke har ek section ko mobile battery aur internet packages bachane ke liye optimized kiya gaya hai.
+                    Every module in the application is fine-tuned to prevent heavy bandwidth consumption and minimize battery strain.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Card 1 -->
+                <!-- Feature 1 -->
                 <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">1. Offline Handouts</h3>
+                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">1. Offline Handouts Archive</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Aap sabhi handouts aur reference books ko offline save kar sakte hain. Bina load-time ke offline parhai karein.
+                        Download high-quality Virtual University handouts, solved papers, and reference guides. Keep reading even without an active internet connection.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Sirf 0.02 seconds me topic search karein</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Aapka data phone ki internal storage me save hota hai</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Fast algorithms find key topics in 0.02 seconds</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Handouts save securely inside internal app folder partitions</li>
                     </ul>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Feature 2 -->
                 <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">2. Built-In Pro PDF Reader</h3>
+                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">2. In-App Pro PDF Reader</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Bina kisi lag ya crash ke heavy PDF files ko smooth scroll karke parhein. Screen optimization ke sath.
+                        Read heavy documents smoothly with a customized built-in layout engine. Optimized for devices of all specifications.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Dheemi roshni me parhne ke liye custom Night Mode</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Auto-save feature se parhna wahin se shuru karein jahan chora tha</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Invert document pages dynamically with the toggleable Comfort Mode</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Auto-save records page location immediately on closure</li>
                     </ul>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Feature 3 -->
                 <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">3. Short Video Lectures Portal</h3>
+                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">3. Short Lectures & Shortcuts Portal</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        YouTube video lectures ko bina distraction ke secure overlay player me play karein.
+                        Launch and play course lectures directly inside sandboxed overlays, skipping unnecessary navigation paths.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Faltu internet packages aur data bachaayein</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Aapka login session secure and safe rehta hai</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Avoid excessive distraction and save mobile data</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Quick launching hooks to LMS, datesheet portals, and notice boards</li>
                     </ul>
                 </div>
 
-                <!-- Card 4 -->
+                <!-- Feature 4 -->
                 <div class="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-500/35 hover:shadow-lg transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-600 mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     </div>
-                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">4. Tez Download Queue</h3>
+                    <h3 class="font-outfit text-xl font-bold text-slate-900 mb-3">4. Multi-Slot Download Manager</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                        Ek hi waqt me bina system slow kiye kai saare handouts aur past papers safe download karein.
+                        Queue and download up to 10 course books concurrently without experiencing performance locks or layout freeze.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-500 font-medium">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> FIFO scheduling system battery drain hone se bachata hai</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Cancel karne par aadhi download hui files automatic clean ho jati hain</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Sequential queue scheduling lowers CPU temperature levels</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Automatically cleans up residual download file garbage on cancel</li>
                     </ul>
                 </div>
             </div>
@@ -500,64 +513,63 @@
     </section>
 
     <!-- Installation & Sideloading Guide -->
-    <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto" id="install">
+    <section class="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto" id="install">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            <!-- Installation steps -->
+            <!-- Installation Steps -->
             <div class="lg:col-span-7">
                 <h2 class="font-outfit text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
-                    VU Study Mate App <br><span class="text-slate-500">Kaise Install Karein</span>
+                    How to Setup & <br><span class="text-slate-500">Sideload the APK File</span>
                 </h2>
                 <p class="text-slate-600 text-sm sm:text-base mb-12 max-w-2xl">
-                    Kyunki yeh app bilkul free hai aur GitHub par host hai, isliye aapko isse manually install karna hoga. Yeh behad asaan hai:
+                    Because this project is distributed completely free on GitHub for Virtual University students, you need to manually install it. The setup is safe and takes 3 simple steps:
                 </p>
 
-                <!-- Step List cards layout in light theme -->
                 <div class="space-y-6">
                     <!-- Step 1 -->
                     <div class="flex gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-blue-500/20 transition-all">
                         <div class="font-outfit text-3xl font-black text-blue-600 leading-none">01</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-base">Secure APK File Download Karein</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Upar diye gaye download button par click karke secure 'VU.STUDY.MATE.apk' file download karein.</p>
+                            <h4 class="font-bold text-slate-900 text-base">Download the Installer File</h4>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Click any of the "Download" buttons on this page to securely retrieve the original 'VU.STUDY.MATE.apk' package.</p>
                         </div>
                     </div>
                     <!-- Step 2 -->
                     <div class="flex gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-blue-500/20 transition-all">
                         <div class="font-outfit text-3xl font-black text-blue-600 leading-none">02</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-base">'Unknown Sources' Ko Allow Karein</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Agar chrome alert de toh 'Settings' me jaakar 'Allow from this source' ko enable kar dein.</p>
+                            <h4 class="font-bold text-slate-900 text-base">Enable Browser Installation</h4>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">If flagged by Chrome, navigate to Chrome's 'Settings' and toggle the 'Allow from this source' switch.</p>
                         </div>
                     </div>
                     <!-- Step 3 -->
                     <div class="flex gap-4 p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-blue-500/20 transition-all">
                         <div class="font-outfit text-3xl font-black text-blue-600 leading-none">03</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-base">App Open Karein Aur Parhna Shuru Karein</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">App ko open karke apna program aur semester select karein aur parhai shuru karein!</p>
+                            <h4 class="font-bold text-slate-900 text-base">Setup Your Student Profile</h4>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Open the freshly installed application, input your active semester program track, and start reading your handouts offline!</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Warning/Verification Panel -->
+            <!-- Verification Panel -->
             <div class="lg:col-span-5">
                 <div class="p-8 rounded-3xl bg-amber-500/5 border border-amber-500/20 shadow-xl relative">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-600">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                         </div>
-                        <h4 class="font-outfit font-bold text-amber-700 text-lg">Clean Aur Safe App</h4>
+                        <h4 class="font-outfit font-bold text-amber-750 text-lg">Clean & Certified Build</h4>
                     </div>
                     <p class="text-sm text-slate-700 leading-relaxed mb-6">
-                        Browser kabhi kabhi direct APK downloads par warning deta hai. Par fikar na karein! Yeh app koi khufiya access ya contacts nahi maangta.
+                        Mobile browsers often display a standard security warning when downloading independent APK installers. You are completely safe! This app demands zero device root hooks or tracking access.
                     </p>
                     
                     <div class="p-5 rounded-2xl bg-white border border-slate-200">
                         <h6 class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">Google Play Protect Checked</h6>
                         <p class="text-xs text-slate-500 leading-relaxed">
-                            Humara APK Virustotal par checked hai jahan iska safe score 100% hai. Kisi bhi antivirus alerts ke bina aap download kar sakte hain.
+                            Every release is fully audited on Virustotal cloud engines (0/68 safe detections), keeping your personal storage and active processes fully clean.
                         </p>
                     </div>
                 </div>
@@ -567,16 +579,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="glass-card border-t border-slate-200 py-16 px-6 md:px-12 text-center relative z-10">
+    <footer class="glass-card border-t border-slate-200 py-16 px-4 sm:px-6 md:px-12 text-center relative z-10">
         <div class="max-w-4xl mx-auto flex flex-col items-center">
             
             <div class="flex items-center gap-3 mb-6">
-                <!-- Footer dynamic logo placeholder keeping original logo config -->
+                <!-- footer logo -->
                 <img src="logo.png" alt="Logo" class="w-8 h-8 rounded-lg border border-slate-200">
                 <div class="font-outfit text-lg font-bold text-slate-900">VU Study Mate</div>
             </div>
 
-            <!-- WhatsApp & Contacts Hub linking exactly as requested -->
+            <!-- WhatsApp & Contacts Hub -->
             <div class="flex items-center gap-4 mb-8">
                 <a href="https://wa.me/923135939659" target="_blank" class="w-12 h-12 rounded-full bg-white border border-slate-200 hover:border-green-500/50 hover:bg-green-500/5 flex items-center justify-center text-slate-600 hover:text-green-500 transition-all duration-300 shadow-sm">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.714-1.466L0 24zm6.273-3.834a9.886 9.886 0 0 0 5.732 1.8c5.568 0 10.099-4.526 10.103-10.091a9.881 9.881 0 0 0-2.955-7.143 9.88 9.88 0 0 0-7.155-2.946C6.446.79 1.916 5.316 1.912 10.885c-.001 2.01.523 3.975 1.517 5.707l-.991 3.616 3.892-.992zM17.91 14.945c-.247-.123-1.462-.72-1.69-.8-.227-.084-.393-.123-.558.123-.165.247-.64.8-.784.966-.145.165-.29.185-.537.062a7.355 7.355 0 0 1-1.99-1.225 8.12 8.12 0 0 1-1.378-1.71c-.145-.247-.016-.38.109-.504.111-.112.247-.29.37-.435.124-.145.165-.247.247-.412.083-.165.042-.31-.02-.433-.062-.124-.558-1.345-.765-1.84-.2-.486-.396-.412-.558-.42-.16-.008-.347-.008-.53-.008-.184 0-.485.07-.74.348-.253.279-.968.948-.968 2.316 0 1.368.993 2.69 1.117 2.855.124.165 1.953 2.983 4.73 4.179.66.284 1.176.454 1.58.582.663.21 1.267.18 1.745.109.53-.08 1.462-.598 1.67-.175.206-.418.31-.774.31-1.127z"/></svg>
@@ -586,14 +598,14 @@
                 </a>
             </div>
 
-            <p class="text-sm text-slate-500 mb-2">Dil se banaya Mujtaba ne ❤️</p>
+            <p class="text-sm text-slate-500 mb-2">Developed with ❤️ by <strong class="text-slate-950 font-semibold">Mujtaba</strong></p>
             <p class="text-[10px] text-slate-400 max-w-3xl leading-relaxed">
-                Disclaimer: VU Study Mate ek independent study companion hai jo students ki madad ke liye banaya gaya hai. Iska Virtual University of Pakistan se koi official talluq nahi hai.
+                Disclaimer: VU Study Mate is an independent, non-commercial educational utility tool designed for student assistance. It is not officially associated with, endorsed by, or affiliated with the Virtual University of Pakistan.
             </p>
         </div>
     </footer>
 
-    <!-- Custom Stylized Overlay Modal (Replaces unsafe window alerts) -->
+    <!-- Custom Stylized Overlay Modal -->
     <div id="custom-modal" class="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/50 backdrop-filter backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
         <div class="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl scale-95 transition-transform duration-300" id="custom-modal-card">
             <div class="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 flex items-center justify-center mb-4 mx-auto" id="custom-modal-icon">
@@ -614,7 +626,7 @@
 
     <!-- JavaScript Interactive Engine -->
     <script>
-        // High-fidelity database for search simulation
+        // Search simulation database
         const searchDatabase = [
             { code: "CS101", title: "Introduction to Computing", size: "3.8 MB", type: "Handout", count: "12k+" },
             { code: "CS201", title: "Introduction to Programming", size: "4.6 MB", type: "Reference Book", count: "8k+" },
@@ -625,7 +637,7 @@
             { code: "ISL201", title: "Islamic Studies", size: "1.8 MB", type: "Handout", count: "9k+" }
         ];
 
-        // Library progress simulation database
+        // Library simulation database
         const libraryDatabase = [
             { code: "CS302", title: "CS302 - Digital Logic Design Handout", current: 12, max: 48 },
             { code: "MTH301", title: "MTH301 - Calculus II Reference Guide", current: 14, max: 86 },
@@ -635,8 +647,7 @@
         let activeLibBookIndex = 0;
         let isPdfNight = false;
 
-        // Custom stylized Alert/Prompt window trigger (Hindi/Urdu Latin Comments)
-        // Custom popup modal dikhane ka tareeqa
+        // Custom Modal Alert
         function showCustomModal(title, description, isSuccess = true) {
             const modal = document.getElementById('custom-modal');
             const card = document.getElementById('custom-modal-card');
@@ -660,7 +671,6 @@
             card.classList.add('scale-100');
         }
 
-        // Modal band karne ka tareeqa
         function closeCustomModal() {
             const modal = document.getElementById('custom-modal');
             const card = document.getElementById('custom-modal-card');
@@ -669,33 +679,26 @@
             card.classList.add('scale-95');
         }
 
-        // SWAP HARDWARE MOCKUP SCREEN (Phone preview ke liye image badalne ka logic)
+        // Swap Device Preview Screen
         function swapHeroMockup(imageSrc, thumbElement) {
             const phoneImg = document.getElementById('hero-phone-img');
-            
-            // Smooth fade out effect
             phoneImg.style.opacity = '0';
             
             setTimeout(() => {
                 phoneImg.src = imageSrc;
-                // Smooth fade in effect
                 phoneImg.style.opacity = '1';
                 
-                // Active status border update karne ka loop
                 document.querySelectorAll('.switcher-thumb').forEach(thumb => {
-                    thumb.className = "switcher-thumb w-14 h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white";
+                    thumb.className = "switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-transparent hover:border-blue-500 p-0.5 overflow-hidden transition-all bg-white";
                 });
                 if (thumbElement) {
-                    thumbElement.className = "switcher-thumb w-14 h-14 rounded-xl border-2 border-blue-600 p-0.5 overflow-hidden active-thumb shadow-md transition-all bg-white";
+                    thumbElement.className = "switcher-thumb w-12 h-12 sm:w-14 sm:h-14 rounded-xl border-2 border-blue-600 p-0.5 overflow-hidden active-thumb shadow-md transition-all bg-white";
                 }
             }, 250);
         }
 
-
-        // INTERACTIVE APP SIMULATOR CONTROLLER (SANDBOX IN THE MIDDLE)
-        // Tab badalne ka function
+        // Tab Selector Engine
         function activateSimulatorModule(moduleId) {
-            // Simulator buttons ki active classes remove karein
             const tabButtons = ['btn-sim-search', 'btn-sim-library', 'btn-sim-pdf', 'btn-sim-lms'];
             const iconWrappers = ['icon-sim-library', 'icon-sim-pdf', 'icon-sim-lms'];
 
@@ -708,18 +711,16 @@
                 ic.className = "p-3 bg-slate-100 text-slate-600 rounded-xl group-hover:scale-105 transition-transform";
             });
 
-            // Target wale tab ko active render karein
             const targetBtn = document.getElementById(`btn-sim-${moduleId}`);
             targetBtn.className = "flex items-start text-left gap-4 p-4 rounded-2xl border-2 border-blue-500/40 bg-blue-500/5 hover:bg-blue-500/10 transition-all duration-300 group";
             if (moduleId !== 'search') {
                 document.getElementById(`icon-sim-${moduleId}`).className = "p-3 bg-blue-500/20 text-blue-600 rounded-xl group-hover:scale-105 transition-transform";
             }
 
-            // Simulated component loader
             renderSandboxContent(moduleId);
         }
 
-        // Feature ke mutabik simulator container load karne ka tareeqa
+        // Render Sandbox Screen
         function renderSandboxContent(moduleId) {
             const sandbox = document.getElementById('interactive-screen-sandbox');
             sandbox.innerHTML = '';
@@ -728,10 +729,10 @@
                 sandbox.innerHTML = `
                     <div class="flex flex-col gap-4 animate-[fadeIn_0.3s_ease]">
                         <div class="relative">
-                            <input type="text" id="sim-input-box" class="w-full bg-[#050814] border border-slate-800 focus:border-blue-500 rounded-xl px-4 py-3 text-xs text-white outline-none transition-all" placeholder="Subject search karein (e.g. cs101, mth)..." onkeyup="filterSimulatedQuery()">
+                            <input type="text" id="sim-input-box" class="w-full bg-[#050814] border border-slate-800 focus:border-blue-500 rounded-xl px-4 py-3 text-xs text-white outline-none transition-all" placeholder="Search course handouts (e.g. cs101, mth)..." onkeyup="filterSimulatedQuery()">
                         </div>
                         <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1" id="sim-results-pane">
-                            <!-- JS isko load karega -->
+                            <!-- Populated Dynamically -->
                         </div>
                     </div>`;
                 filterSimulatedQuery();
@@ -742,11 +743,11 @@
                 sandbox.innerHTML = `
                     <div class="flex flex-col h-full justify-between animate-[fadeIn_0.3s_ease] gap-6">
                         <div class="p-4 rounded-2xl bg-gradient-to-tr from-blue-600/10 to-indigo-600/10 border border-blue-500/20">
-                            <span class="text-[8px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold">Aakhri Baar Parhi Gayi Book</span>
+                            <span class="text-[8px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold">Last Handout Opened</span>
                             <h4 class="font-bold text-sm text-white mt-3" id="sim-lib-title">${book.title}</h4>
                             <div class="flex justify-between text-[10px] text-gray-400 mt-4 mb-1">
                                 <span id="sim-lib-pages">Page ${book.current} of ${book.max}</span>
-                                <span id="sim-lib-pct">Parhai Progress: ${pct}%</span>
+                                <span id="sim-lib-pct">Reading Progress: ${pct}%</span>
                             </div>
                             <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
                                 <div class="bg-blue-500 h-full transition-all duration-300" id="sim-lib-progress-bar" style="width: ${pct}%"></div>
@@ -754,8 +755,8 @@
                         </div>
 
                         <div class="grid grid-cols-2 gap-2">
-                            <button class="py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white transition-all active:scale-95" onclick="advanceSimulatedPage()">Aage Badhein (+1)</button>
-                            <button class="py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 font-bold text-xs text-gray-400 transition-all active:scale-95" onclick="swapSimulatedBook()">Subject Badlein</button>
+                            <button class="py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white transition-all active:scale-95" onclick="advanceSimulatedPage()">Next Page (+1)</button>
+                            <button class="py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 font-bold text-xs text-gray-400 transition-all active:scale-95" onclick="swapSimulatedBook()">Switch Handout</button>
                         </div>
                     </div>`;
             } 
@@ -769,15 +770,15 @@
                                 <span>MTH301_Handout_Calculus.pdf</span>
                                 <span>Page 14 of 86</span>
                             </div>
-                            <div class="py-2">
+                            <div class="py-2 text-left">
                                 <h5 class="text-xs font-bold leading-tight">Theorem 3.2 - Directional Derivatives</h5>
-                                <p class="text-[10px] text-gray-500 mt-2 leading-relaxed">Let f(x, y) be a differentiable function at P(x0, y0). The directional derivative of f is the dot product.</p>
+                                <p class="text-[10px] text-gray-500 mt-2 leading-relaxed">Let f(x, y) be a differentiable function at P(x0, y0). The directional derivative of f in direction u = cos(θ)i + sin(θ)j is given by gradients.</p>
                             </div>
-                            <span class="text-[9px] font-bold text-blue-500">∇f(x, y) = fx(x, y)i + fy(x, y)j</span>
+                            <span class="text-[9px] font-bold text-blue-500 text-left">∇f(x, y) = fx(x, y)i + fy(x, y)j</span>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <button class="py-2.5 rounded-xl bg-blue-600 text-xs font-bold text-white transition-all hover:bg-blue-500 active:scale-95" onclick="toggleSimulatedNightMode()">Comfort Mode</button>
-                            <button class="py-2.5 rounded-xl bg-green-600 text-xs font-bold text-white transition-all hover:bg-green-500 active:scale-95" onclick="savePdfStudyNotes()">Study Note Likhein</button>
+                            <button class="py-2.5 rounded-xl bg-green-600 text-xs font-bold text-white transition-all hover:bg-green-500 active:scale-95" onclick="savePdfStudyNotes()">Write Study Note</button>
                         </div>
                     </div>`;
             } 
@@ -802,14 +803,14 @@
                             <div class="p-4 bg-white text-slate-800 text-center min-h-[100px] flex flex-col justify-center items-center">
                                 <div class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-2"></div>
                                 <h6 class="text-[10px] font-bold" id="lms-ct-title">Connecting...</h6>
-                                <p class="text-[8px] text-gray-500 mt-1">Launched inside native secure Chrome view</p>
+                                <p class="text-[8px] text-gray-500 mt-1">Launched inside secure Chrome custom tab view</p>
                             </div>
                         </div>
                     </div>`;
             }
         }
 
-        // Search engine filter logic inside simulator (Fake search mechanism)
+        // Live Search Handler
         function filterSimulatedQuery() {
             const input = document.getElementById('sim-input-box');
             if (!input) return;
@@ -824,7 +825,7 @@
             );
 
             if (filtered.length === 0) {
-                resultsPane.innerHTML = `<div class="text-xs text-gray-500 text-center py-6">Memory cache me koi subject nahi mila.</div>`;
+                resultsPane.innerHTML = `<div class="text-xs text-gray-500 text-center py-6">No matching handouts found in local cache.</div>`;
                 return;
             }
 
@@ -841,7 +842,7 @@
             });
         }
 
-        // Library progress tracker logic
+        // Advance reading page logic
         function advanceSimulatedPage() {
             const book = libraryDatabase[activeLibBookIndex];
             if (book.current < book.max) {
@@ -849,20 +850,20 @@
                 const newPct = Math.round((book.current / book.max) * 100);
                 
                 document.getElementById('sim-lib-pages').innerText = `Page ${book.current} of ${book.max}`;
-                document.getElementById('sim-lib-pct').innerText = `Parhai Progress: ${newPct}%`;
+                document.getElementById('sim-lib-pct').innerText = `Reading Progress: ${newPct}%`;
                 document.getElementById('sim-lib-progress-bar').style.width = `${newPct}%`;
             } else {
-                showCustomModal('Behtareen Kaam! 🏆', `Aapne ${book.code} ki poori handout successfully mukammal parh li hai.`, true);
+                showCustomModal('Superb Effort! 🏆', `You have successfully completed reading the entire handout of ${book.code}!`, true);
             }
         }
 
-        // Switch to next dummy book
+        // Swap between simulated handouts
         function swapSimulatedBook() {
             activeLibBookIndex = (activeLibBookIndex + 1) % libraryDatabase.length;
             renderSandboxContent('library');
         }
 
-        // Night mode comfort system toggler
+        // Dynamic night mode
         function toggleSimulatedNightMode() {
             isPdfNight = !isPdfNight;
             const panel = document.getElementById('pdf-view-panel');
@@ -873,20 +874,20 @@
             }
         }
 
-        // Custom note storage simulation
+        // Save study note simulator
         function savePdfStudyNotes() {
-            const noteText = prompt("Is Page 14 ke liye custom study note likhein (SQLite database me save hoga):", "Final ke liye important theorem!");
+            const noteText = prompt("Enter a custom study note to attach to Page 14 (SQLite room database stored):", "Imp theorem for midterms!");
             if (noteText) {
-                showCustomModal('Note Saved!', `"${noteText}" ko MTH301 Handout, Page 14 par save kar liya gaya hai.`, true);
+                showCustomModal('Note Stored!', `"${noteText}" has been permanently attached to MTH301 Handout, Page 14.`, true);
             }
         }
 
-        // Browser link custom tab simulation
+        // Custom tab launcher
         function simulateCustomTabLaunch(title, url) {
             const browser = document.getElementById('lms-ct-browser');
             browser.classList.remove('hidden');
             document.getElementById('lms-ct-url').innerText = url;
-            document.getElementById('lms-ct-title').innerText = `${title} Se Secure Connection Ban Raha Hai...`;
+            document.getElementById('lms-ct-title').innerText = `Syncing secure connection to ${title}...`;
         }
 
         function closeCustomTabSimulated() {
@@ -894,20 +895,19 @@
             browser.classList.add('hidden');
         }
 
-
-        // INITIAL LOAD INITIALIZERS
+        // On Load Initializers
         window.onload = function() {
-            // Shuruati settings setup
+            // Set first thumbnail layout preview (Welcome image 1.jpg)
             swapHeroMockup('1.jpg', document.querySelectorAll('.switcher-thumb')[0]);
             
-            // Search module trigger karein
+            // Initiate default active simulator component
             activateSimulatorModule('search');
 
-            // Counter visual dynamic loop trigger
+            // Trigger statistics countdown animation loops
             animateCustomStats();
         };
 
-        // Scroll to top button toggler
+        // Scroll to Top FAB toggler
         const topBtn = document.getElementById('scroll-top-btn');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) {
@@ -920,7 +920,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Numeric stats loop calculation animation
+        // Numeric stats countdown loops
         function animateCustomStats() {
             const counter = document.getElementById('ads-counter');
             let start = 100;
