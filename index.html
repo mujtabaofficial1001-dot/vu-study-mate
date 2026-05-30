@@ -1666,18 +1666,27 @@
         <div class="hero-mockup">
             <!-- Dynamic Screenshot Switcher Thumbnails -->
             <div class="mockup-switcher">
-                <button class="switcher-thumb active" onclick="swapHeroMockup('2.jpeg', this)" title="Home Screen">
-                    <img src="2.jpeg" alt="Dashboard Screen Preview">
+                <button class="switcher-thumb" onclick="swapHeroMockup('1.jpg', this)" title="Welcome Screen">
+                    <img src="1.jpg" alt="Welcome Screen Preview">
                 </button>
-                <button class="switcher-thumb" onclick="swapHeroMockup('4.jpeg', this)" title="Semester File List">
-                    <img src="4.jpeg" alt="Semester Screen Preview">
+                <button class="switcher-thumb active" onclick="swapHeroMockup('2.jpg', this)" title="Home Screen">
+                    <img src="2.jpg" alt="Dashboard Screen Preview">
+                </button>
+                <button class="switcher-thumb" onclick="swapHeroMockup('3.jpg', this)" title="Semester Selection">
+                    <img src="3.jpg" alt="Semester Screen Preview">
+                </button>
+                <button class="switcher-thumb" onclick="swapHeroMockup('4.jpg', this)" title="Subject Files">
+                    <img src="4.jpg" alt="Subject Screen Preview">
+                </button>
+                <button class="switcher-thumb" onclick="swapHeroMockup('5.jpg', this)" title="Offline Library">
+                    <img src="5.jpg" alt="Library Screen Preview">
                 </button>
             </div>
 
             <div class="phone-frame">
                 <div class="phone-notch"></div>
-                <!-- Using 2.jpeg as the stunning Home Screen mockup -->
-                <img src="2.jpeg" alt="VU Study Mate Home Screen Layout" class="phone-screen-img" id="hero-phone-img">
+                <!-- Using 2.jpg as the stunning Home Screen mockup default active -->
+                <img src="2.jpg" alt="VU Study Mate Home Screen Layout" class="phone-screen-img" id="hero-phone-img">
             </div>
             <div class="phone-glow"></div>
         </div>
@@ -1691,22 +1700,49 @@
         </div>
         
         <div class="gallery-container">
+            <!-- Welcome Screen Mockup -->
+            <div class="gallery-item">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <img src="1.jpg" alt="App Welcome Screen Mockup" class="phone-screen-img">
+                </div>
+                <div class="gallery-label">Welcome Gateway Screen</div>
+            </div>
+
             <!-- Home Screen Mockup -->
             <div class="gallery-item">
                 <div class="phone-frame">
                     <div class="phone-notch"></div>
-                    <img src="2.jpeg" alt="App Home Screen Mockup" class="phone-screen-img">
+                    <img src="2.jpg" alt="App Home Screen Mockup" class="phone-screen-img">
                 </div>
-                <div class="gallery-label">Premium Home Screen Dashboard</div>
+                <div class="gallery-label">Premium Home Dashboard</div>
             </div>
 
             <!-- Semester Selection Mockup -->
             <div class="gallery-item">
                 <div class="phone-frame">
                     <div class="phone-notch"></div>
-                    <img src="4.jpeg" alt="App Semester Selection Mockup" class="phone-screen-img">
+                    <img src="3.jpg" alt="App Semester Selection Mockup" class="phone-screen-img">
                 </div>
-                <div class="gallery-label">Semester File Selection Screen</div>
+                <div class="gallery-label">Semester Card Selection Grid</div>
+            </div>
+
+            <!-- Subject List Mockup -->
+            <div class="gallery-item">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <img src="4.jpg" alt="App Subject List Mockup" class="phone-screen-img">
+                </div>
+                <div class="gallery-label">Curated Subject Resources</div>
+            </div>
+
+            <!-- Library Mockup -->
+            <div class="gallery-item">
+                <div class="phone-frame">
+                    <div class="phone-notch"></div>
+                    <img src="5.jpg" alt="App Offline Library Mockup" class="phone-screen-img">
+                </div>
+                <div class="gallery-label">Zero-Lag Offline Library</div>
             </div>
         </div>
     </section>
