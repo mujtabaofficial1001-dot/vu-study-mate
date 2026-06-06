@@ -1,115 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VU Study Mate | 2026 Edition</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-body{font-family:'Outfit',sans-serif;background:#f8fafc;color:#0f172a}
-.aurora{position:fixed;inset:0;overflow:hidden;z-index:-1}
-.aurora:before,.aurora:after{
-content:'';position:absolute;width:700px;height:700px;border-radius:50%;
-filter:blur(90px);opacity:.25;animation:float 18s infinite alternate}
-.aurora:before{background:#2563eb;top:-150px;right:-100px}
-.aurora:after{background:#06b6d4;bottom:-150px;left:-100px}
-@keyframes float{to{transform:translate(120px,80px) scale(1.2)}}
-.glass{background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border:1px solid rgba(15,23,42,.08)}
-.phone{width:280px;border-radius:38px;padding:10px;background:#ffffff;box-shadow:0 30px 80px rgba(37,99,235,.35)}
-.phone img{border-radius:28px}
-.bento{transition:.35s}
-.bento:hover{transform:translateY(-8px)}
-</style>
-</head>
-<body>
-<div class="aurora"></div>
+<html lang="en" class="scroll-smooth">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>VU Study Mate | 2026 Edition</title>  
+<script src="https://cdn.tailwindcss.com"></script>  
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">  
+<!-- Added Lucide Icons for Premium Look -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>  
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #090d16; /* Deep dark premium background for stunning contrast */
+    color: #f1f5f9;
+    overflow-x: hidden;
+}  
+.aurora {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}  
+.aurora:before, .aurora:after {  
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;  
+    filter: blur(140px);
+    opacity: 0.35;
+    animation: float 20s infinite alternate;
+}  
+.aurora:before { background: #2563eb; top: -10px; right: -50px; }  
+.aurora:after { background: #06b6d4; bottom: 50px; left: -100px; }  
 
-<nav class="fixed top-0 left-0 right-0 z-50">
-<div class="max-w-7xl mx-auto m-4 glass rounded-2xl px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<img src="logo.png" class="w-10 h-10 rounded-xl">
-<span class="font-bold text-xl">VU Study Mate</span>
-</div>
-<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"
-class="bg-white border border-blue-200 text-blue-700 px-5 py-3 rounded-xl font-bold">Download APK</a>
-</div>
-</nav>
+@keyframes float { 
+    0% { transform: translate(0px, 0px) scale(1); }
+    100% { transform: translate(60px, 40px) scale(1.15); }
+}  
 
-<section class="min-h-screen flex items-center">
-<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-<div>
-<div class="inline-block glass px-4 py-2 rounded-full text-sm mb-6">ALL ABOUT VU</div>
-<h1 class="text-6xl font-black leading-tight">
-Everything You Need<br>
-<span class="text-blue-400">For Virtual University</span>
-</h1>
-<p class="text-slate-600 mt-6 text-lg">
-Handouts, Books, PDF Reader, Video Lectures, LMS Access and Study Tools — all in one modern app.
-</p>
-<div class="flex gap-4 mt-8">
-<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"
-class="bg-white border border-blue-200 text-blue-700 px-8 py-4 rounded-2xl font-bold">Download Now</a>
-<a href="#screens" class="glass px-8 py-4 rounded-2xl font-bold">Screenshots</a>
-</div>
-</div>
+/* Ultra Premium Dark Glassmorphism */
+.glass {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}  
+.glass-light {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-<div class="flex justify-center">
-<div class="phone border border-slate-200">
-<img id="screen" src="1.jpg" class="w-full">
-</div>
-</div>
-</div>
-</section>
+/* Premium Phone Frame Simulation */
+.phone-shadow {
+    box-shadow: 0 0 0 12px #1e293b, 0 30px 100px rgba(37, 99, 235, 0.4);
+}
 
-<section class="max-w-6xl mx-auto px-6 py-16">
-<div class="grid md:grid-cols-4 gap-6">
-<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">100%</h3><p>Free</p></div>
-<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">0</h3><p>Ads</p></div>
-<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">Offline</h3><p>Reading</p></div>
-<div class="glass p-6 rounded-3xl text-center"><h3 class="text-4xl font-black">Fast</h3><p>Search</p></div>
+.bento { 
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}  
+.bento:hover { 
+    transform: translateY(-6px);
+    border-color: rgba(37, 99, 235, 0.4);
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}  
+</style>  
+</head>  
+<body class="antialiased">  
+<div class="aurora"></div>  
+
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6">  
+<div class="max-w-7xl mx-auto mt-5 glass rounded-2xl px-6 py-4 flex justify-between items-center shadow-2xl">  
+<div class="flex items-center gap-3 group cursor-pointer">  
+<img src="logo.png" class="w-10 h-10 rounded-xl transition-transform group-hover:scale-105">  
+<span class="font-bold text-xl tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">VU Study Mate</span>  
+</div>  
+<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
+class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-[1.02]">
+Download APK
+</a>  
+</div>  
+</nav>  
+
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center pt-24 pb-12 lg:py-0">  
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center w-full">  
+<div class="lg:col-span-7 space-y-6 text-center lg:text-left">  
+<div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-1.5 rounded-full text-xs font-medium tracking-wider text-blue-400 uppercase mx-auto lg:mx-0">
+    <span class="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span>ALL ABOUT VU
+</div>  
+<h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">  
+Everything You Need<br>  
+<span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">For Virtual University</span>  
+</h1>  
+<p class="text-slate-400 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">  
+Handouts, Books, PDF Reader, Video Lectures, LMS Access and Study Tools — all beautifully packed inside one modern premium app.  
+</p>  
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">  
+<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
+class="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 shadow-xl hover:scale-[1.02]">
+<i data-lucide="download" class="w-5 h-5"></i> Download Now
+</a>  
+<a href="#screens" class="glass text-slate-200 hover:bg-white/10 px-8 py-4 rounded-2xl font-bold transition-all text-center">
+Screenshots
+</a>  
+</div>  
+</div>  
+
+<!-- Hero Phone Mockup -->
+<div class="lg:col-span-5 flex justify-center">  
+<div class="phone-shadow relative rounded-[40px] bg-slate-900 p-2.5 max-w-[300px] w-full transition-transform duration-500 hover:rotate-1">  
+<div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-slate-800 rounded-full z-10"></div> <!-- Notch -->
+<div class="overflow-hidden rounded-[32px] bg-slate-950 aspect-[9/19]">
+    <img id="screen" src="1.jpg" class="w-full h-full object-cover transition-all duration-300">  
 </div>
-</section>
+</div>  
+</div>  
+</div>  
+</section>  
 
-<section id="screens" class="max-w-7xl mx-auto px-6 py-20">
-<h2 class="text-5xl font-black text-center mb-12">App Screenshots</h2>
-<div class="grid md:grid-cols-5 gap-4">
-<img src="1.jpg" onclick="show('1.jpg')" class="rounded-3xl cursor-pointer">
-<img src="2.jpg" onclick="show('2.jpg')" class="rounded-3xl cursor-pointer">
-<img src="3.jpg" onclick="show('3.jpg')" class="rounded-3xl cursor-pointer">
-<img src="4.jpg" onclick="show('4.jpg')" class="rounded-3xl cursor-pointer">
-<img src="5.jpg" onclick="show('5.jpg')" class="rounded-3xl cursor-pointer">
+<!-- Stats Section -->
+<section class="max-w-6xl mx-auto px-6 py-12">  
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">  
+<div class="glass p-6 rounded-3xl text-center border-white/5"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">100%</h3><p class="text-slate-400 text-sm mt-1 font-medium">Free of Cost</p></div>  
+<div class="glass p-6 rounded-3xl text-center border-white/5"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">0</h3><p class="text-slate-400 text-sm mt-1 font-medium">No Annoying Ads</p></div>  
+<div class="glass p-6 rounded-3xl text-center border-white/5"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Offline</h3><p class="text-slate-400 text-sm mt-1 font-medium">Reading Mode</p></div>  
+<div class="glass p-6 rounded-3xl text-center border-white/5"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Fast</h3><p class="text-slate-400 text-sm mt-1 font-medium">Instant Search</p></div>  
+</div>  
+</section>  
+
+<!-- Screenshots Section -->
+<section id="screens" class="max-w-7xl mx-auto px-6 py-20">  
+<div class="text-center mb-12 space-y-2">
+    <h2 class="text-4xl font-black tracking-tight sm:text-5xl">App Screenshots</h2>  
+    <p class="text-slate-400">Click on any screenshot to preview it in the interactive live mock frame above.</p>
 </div>
-</section>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">  
+<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-blue-500 transition-all shadow-lg"><img src="1.jpg" onclick="show('1.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-300"></div>  
+<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-blue-500 transition-all shadow-lg"><img src="2.jpg" onclick="show('2.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-300"></div>  
+<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-blue-500 transition-all shadow-lg"><img src="3.jpg" onclick="show('3.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-300"></div>  
+<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-blue-500 transition-all shadow-lg"><img src="4.jpg" onclick="show('4.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-300"></div>  
+<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-blue-500 transition-all shadow-lg"><img src="5.jpg" onclick="show('5.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-300"></div>  
+</div>  
+</section>  
 
-<section class="max-w-7xl mx-auto px-6 py-20">
-<h2 class="text-5xl font-black text-center mb-12">Features</h2>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Offline Library</h3><p class="text-slate-600">Read books anytime.</p></div>
-<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">PDF Reader</h3><p class="text-slate-600">Night mode & bookmarks.</p></div>
-<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Video Lectures</h3><p class="text-slate-600">Quick learning access.</p></div>
-<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">LMS Access</h3><p class="text-slate-600">One tap portal access.</p></div>
-<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Fast Search</h3><p class="text-slate-600">Find subjects instantly.</p></div>
-<div class="glass p-8 rounded-3xl bento"><h3 class="text-2xl font-bold mb-3">Study Notes</h3><p class="text-slate-600">Organize your learning.</p></div>
+<!-- Features Bento Grid -->
+<section class="max-w-7xl mx-auto px-6 py-20">  
+<div class="text-center mb-16">
+    <h2 class="text-4xl font-black tracking-tight sm:text-5xl">Powerful Features</h2>  
 </div>
-</section>
+<div class="grid md:grid-cols-3 gap-6">  
+<div class="glass p-8 rounded-3xl bento flex flex-col justify-between min-h-[180px]">
+    <div class="bg-blue-500/10 text-blue-400 p-3 rounded-2xl w-fit"><i data-lucide="book-open"></i></div>
+    <div><h3 class="text-xl font-bold mb-2 text-white">Offline Library</h3><p class="text-slate-400 text-sm leading-relaxed">Read your university books and notes anytime, anywhere without internet connection.</p></div>
+</div>  
+<div class="glass p-8 rounded-3xl bento flex flex-col justify-between min-h-[180px]">
+    <div class="bg-cyan-500/10 text-cyan-400 p-3 rounded-2xl w-fit"><i data-lucide="file-text"></i></div>
+    <div><h3 class="text-xl font-bold mb-2 text-white">Advanced PDF Reader</h3><p class="text-slate-400 text-sm leading-relaxed">Enhanced reading comfort with native night mode support, persistent bookmarks, and smart scroll.</p></div>
+</div>  
+<div class="glass p-8 rounded-3xl bento flex flex-col justify-between min-h-[180px]">
+    <div class="bg-indigo-500/10 text-indigo-400 p-3 rounded-2xl w-fit"><i data-lucide="video"></i></div>
+    <div><h3 class="text-xl font-bold mb-2 text-white">Video Lectures</h3><p class="text-slate-400 text-sm leading-relaxed">Instantly stream and organize your video lectures inside a distraction-free environment.</p></div>
+</div>  
+<div class="glass p-8 rounded-3xl bento flex flex-col justify-between min-h-[180px]">
+    <div class="bg-purple-500/10 text-purple-400 p-3 rounded-2xl w-fit"><i data-lucide="monitor"></i></div>
+    <div><h3 class="text-xl font-bold mb-2 text-white">LMS Access</h3><p class="text-slate-400 text-sm leading-relaxed">One-tap direct secure portal access to instantly track tasks, grades, and schedules.</p></div>
+</div>  
+<div class="glass p-8 rounded-3xl bento flex flex-col justify-between min-h-[180px]">
+    <div class="bg-emerald-500/10 text-emerald-400 p-3 rounded-2xl w-fit"><i data-lucide="search"></i></div>
+    <div><h3 class="text-xl font-bold mb-2 text-white">Fast Intelligent Search</h3><p class="text-slate-400 text-sm leading-relaxed">Lightning-fast indexed search lets you pinpoint subjects and course materials instantly.</p></div>
+</div>  
+<div class="glass p-8 rounded-3xl bento flex flex-col justify-between min-h-[180px]">
+    <div class="bg-pink-500/10 text-pink-400 p-3 rounded-2xl w-fit"><i data-lucide="edit-3"></i></div>
+    <div><h3 class="text-xl font-bold mb-2 text-white">Personal Study Notes</h3><p class="text-slate-400 text-sm leading-relaxed">Create, manage, and smartly organize digital study pointers to fuel exam prep efficiency.</p></div>
+</div>  
+</div>  
+</section>  
 
-<section class="max-w-5xl mx-auto px-6 py-24">
-<div class="glass rounded-[40px] p-12 text-center">
-<h2 class="text-5xl font-black">Ready To Boost Your Studies?</h2>
-<p class="text-slate-600 mt-4">Download VU Study Mate and keep everything in one place.</p>
-<a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"
-class="inline-block mt-8 bg-white border border-blue-200 text-blue-700 px-10 py-5 rounded-2xl font-bold">Download APK</a>
+<!-- CTA Section -->
+<section class="max-w-5xl mx-auto px-6 py-24">  
+<div class="glass rounded-[40px] p-12 text-center relative overflow-hidden border border-white/10">  
+<div class="absolute -top-24 -left-24 w-72 h-72 bg-blue-500/20 rounded-full blur-[80px]"></div>
+<div class="absolute -bottom-24 -right-24 w-72 h-72 bg-cyan-500/20 rounded-full blur-[80px]"></div>
+<div class="relative z-10 space-y-4">
+    <h2 class="text-4xl sm:text-5xl font-black tracking-tight">Ready To Boost Your Studies?</h2>  
+    <p class="text-slate-400 max-w-lg mx-auto text-base sm:text-lg">Download VU Study Mate now and orchestrate your complete learning dashboard from a single platform.</p>  
+    <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
+    class="inline-flex bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-10 py-4 rounded-2xl font-bold mt-6 transition-all shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 hover:scale-[1.02] items-center gap-2">
+    <i data-lucide="download" class="w-5 h-5"></i> Download APK Now
+    </a>  
 </div>
-</section>
+</div>  
+</section>  
 
-<footer class="py-12 text-center text-slate-500">
-<p>Designed & Developed by MUJTABA</p>
-<p class="mt-2">ALL ABOUT VU</p>
-</footer>
+<!-- Footer -->
+<footer class="py-12 text-center text-slate-500 border-t border-white/5 space-y-1">  
+<p class="text-sm">Designed & Developed by <span class="font-semibold text-slate-300">MUJTABA</span></p>  
+<p class="text-xs uppercase tracking-widest text-slate-600">ALL ABOUT VU</p>  
+</footer>  
 
-<script>
-function show(img){document.getElementById('screen').src=img;}
-</script>
-</body>
+<script>  
+function show(img){
+    const mainScreen = document.getElementById('screen');
+    mainScreen.style.opacity = '0';
+    setTimeout(() => {
+        mainScreen.src = img;
+        mainScreen.style.opacity = '1';
+    }, 150);
+}  
+// Initialize Lucide Icons
+lucide.createIcons();
+</script>  
+</body>  
 </html>
