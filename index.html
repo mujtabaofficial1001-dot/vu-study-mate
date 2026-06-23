@@ -1,461 +1,557 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VU Study Mate · reimagined 2026</title>
-  <!-- Tailwind + Google Fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f9fafc;
-      color: #0b1221;
-      overflow-x: hidden;
-    }
-
-    .font-display { font-family: 'Outfit', sans-serif; }
-
-    /* Soft light orbs – reimagined */
-    .bg-stage {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(130px);
-      opacity: 0.3;
-      animation: drift 28s ease-in-out infinite alternate;
-    }
-    .orb-1 { width: 700px; height: 700px; background: #d9d2fc; top: -15%; left: -10%; }
-    .orb-2 { width: 550px; height: 550px; background: #c3e2fc; bottom: -8%; right: -8%; animation-delay: 6s; }
-    .orb-3 { width: 400px; height: 400px; background: #fcd9e8; top: 45%; left: 50%; transform: translateX(-50%); animation-delay: 12s; opacity: 0.2; }
-
-    @keyframes drift {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, -60px) scale(1.1); }
-    }
-
-    /* Glass — light, crisp, modern */
-    .glass {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(24px) saturate(200%);
-      -webkit-backdrop-filter: blur(24px) saturate(200%);
-      border: 1px solid rgba(255,255,255,0.9);
-      box-shadow: 0 12px 40px -12px rgba(16, 24, 40, 0.04), inset 0 1px 0 rgba(255,255,255,1);
-    }
-    .glass-strong {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(30px) saturate(200%);
-      -webkit-backdrop-filter: blur(30px) saturate(200%);
-      border: 1px solid rgba(255,255,255,1);
-      box-shadow: 0 20px 60px -16px rgba(16, 24, 40, 0.06);
-    }
-
-    /* Buttons — fresh gradient */
-    .btn-primary {
-      background: linear-gradient(145deg, #6366f1, #8b5cf6);
-      color: white;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 24px -6px rgba(99, 102, 241, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 32px -10px rgba(99, 102, 241, 0.4);
-    }
-    .btn-outline {
-      background: transparent;
-      color: #0b1221;
-      border: 1px solid #dce1ed;
-      transition: all 0.2s ease;
-    }
-    .btn-outline:hover {
-      border-color: #8b5cf6;
-      background: rgba(139, 92, 246, 0.03);
-      transform: translateY(-3px);
-    }
-
-    /* Phone mock – refined */
-    .phone-mock {
-      border-radius: 48px;
-      padding: 8px;
-      background: linear-gradient(145deg, #ffffff, #e9edf5);
-      box-shadow: 0 40px 80px -20px rgba(99, 102, 241, 0.15), 0 20px 40px -20px rgba(16,24,40,0.08), inset 0 2px 4px rgba(255,255,255,1);
-      border: 1px solid rgba(255,255,255,1);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .phone-mock:hover { transform: translateY(-6px) scale(1.01); }
-    .phone-screen {
-      border-radius: 40px;
-      overflow: hidden;
-      background: #f1f4fa;
-      box-shadow: inset 0 0 0 1.5px rgba(15, 23, 42, 0.04);
-    }
-    .phone-notch {
-      position: absolute;
-      top: 16px; left: 50%;
-      transform: translateX(-50%);
-      width: 80px; height: 22px;
-      background: #111827;
-      border-radius: 30px;
-      z-index: 20;
-    }
-
-    /* Bento cards — fresh */
-    .bento {
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.9);
-      box-shadow: 0 4px 16px -4px rgba(0,0,0,0.02);
-    }
-    .bento:hover {
-      transform: translateY(-8px);
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 28px 48px -16px rgba(99, 102, 241, 0.12);
-      border-color: #d9d2fc;
-    }
-    .bento:hover .icon-wrap {
-      transform: scale(1.05) rotate(-2deg);
-    }
-    .icon-wrap { transition: transform 0.3s ease; }
-
-    /* Screenshot carousel */
-    .shot {
-      border: 2px solid transparent;
-      transition: all 0.3s ease;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px -4px rgba(0,0,0,0.02);
-    }
-    .shot:hover {
-      border-color: #8b5cf6;
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px -12px rgba(139, 92, 246, 0.12);
-    }
-    .shot.active {
-      border-color: #6366f1;
-      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-    }
-
-    /* reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* tag */
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #6366f1;
-      padding: 0.4rem 1.2rem;
-      border-radius: 100px;
-      background: #eeefff;
-      border: 1px solid #dfe2fd;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .faq-item { border-bottom: 1px solid #e9edf5; }
-    .faq-q { cursor: pointer; transition: color 0.2s; }
-    .faq-q:hover { color: #6366f1; }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
-    .faq-item.active .faq-a { max-height: 200px; padding-bottom: 1.2rem; }
-    .faq-icon { transition: transform 0.3s ease; }
-    .faq-item.active .faq-icon { transform: rotate(45deg); }
-
-    /* marquee */
-    .marquee-track {
-      display: flex;
-      gap: 3rem;
-      animation: scroll 32s linear infinite;
-      white-space: nowrap;
-    }
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-  </style>
-</head>
-<body>
-
-<div class="bg-stage">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
-
-<!-- NAV -->
-<nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6">
-  <div class="max-w-7xl mx-auto mt-5 glass-strong rounded-2xl px-6 py-3 flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 shadow-md flex items-center justify-center text-white font-bold text-sm">V</div>
-      <span class="font-display font-bold text-xl tracking-tight text-slate-800">VU <span class="text-indigo-600">Mate</span></span>
-    </div>
-    <a href="#" class="btn-primary px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2">
-      <i data-lucide="download" class="w-4 h-4"></i> Download
-    </a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="min-h-screen flex items-center pt-40 sm:pt-44 lg:pt-32 pb-20">
-  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center w-full">
-    <div class="lg:col-span-6 space-y-8 text-center lg:text-left">
-      <div class="tag mx-auto lg:mx-0">✨ 2026 · VU ecosystem</div>
-      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-slate-900">
-        Your study<br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">command center</span>
-      </h1>
-      <p class="text-slate-600 text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed">
-        Handouts, books, PDF reader, LMS access — all wrapped in a beautifully crafted, light, and modern companion.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-        <a href="#" class="btn-primary px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-base">
-          <i data-lucide="download" class="w-5 h-5"></i> Download APK
-        </a>
-        <a href="#screens" class="btn-outline px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-base">
-          <i data-lucide="eye" class="w-5 h-5"></i> Preview
-        </a>
-      </div>
-      <div class="flex items-center gap-6 justify-center lg:justify-start pt-3 text-slate-500 text-sm font-medium">
-        <span class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> 100% safe</span>
-        <span class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> blazing fast</span>
-        <span class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-indigo-500"></i> VU focused</span>
-      </div>
-    </div>
-
-    <div class="lg:col-span-6 flex justify-center relative">
-      <div class="absolute top-6 -left-4 z-10 glass-strong px-4 py-2 rounded-xl text-xs font-bold text-slate-700 flex items-center gap-2 hidden md:flex shadow-sm">
-        <i data-lucide="wifi-off" class="w-4 h-4 text-indigo-600"></i> offline ready
-      </div>
-      <div class="absolute bottom-16 -right-4 z-10 glass-strong px-4 py-2 rounded-xl text-xs font-bold text-slate-700 flex items-center gap-2 hidden md:flex shadow-sm">
-        <i data-lucide="sparkle" class="w-4 h-4 text-amber-500"></i> premium UI
-      </div>
-
-      <div class="phone-mock max-w-[300px] w-full relative">
-        <div class="phone-notch"></div>
-        <div class="phone-screen aspect-[9/19] relative">
-          <img id="screen" src="1.jpg" class="w-full h-full object-cover transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="py-5 border-y border-slate-200/50 overflow-hidden bg-white/30 backdrop-blur-sm">
-  <div class="marquee-track font-display text-lg font-bold text-slate-400/80">
-    <span class="flex items-center gap-3">✦ offline library</span>
-    <span class="flex items-center gap-3">✦ pdf reader</span>
-    <span class="flex items-center gap-3">✦ lms access</span>
-    <span class="flex items-center gap-3">✦ instant search</span>
-    <span class="flex items-center gap-3">✦ study notes</span>
-    <span class="flex items-center gap-3">✦ offline library</span>
-    <span class="flex items-center gap-3">✦ pdf reader</span>
-    <span class="flex items-center gap-3">✦ lms access</span>
-    <span class="flex items-center gap-3">✦ instant search</span>
-    <span class="flex items-center gap-3">✦ study notes</span>
-  </div>
-</div>
-
-<!-- STATS -->
-<section class="max-w-6xl mx-auto px-6 py-16">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-    <div class="glass p-6 rounded-3xl text-center">
-      <h3 class="font-display text-4xl font-bold text-indigo-600">∞</h3>
-      <p class="text-slate-600 text-sm mt-1 font-semibold">100% free</p>
-    </div>
-    <div class="glass p-6 rounded-3xl text-center">
-      <h3 class="font-display text-4xl font-bold text-pink-500">0</h3>
-      <p class="text-slate-600 text-sm mt-1 font-semibold">zero ads</p>
-    </div>
-    <div class="glass p-6 rounded-3xl text-center">
-      <h3 class="font-display text-4xl font-bold text-emerald-500">📖</h3>
-      <p class="text-slate-600 text-sm mt-1 font-semibold">offline mode</p>
-    </div>
-    <div class="glass p-6 rounded-3xl text-center">
-      <h3 class="font-display text-4xl font-bold text-amber-500">⚡</h3>
-      <p class="text-slate-600 text-sm mt-1 font-semibold">instant search</p>
-    </div>
-  </div>
-</section>
-
-<!-- MULTI PHONE SHOWCASE -->
-<section class="max-w-7xl mx-auto px-6 py-16 relative">
-  <div class="grid lg:grid-cols-2 gap-12 items-center">
-    <div class="space-y-6 order-2 lg:order-1">
-      <div class="tag">01 · crafted experience</div>
-      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Designed for <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">modern minds</span></h2>
-      <p class="text-slate-600 text-lg leading-relaxed">Every pixel, every gesture — built for distraction-free reading and effortless navigation.</p>
-      <ul class="space-y-3 pt-2">
-        <li class="flex items-center gap-3 text-slate-700 font-medium"><span class="bg-indigo-50 text-indigo-600 p-2 rounded-lg"><i data-lucide="check" class="w-4 h-4"></i></span> zero clutter reading</li>
-        <li class="flex items-center gap-3 text-slate-700 font-medium"><span class="bg-purple-50 text-purple-600 p-2 rounded-lg"><i data-lucide="check" class="w-4 h-4"></i></span> gesture navigation</li>
-        <li class="flex items-center gap-3 text-slate-700 font-medium"><span class="bg-pink-50 text-pink-600 p-2 rounded-lg"><i data-lucide="check" class="w-4 h-4"></i></span> dark mode ready</li>
-      </ul>
-    </div>
-    <div class="relative h-[480px] hidden md:block order-1 lg:order-2">
-      <div class="phone-mock absolute top-8 left-0 w-[170px] z-10 opacity-80 rotate-[-6deg]">
-        <div class="phone-notch" style="width:54px; height:14px; top:10px;"></div>
-        <div class="phone-screen aspect-[9/19]"><img src="3.jpg" class="w-full h-full object-cover"/></div>
-      </div>
-      <div class="phone-mock absolute top-8 right-0 w-[170px] z-10 opacity-80 rotate-[6deg]">
-        <div class="phone-notch" style="width:54px; height:14px; top:10px;"></div>
-        <div class="phone-screen aspect-[9/19]"><img src="4.jpg" class="w-full h-full object-cover"/></div>
-      </div>
-      <div class="phone-mock absolute top-0 left-1/2 -translate-x-1/2 w-[210px] z-20 shadow-2xl">
-        <div class="phone-notch" style="width:64px; height:16px; top:12px;"></div>
-        <div class="phone-screen aspect-[9/19]"><img src="2.jpg" class="w-full h-full object-cover"/></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SCREENSHOTS -->
-<section id="screens" class="max-w-7xl mx-auto px-6 py-20">
-  <div class="text-center mb-14 space-y-3">
-    <div class="tag mx-auto">02 · gallery</div>
-    <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">App <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">screenshots</span></h2>
-    <p class="text-slate-500 max-w-xl mx-auto">Tap any thumbnail to preview in the live phone above.</p>
-  </div>
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-    <div class="shot cursor-pointer" onclick="selectShot(this)"><img src="1.jpg" onclick="show('1.jpg')" class="w-full h-auto"/></div>
-    <div class="shot cursor-pointer" onclick="selectShot(this)"><img src="2.jpg" onclick="show('2.jpg')" class="w-full h-auto"/></div>
-    <div class="shot cursor-pointer" onclick="selectShot(this)"><img src="3.jpg" onclick="show('3.jpg')" class="w-full h-auto"/></div>
-    <div class="shot cursor-pointer" onclick="selectShot(this)"><img src="4.jpg" onclick="show('4.jpg')" class="w-full h-auto"/></div>
-    <div class="shot cursor-pointer" onclick="selectShot(this)"><img src="5.jpg" onclick="show('5.jpg')" class="w-full h-auto"/></div>
-    <div class="shot cursor-pointer" onclick="selectShot(this)"><img src="6.jpg" onclick="show('6.jpg')" class="w-full h-auto"/></div>
-  </div>
-</section>
-
-<!-- BENTO FEATURES -->
-<section class="max-w-7xl mx-auto px-6 py-16">
-  <div class="text-center mb-16 space-y-3">
-    <div class="tag mx-auto">03 · capabilities</div>
-    <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Everything you <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">need</span></h2>
-  </div>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="bento reveal p-8 rounded-3xl flex flex-col justify-between min-h-[210px]">
-      <div class="flex items-start justify-between"><div class="icon-wrap bg-indigo-50 text-indigo-600 p-3 rounded-2xl"><i data-lucide="book-open"></i></div><span class="font-display text-2xl text-slate-200 font-bold">01</span></div>
-      <div class="mt-6"><h3 class="font-display text-xl font-bold mb-2">Offline library</h3><p class="text-slate-600 text-sm leading-relaxed">All your books, handouts — available anytime, anywhere.</p></div>
-    </div>
-    <div class="bento reveal p-8 rounded-3xl flex flex-col justify-between min-h-[210px]">
-      <div class="flex items-start justify-between"><div class="icon-wrap bg-sky-50 text-sky-600 p-3 rounded-2xl"><i data-lucide="file-text"></i></div><span class="font-display text-2xl text-slate-200 font-bold">02</span></div>
-      <div class="mt-6"><h3 class="font-display text-xl font-bold mb-2">PDF reader pro</h3><p class="text-slate-600 text-sm leading-relaxed">Night mode, bookmarks, smooth scrolling — built for reading.</p></div>
-    </div>
-    <div class="bento reveal p-8 rounded-3xl flex flex-col justify-between min-h-[210px]">
-      <div class="flex items-start justify-between"><div class="icon-wrap bg-purple-50 text-purple-600 p-3 rounded-2xl"><i data-lucide="monitor"></i></div><span class="font-display text-2xl text-slate-200 font-bold">03</span></div>
-      <div class="mt-6"><h3 class="font-display text-xl font-bold mb-2">LMS gateway</h3><p class="text-slate-600 text-sm leading-relaxed">One-tap access to tasks, grades, and your schedule.</p></div>
-    </div>
-    <div class="bento reveal p-8 rounded-3xl flex flex-col justify-between min-h-[210px]">
-      <div class="flex items-start justify-between"><div class="icon-wrap bg-emerald-50 text-emerald-600 p-3 rounded-2xl"><i data-lucide="search"></i></div><span class="font-display text-2xl text-slate-200 font-bold">04</span></div>
-      <div class="mt-6"><h3 class="font-display text-xl font-bold mb-2">Instant search</h3><p class="text-slate-600 text-sm leading-relaxed">Find any topic, subject, or note in milliseconds.</p></div>
-    </div>
-    <div class="bento reveal p-8 rounded-3xl flex flex-col justify-between min-h-[210px]">
-      <div class="flex items-start justify-between"><div class="icon-wrap bg-pink-50 text-pink-600 p-3 rounded-2xl"><i data-lucide="edit-3"></i></div><span class="font-display text-2xl text-slate-200 font-bold">05</span></div>
-      <div class="mt-6"><h3 class="font-display text-xl font-bold mb-2">Study notes</h3><p class="text-slate-600 text-sm leading-relaxed">Organize your personal pointers and summaries.</p></div>
-    </div>
-    <div class="bento reveal p-8 rounded-3xl flex flex-col justify-between min-h-[210px] bg-slate-900 border-none text-white relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-36 h-36 bg-indigo-500 rounded-full blur-3xl opacity-30"></div>
-      <div class="icon-wrap bg-white/10 text-white p-3 rounded-2xl relative z-10"><i data-lucide="rocket"></i></div>
-      <div class="mt-6 relative z-10"><h3 class="font-display text-xl font-bold mb-2">And more</h3><p class="text-slate-400 text-sm leading-relaxed mb-4">Explore the full VU experience.</p><a href="#" class="inline-flex items-center gap-2 text-indigo-300 font-bold text-sm hover:gap-3 transition-all">Get app <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="max-w-6xl mx-auto px-6 py-20">
-  <div class="text-center mb-16 space-y-3"><div class="tag mx-auto">04 · workflow</div><h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Simple steps</h2></div>
-  <div class="grid md:grid-cols-3 gap-8 relative">
-    <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 border-t-2 border-dashed border-slate-300/60"></div>
-    <div class="text-center relative z-10"><div class="w-16 h-16 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-100 mb-5"><i data-lucide="download" class="w-7 h-7 text-indigo-600"></i></div><h3 class="font-display text-xl font-bold mb-2">Download</h3><p class="text-slate-500 text-sm">Get the latest APK from the link above.</p></div>
-    <div class="text-center relative z-10"><div class="w-16 h-16 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-100 mb-5"><i data-lucide="smartphone" class="w-7 h-7 text-purple-600"></i></div><h3 class="font-display text-xl font-bold mb-2">Install</h3><p class="text-slate-500 text-sm">Enable unknown sources, then launch.</p></div>
-    <div class="text-center relative z-10"><div class="w-16 h-16 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-100 mb-5"><i data-lucide="graduation-cap" class="w-7 h-7 text-pink-600"></i></div><h3 class="font-display text-xl font-bold mb-2">Study</h3><p class="text-slate-500 text-sm">Access handouts, LMS, books — all in one place.</p></div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="max-w-7xl mx-auto px-6 py-20">
-  <div class="text-center mb-16 space-y-3"><div class="tag mx-auto">05 · loved by students</div><h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Real voices</h2></div>
-  <div class="grid md:grid-cols-3 gap-6">
-    <div class="glass p-8 rounded-3xl"><div class="flex gap-1 text-amber-400 mb-4"><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i></div><p class="text-slate-700 text-sm leading-relaxed mb-6">“Finally, all VU handouts in one beautiful app. Offline reader works perfectly during commutes.”</p><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400"></div><div><h4 class="font-bold text-sm">Ali Khan</h4><p class="text-xs text-slate-500">BSCS</p></div></div></div>
-    <div class="glass p-8 rounded-3xl"><div class="flex gap-1 text-amber-400 mb-4"><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i></div><p class="text-slate-700 text-sm leading-relaxed mb-6">“Premium feel, zero ads, and insanely smooth. Feels like a paid app — but it’s free.”</p><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-rose-400"></div><div><h4 class="font-bold text-sm">Sara Ahmed</h4><p class="text-xs text-slate-500">Masters IT</p></div></div></div>
-    <div class="glass p-8 rounded-3xl"><div class="flex gap-1 text-amber-400 mb-4"><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i></div><p class="text-slate-700 text-sm leading-relaxed mb-6">“LMS access from the app is a game-changer. No more repeated logins — just one tap.”</p><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400"></div><div><h4 class="font-bold text-sm">Bilal Mughal</h4><p class="text-xs text-slate-500">BBA</p></div></div></div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="max-w-3xl mx-auto px-6 py-20">
-  <div class="text-center mb-16 space-y-3"><div class="tag mx-auto">06 · faq</div><h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Questions?</h2></div>
-  <div class="space-y-4">
-    <div class="faq-item glass rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(this)"><div class="faq-q flex justify-between items-center"><span class="font-display font-bold text-lg text-slate-900">Is VU Study Mate free?</span><i data-lucide="plus" class="faq-icon w-5 h-5 text-indigo-600"></i></div><div class="faq-a text-slate-600 text-sm pt-0">Yes, 100% free with no ads. Forever.</div></div>
-    <div class="faq-item glass rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(this)"><div class="faq-q flex justify-between items-center"><span class="font-display font-bold text-lg text-slate-900">Can I read offline?</span><i data-lucide="plus" class="faq-icon w-5 h-5 text-indigo-600"></i></div><div class="faq-a text-slate-600 text-sm pt-0">Absolutely. Once you download content, it stays with you offline.</div></div>
-    <div class="faq-item glass rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(this)"><div class="faq-q flex justify-between items-center"><span class="font-display font-bold text-lg text-slate-900">Is LMS login secure?</span><i data-lucide="plus" class="faq-icon w-5 h-5 text-indigo-600"></i></div><div class="faq-a text-slate-600 text-sm pt-0">Yes. Credentials are never stored externally — only a secure gateway.</div></div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="max-w-5xl mx-auto px-6 py-24">
-  <div class="glass-strong rounded-[40px] p-12 sm:p-16 text-center relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-72 h-72 bg-indigo-200 rounded-full blur-3xl opacity-50"></div>
-    <div class="absolute bottom-0 left-0 w-72 h-72 bg-pink-200 rounded-full blur-3xl opacity-50"></div>
-    <div class="relative z-10 space-y-5">
-      <div class="tag mx-auto">07 · get started</div>
-      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">Ready to <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">level up?</span></h2>
-      <p class="text-slate-600 max-w-lg mx-auto text-base sm:text-lg">Download VU Study Mate and transform your learning experience.</p>
-      <a href="#" class="btn-primary inline-flex px-10 py-4 rounded-2xl font-bold mt-4 items-center gap-2 text-base"><i data-lucide="download" class="w-5 h-5"></i> Download APK</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="py-12 text-center border-t border-slate-200/40 space-y-2">
-  <div class="flex items-center justify-center gap-2 mb-2"><div class="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-xs">V</div><span class="font-display font-bold text-slate-800">VU Study Mate</span></div>
-  <p class="text-sm text-slate-500">Designed with <span class="text-pink-500">♥</span> by <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">MUJTABA</span></p>
-  <p class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold">all about VU</p>
-</footer>
-
+<html lang="en" class="scroll-smooth">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>VU Study Mate | Premium Learning Hub</title>  
+<script src="https://cdn.tailwindcss.com"></script>  
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  
+<script src="https://unpkg.com/lucide@latest"></script>
 <script>
-  function show(img) {
-    const screen = document.getElementById('screen');
-    screen.classList.remove('scale-100', 'opacity-100');
-    screen.classList.add('scale-95', 'opacity-0');
-    setTimeout(() => {
-      screen.src = img;
-      screen.classList.remove('scale-95', 'opacity-0');
-      screen.classList.add('scale-100', 'opacity-100');
-    }, 180);
-  }
-  function selectShot(el) {
-    document.querySelectorAll('.shot').forEach(s => s.classList.remove('active'));
-    el.classList.add('active');
-  }
-  function toggleFaq(el) { el.classList.toggle('active'); }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  lucide.createIcons();
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    display: ['Outfit', 'sans-serif'],
+                }
+            }
+        }
+    }
 </script>
-</body>
+<style>  
+body {
+    background: radial-gradient(at 0% 0%, #f8fafc 0px, transparent 50%), 
+                radial-gradient(at 50% 0%, #eff6ff 0px, transparent 50%), 
+                radial-gradient(at 100% 100%, #f5f3ff 0px, transparent 50%), 
+                #fafafa;
+    color: #0f172a; 
+    overflow-x: hidden;
+}  
+
+/* Premium Soft Glassmorphism */
+.premium-blur {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.premium-blur-strong {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Luxury Card Shadows & Interactions */
+.card-premium {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.03);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-premium:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 30px 60px -15px rgba(99, 102, 241, 0.12);
+    border-color: rgba(165, 180, 252, 0.5);
+}
+
+/* Custom Interactive App Frame */
+.phone-container {
+    border: 12px solid #0f172a;
+    border-radius: 44px;
+    box-shadow: 0 30px 100px -15px rgba(15, 23, 42, 0.25);
+    background: #0f172a;
+}
+.dynamic-island {
+    width: 95px;
+    height: 28px;
+    background: #0f172a;
+    border-radius: 20px;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+}
+
+/* Text Shimmer Effect */
+.shimmer-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 30%, #8b5cf6 60%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shine 8s linear infinite;
+}
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+/* Smooth Scrolling Line Indicators */
+.active-dot {
+    width: 24px !important;
+    background-color: #6366f1 !important;
+    border-radius: 999px;
+}
+
+/* FAQ State Controller */
+.faq-trigger:checked ~ .faq-content {
+    max-height: 500px;
+    padding-top: 1rem;
+    opacity: 1;
+}
+.faq-trigger:checked ~ .faq-header .faq-icon {
+    transform: rotate(180deg);
+    color: #6366f1;
+}
+
+/* Decorative grid pattern */
+.bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+}
+</style>  
+</head>  
+<body class="antialiased selection:bg-indigo-100 selection:text-indigo-900">  
+
+<!-- Decorative Grid Background -->
+<div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+
+<!-- NAVIGATION BAR -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 pt-6">  
+    <div class="max-w-7xl mx-auto premium-blur-strong rounded-2xl px-6 py-4 flex justify-between items-center border border-slate-200/50 shadow-sm">  
+        <div class="flex items-center gap-3 cursor-pointer group">  
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center shadow-md shadow-indigo-200">
+                <i data-lucide="graduation-cap" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="font-display font-bold text-xl tracking-tight text-slate-900">VU Study<span class="text-indigo-600">Mate</span></span>  
+        </div>  
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+            <a href="#features" class="hover:text-indigo-600 transition-colors">Features</a>
+            <a href="#showroom" class="hover:text-indigo-600 transition-colors">Interface Experience</a>
+            <a href="#workflow" class="hover:text-indigo-600 transition-colors">Workflow</a>
+            <a href="#faq" class="hover:text-indigo-600 transition-colors">FAQs</a>
+        </div>
+        <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
+           class="bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm px-5 py-2.5 rounded-xl transition-all shadow-sm flex items-center gap-2 group">
+            <i data-lucide="download" class="w-4 h-4 text-slate-400 group-hover:text-white transition-colors"></i> Download App
+        </a>  
+    </div>  
+</nav>  
+
+<!-- HERO HEROICS -->
+<section class="relative min-h-screen flex items-center pt-32 pb-20 lg:py-0 z-10">  
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center w-full">  
+        
+        <!-- Hero Copy -->
+        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">  
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 font-display text-xs font-bold tracking-wide uppercase">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 2026 Academic Ecosystem
+            </div>  
+            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] text-slate-900">  
+                The intelligent hub for <span class="shimmer-text">Virtual University</span> students.
+            </h1>  
+            <p class="text-slate-500 text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">  
+                Seamlessly organize handouts, track grades with secure LMS portals, and review digital coursework within an intuitive workspace designed from scratch.
+            </p>  
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">  
+                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
+                   class="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white px-8 py-4 rounded-2xl font-semibold shadow-xl shadow-indigo-200 transition-all text-center flex items-center justify-center gap-3 group">
+                    <i data-lucide="download" class="w-5 h-5"></i> Download Latest APK
+                </a>  
+                <a href="#showroom" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 px-8 py-4 rounded-2xl font-semibold transition-all text-center flex items-center justify-center gap-2">
+                    Explore Interface
+                </a>  
+            </div>  
+            <div class="flex items-center gap-8 justify-center lg:justify-start pt-6 text-slate-400 text-xs font-semibold tracking-wider uppercase">
+                <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-indigo-500"></i> Open Source Secure</div>
+                <div class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4 text-indigo-500"></i> Zero Trackers</div>
+                <div class="flex items-center gap-2"><i data-lucide="feather" class="w-4 h-4 text-indigo-500"></i> Light & Fluid</div>
+            </div>
+        </div>  
+
+        <!-- Modern Dynamic Mockup Framework -->
+        <div class="lg:col-span-5 flex justify-center relative">  
+            <!-- Abstract Background Ambient Glow behind phone -->
+            <div class="absolute w-72 h-72 bg-gradient-to-tr from-indigo-300 to-purple-300 rounded-full filter blur-[80px] opacity-40 -z-10 animate-pulse"></div>
+            
+            <!-- Side Card Floating Snippet 1 -->
+            <div class="absolute -left-6 top-1/4 premium-blur p-4 rounded-2xl border border-slate-200 shadow-xl z-30 hidden xl:flex items-center gap-3 transform -rotate-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
+                <div>
+                    <p class="text-xs font-bold text-slate-800">LMS Direct Gateway</p>
+                    <p class="text-[10px] text-slate-400 font-medium">Encrypted credentials check</p>
+                </div>
+            </div>
+
+            <!-- Side Card Floating Snippet 2 -->
+            <div class="absolute -right-12 bottom-1/4 premium-blur p-4 rounded-2xl border border-slate-200 shadow-xl z-30 hidden xl:flex items-center gap-3 transform rotate-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+                <div>
+                    <p class="text-xs font-bold text-slate-800">Offline Modules</p>
+                    <p class="text-[10px] text-slate-400 font-medium">All Handouts Synced</p>
+                </div>
+            </div>
+
+            <!-- Main Interactive Phone Module -->
+            <div class="phone-container w-full max-w-[310px] relative overflow-hidden aspect-[9/19.5]">  
+                <div class="dynamic-island absolute"></div>
+                <div class="absolute inset-0 bg-slate-50">
+                    <img id="hero-phone-screen" src="1.jpg" class="w-full h-full object-cover transition-all duration-700 ease-in-out scale-100 opacity-100">  
+                </div>
+            </div>  
+        </div>  
+    </div>  
+</section>  
+
+<!-- METRICS BANNER -->
+<section class="max-w-7xl mx-auto px-6 py-12 relative z-10">  
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 bg-white/60 backdrop-blur-md border border-slate-200/60 rounded-[32px] p-8">  
+        <div class="p-4 text-center lg:text-left border-r border-slate-100 last:border-none">
+            <h3 class="font-display text-3xl sm:text-4xl font-bold text-slate-900">0%</h3>
+            <p class="text-slate-500 text-xs font-medium uppercase tracking-wider mt-1">Intrusive Ads or Payload</p>
+        </div>  
+        <div class="p-4 text-center lg:text-left border-r border-slate-100 last:border-none">
+            <h3 class="font-display text-3xl sm:text-4xl font-bold text-indigo-600">Local</h3>
+            <p class="text-slate-500 text-xs font-medium uppercase tracking-wider mt-1">Native Storage Speed</p>
+        </div>  
+        <div class="p-4 text-center lg:text-left border-r border-slate-100 last:border-none">
+            <h3 class="font-display text-3xl sm:text-4xl font-bold text-slate-900">Direct</h3>
+            <p class="text-slate-500 text-xs font-medium uppercase tracking-wider mt-1">LMS Server Portal Access</p>
+        </div>  
+        <div class="p-4 text-center lg:text-left last:border-none">
+            <h3 class="font-display text-3xl sm:text-4xl font-bold text-indigo-600">100%</h3>
+            <p class="text-slate-500 text-xs font-medium uppercase tracking-wider mt-1">Academic Focused Architecture</p>
+        </div>  
+    </div>  
+</section>  
+
+<!-- ASYMMETRIC BENTO GRID FEATURE ARCHITECTURE -->
+<section id="features" class="max-w-7xl mx-auto px-6 py-24 relative z-10">  
+    <div class="max-w-2xl mb-20 space-y-4">
+        <div class="text-xs font-bold text-indigo-600 uppercase tracking-widest font-display">Engineered Architecture</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+            A comprehensive terminal for modern university modules.
+        </h2>  
+    </div>
+
+    <!-- Asymmetric Layout Matrix -->
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6">  
+
+        <!-- Feature 1: Large Asymmetric Card -->
+        <div class="card-premium md:col-span-4 p-8 sm:p-10 rounded-[32px] flex flex-col justify-between min-h-[340px] relative overflow-hidden group">
+            <div class="max-w-md space-y-4">
+                <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-slate-900">Offline Course Library Matrix</h3>
+                <p class="text-slate-500 text-sm font-light leading-relaxed">
+                    Download and cache full Virtual University text resources and official handouts once. Access modules mid-transit or off-the-grid instantly without relying on active connections.
+                </p>
+            </div>
+            <div class="pt-8 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
+                <span>LOCAL CACHE ALGORITHMS</span>
+                <span class="text-indigo-600 font-bold group-hover:translate-x-1 transition-transform flex items-center gap-1">Fast Processing <i data-lucide="chevron-right" class="w-3 h-3"></i></span>
+            </div>
+        </div>  
+
+        <!-- Feature 2: Square Card -->
+        <div class="card-premium md:col-span-2 p-8 rounded-[32px] flex flex-col justify-between min-h-[340px] group">
+            <div class="space-y-4">
+                <div class="w-12 h-12 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="maximize" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-slate-900">Advanced Integrated Reader</h3>
+                <p class="text-slate-500 text-xs font-light leading-relaxed">
+                    Features native layout sizing, custom bookmarks, horizontal/vertical scroll configurations, and specialized configurations for clear viewing.
+                </p>
+            </div>
+            <div class="text-[11px] font-bold tracking-widest text-slate-400 uppercase">Document Sub-engine</div>
+        </div>  
+
+        <!-- Feature 3: Square Card -->
+        <div class="card-premium md:col-span-2 p-8 rounded-[32px] flex flex-col justify-between min-h-[340px] group">
+            <div class="space-y-4">
+                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="shield" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-display text-xl font-bold text-slate-900">Secure Native LMS Access</h3>
+                <p class="text-slate-500 text-xs font-light leading-relaxed">
+                    Directly connect via secure system hooks to review dynamic student metrics, schedule sheets, and grade indexes without storing user parameters on separate servers.
+                </p>
+            </div>
+            <div class="text-[11px] font-bold tracking-widest text-slate-400 uppercase">Direct System Integration</div>
+        </div>  
+
+        <!-- Feature 4: Large Asymmetric Card -->
+        <div class="card-premium md:col-span-4 p-8 sm:p-10 rounded-[32px] flex flex-col justify-between min-h-[340px] group">
+            <div class="max-w-md space-y-4">
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="search" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-slate-900">Indexed Search Engine</h3>
+                <p class="text-slate-500 text-sm font-light leading-relaxed">
+                    Zero latency lookup configuration maps matching text criteria across extensive archives immediately. Find assignments, notes, and handbook segments with precision.
+                </p>
+            </div>
+            <div class="pt-8 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
+                <span>INSTANT PARSING SCHEMA</span>
+                <span class="text-emerald-600 font-bold group-hover:translate-x-1 transition-transform flex items-center gap-1">Highly Optimized <i data-lucide="chevron-right" class="w-3 h-3"></i></span>
+            </div>
+        </div>  
+
+    </div>  
+</section>  
+
+<!-- INTERACTIVE UX SHOWROOM (Radically Redesigned Interface Section) -->
+<section id="showroom" class="bg-white py-24 border-y border-slate-200/60 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center">
+        
+        <!-- Left Side Controller Menu -->
+        <div class="lg:col-span-5 space-y-8">
+            <div class="space-y-4">
+                <div class="text-xs font-bold text-indigo-600 uppercase tracking-widest font-display">Live Interactive Screen Deck</div>
+                <h2 class="font-display text-4xl font-extrabold tracking-tight text-slate-900">Immersive UI Experience</h2>
+                <p class="text-slate-500 text-sm font-light leading-relaxed">
+                    Tap the operational modules below to dynamically shift layouts and simulate the live experience inside the core application layer.
+                </p>
+            </div>
+            
+            <!-- Interactive Switchers -->
+            <div class="space-y-3">
+                <button onclick="changeShowroomScreen('1.jpg', this)" class="showroom-btn w-full text-left p-5 rounded-2xl border border-indigo-100 bg-indigo-50/50 flex items-start gap-4 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-indigo-100"><i data-lucide="layout-grid" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-display font-bold text-slate-900 text-base">Primary Core Dashboard</h4>
+                        <p class="text-slate-500 text-xs mt-0.5 font-light">Central dashboard navigation point.</p>
+                    </div>
+                </button>
+                <button onclick="changeShowroomScreen('2.jpg', this)" class="showroom-btn w-full text-left p-5 rounded-2xl border border-transparent hover:bg-slate-50 flex items-start gap-4 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-display font-semibold text-slate-700 text-base">Digital Module Library</h4>
+                        <p class="text-slate-400 text-xs mt-0.5 font-light">Clean interface layout tracking offline files.</p>
+                    </div>
+                </button>
+                <button onclick="changeShowroomScreen('3.jpg', this)" class="showroom-btn w-full text-left p-5 rounded-2xl border border-transparent hover:bg-slate-50 flex items-start gap-4 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-display font-semibold text-slate-700 text-base">High Comfort PDF Interface</h4>
+                        <p class="text-slate-400 text-xs mt-0.5 font-light">Engineered workspace specialized for prolonged reading.</p>
+                    </div>
+                </button>
+                <button onclick="changeShowroomScreen('4.jpg', this)" class="showroom-btn w-full text-left p-5 rounded-2xl border border-transparent hover:bg-slate-50 flex items-start gap-4 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0"><i data-lucide="monitor" class="w-5 h-5"></i></div>
+                    <div>
+                        <h4 class="font-display font-semibold text-slate-700 text-base">Active LMS Portal Gateway</h4>
+                        <p class="text-slate-400 text-xs mt-0.5 font-light">Synchronize credentials with real-time academic feeds.</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Side Interactive Display Deck Frame -->
+        <div class="lg:col-span-7 flex flex-col items-center justify-center">
+            <div class="w-full max-w-[340px] phone-container aspect-[9/19.5] relative overflow-hidden bg-slate-900">
+                <div class="dynamic-island absolute"></div>
+                <img id="showroom-viewer-screen" src="1.jpg" class="w-full h-full object-cover transition-all duration-500 ease-in-out">
+            </div>
+            
+            <!-- Horizontal Micro Carousel Indicators -->
+            <div class="flex gap-2 mt-8">
+                <span id="indicator-0" class="w-2 h-2 rounded-full bg-slate-200 transition-all active-dot"></span>
+                <span id="indicator-1" class="w-2 h-2 rounded-full bg-slate-200 transition-all"></span>
+                <span id="indicator-2" class="w-2 h-2 rounded-full bg-slate-200 transition-all"></span>
+                <span id="indicator-3" class="w-2 h-2 rounded-full bg-slate-200 transition-all"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WORKFLOW STEP-TUNNEL -->
+<section id="workflow" class="max-w-6xl mx-auto px-6 py-24 relative z-10">
+    <div class="text-center max-w-xl mx-auto mb-20 space-y-4">
+        <div class="text-xs font-bold text-indigo-600 uppercase tracking-widest font-display">Straightforward Onboarding</div>
+        <h2 class="font-display text-4xl font-extrabold tracking-tight text-slate-900">System Integration Path</h2>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-12 relative">
+        <div class="text-center space-y-4 group">
+            <div class="w-16 h-16 mx-auto bg-white border border-slate-200 rounded-2xl flex items-center justify-center shadow-sm group-hover:border-indigo-300 transition-colors duration-300">
+                <span class="font-display font-bold text-xl text-indigo-600">01</span>
+            </div>
+            <h3 class="font-display text-lg font-bold text-slate-900">Secure Verification</h3>
+            <p class="text-slate-400 text-sm font-light leading-relaxed">Download and configure the installation package securely over secure protocols.</p>
+        </div>
+        <div class="text-center space-y-4 group">
+            <div class="w-16 h-16 mx-auto bg-white border border-slate-200 rounded-2xl flex items-center justify-center shadow-sm group-hover:border-indigo-300 transition-colors duration-300">
+                <span class="font-display font-bold text-xl text-indigo-600">02</span>
+            </div>
+            <h3 class="font-display text-lg font-bold text-slate-900">Local Setup Deployment</h3>
+            <p class="text-slate-400 text-sm font-light leading-relaxed">Authorize standard platform package parameters to install components immediately.</p>
+        </div>
+        <div class="text-center space-y-4 group">
+            <div class="w-16 h-16 mx-auto bg-white border border-slate-200 rounded-2xl flex items-center justify-center shadow-sm group-hover:border-indigo-300 transition-colors duration-300">
+                <span class="font-display font-bold text-xl text-indigo-600">03</span>
+            </div>
+            <h3 class="font-display text-lg font-bold text-slate-900">Consolidated Workspace</h3>
+            <p class="text-slate-400 text-sm font-light leading-relaxed">Instantly access curated university syllabi, offline content libraries, and personal grade charts.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FREQUENTLY ASKED QUESTIONS SECTION -->
+<section id="faq" class="max-w-4xl mx-auto px-6 py-24 relative z-10">
+    <div class="text-center max-w-xl mx-auto mb-20 space-y-4">
+        <div class="text-xs font-bold text-indigo-600 uppercase tracking-widest font-display">Clear Explanations</div>
+        <h2 class="font-display text-4xl font-extrabold tracking-tight text-slate-900">Answering Core Inquiries</h2>
+    </div>
+
+    <!-- CSS Driven Highly Scannable Accordions -->
+    <div class="space-y-4">
+        
+        <!-- Accordion Box 1 -->
+        <div class="bg-white/60 backdrop-blur-md border border-slate-200/60 rounded-2xl p-6">
+            <input type="checkbox" id="faq-toggle-1" class="faq-trigger hidden">
+            <label for="faq-toggle-1" class="faq-header flex justify-between items-center cursor-pointer select-none">
+                <span class="font-display font-bold text-base sm:text-lg text-slate-900">Are there monetary costs hidden inside the workspace app?</span>
+                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+            </label>
+            <div class="faq-content max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out text-slate-500 text-sm leading-relaxed font-light">
+                No. The environment operates completely free of monetization, subscriptions, or pop-up ad frameworks. It provides a pure, distraction-free interface for your coursework.
+            </div>
+        </div>
+
+        <!-- Accordion Box 2 -->
+        <div class="bg-white/60 backdrop-blur-md border border-slate-200/60 rounded-2xl p-6">
+            <input type="checkbox" id="faq-toggle-2" class="faq-trigger hidden">
+            <label for="faq-toggle-2" class="faq-header flex justify-between items-center cursor-pointer select-none">
+                <span class="font-display font-bold text-base sm:text-lg text-slate-900">How is client credential verification handled within the integrated LMS portal?</span>
+                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+            </label>
+            <div class="faq-content max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out text-slate-500 text-sm leading-relaxed font-light">
+                Authentication relies on highly secure local platform components. Credentials connect straight to official university nodes using encrypted endpoints. Your personal account keys are never stored on external third-party systems.
+            </div>
+        </div>
+
+        <!-- Accordion Box 3 -->
+        <div class="bg-white/60 backdrop-blur-md border border-slate-200/60 rounded-2xl p-6">
+            <input type="checkbox" id="faq-toggle-3" class="faq-trigger hidden">
+            <label for="faq-toggle-3" class="faq-header flex justify-between items-center cursor-pointer select-none">
+                <span class="font-display font-bold text-base sm:text-lg text-slate-900">Can system tools run completely independently of active network paths?</span>
+                <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+            </label>
+            <div class="faq-content max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out text-slate-500 text-sm leading-relaxed font-light">
+                Yes. Once you populate the data repositories initially, documents, course books, note files, and reading mechanisms work smoothly entirely offline.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CALL TO ACTION TERMINAL -->
+<section class="max-w-6xl mx-auto px-6 py-16 relative z-10">  
+    <div class="bg-gradient-to-tr from-slate-900 to-indigo-950 rounded-[40px] p-12 sm:p-16 text-center relative overflow-hidden shadow-2xl">  
+        <!-- Fluid Light Background Highlights within Dark Card -->
+        <div class="absolute top-0 right-0 w-80 h-80 bg-indigo-500 rounded-full blur-[120px] opacity-20"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500 rounded-full blur-[120px] opacity-20"></div>
+        
+        <div class="relative z-10 space-y-6 max-w-2xl mx-auto">
+            <h2 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                Optimize your academic workflow today.
+            </h2>  
+            <p class="text-slate-400 max-w-md mx-auto text-sm sm:text-base font-light">
+                Bring consolidated data storage modules, modern reader capabilities, and structured task hubs into your device.
+            </p>  
+            <div class="pt-4">
+                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
+                   class="bg-white hover:bg-slate-100 text-slate-900 inline-flex px-8 py-4 rounded-2xl font-bold transition-transform active:scale-95 shadow-lg items-center gap-2 text-base">
+                    <i data-lucide="download" class="w-5 h-5"></i> Download Client Setup Package
+                </a>  
+            </div>
+        </div>
+    </div>  
+</section>  
+
+<!-- CLEAN COMPACT FOOTER -->
+<footer class="py-12 text-center border-t border-slate-200/60 space-y-3 relative z-10 bg-white/40">  
+    <div class="flex items-center justify-center gap-2">
+        <div class="w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white"><i data-lucide="graduation-cap" class="w-3 h-3"></i></div>
+        <span class="font-display font-bold text-slate-900 tracking-tight text-sm">VU Study Mate</span>
+    </div>
+    <p class="text-xs text-slate-400 font-light">Designed & Built with absolute precision by <span class="font-medium text-slate-600">MUJTABA</span></p>  
+    <p class="text-[10px] uppercase tracking-[0.3em] text-indigo-500 font-bold">ALL ABOUT VU</p>  
+</footer>  
+
+<script>  
+// Live Interactive Showroom Matrix Core Logic
+function changeShowroomScreen(imgSrc, triggerElement) {
+    // 1. Smoothly crossfade image
+    const viewerScreen = document.getElementById('showroom-viewer-screen');
+    const heroScreen = document.getElementById('hero-phone-screen');
+    
+    viewerScreen.style.opacity = '0.3';
+    viewerScreen.style.transform = 'scale(0.98)';
+    
+    setTimeout(() => {
+        viewerScreen.src = imgSrc;
+        if(heroScreen) heroScreen.src = imgSrc; // sync mirrors
+        viewerScreen.style.opacity = '1';
+        viewerScreen.style.transform = 'scale(1)';
+    }, 200);
+
+    // 2. Adjust active controller element styling classes
+    document.querySelectorAll('.showroom-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-50/50', 'border-indigo-100');
+        btn.classList.add('border-transparent');
+        const iconContainer = btn.querySelector('div');
+        if(iconContainer) {
+            iconContainer.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-100');
+            iconContainer.classList.add('bg-slate-100', 'text-slate-600');
+        }
+        const titleText = btn.querySelector('h4');
+        if(titleText) {
+            titleText.classList.remove('font-bold', 'text-slate-900');
+            titleText.classList.add('font-semibold', 'text-slate-700');
+        }
+    });
+
+    triggerElement.classList.remove('border-transparent');
+    triggerElement.classList.add('bg-indigo-50/50', 'border-indigo-100');
+    
+    const activeIcon = triggerElement.querySelector('div');
+    if(activeIcon) {
+        activeIcon.classList.remove('bg-slate-100', 'text-slate-600');
+        activeIcon.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-100');
+    }
+    
+    const activeTitle = triggerElement.querySelector('h4');
+    if(activeTitle) {
+        activeTitle.classList.remove('font-semibold', 'text-slate-700');
+        activeTitle.classList.add('font-bold', 'text-slate-900');
+    }
+
+    // 3. Sync slide micro-dots index trackers
+    const imagesArray = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+    const activeIndex = imagesArray.indexOf(imgSrc);
+    
+    for (let i = 0; i < 4; i++) {
+        const dot = document.getElementById(`indicator-${i}`);
+        if(dot) {
+            if(i === activeIndex) {
+                dot.classList.add('active-dot');
+            } else {
+                dot.classList.remove('active-dot');
+            }
+        }
+    }
+}  
+
+// Initialize Lucide Vectors Icons Engine
+lucide.createIcons();
+</script>  
+</body>  
 </html>
