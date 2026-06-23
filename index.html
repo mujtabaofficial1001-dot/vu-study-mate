@@ -5,140 +5,282 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>VU Study Mate | 2026 Edition</title>  
 <script src="https://cdn.tailwindcss.com"></script>  
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>  
 body {
-    font-family: 'Outfit', sans-serif;
-    background: #fdfeff; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f4f7fd; 
     color: #0f172a; 
     overflow-x: hidden;
 }  
 
-/* Multi-Color Vibrant Ambient Background Orbitals */
-.aurora {
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+
+/* Vibrant Ambient Orbs */
+.bg-stage {
     position: fixed;
     inset: 0;
-    overflow: hidden;
     z-index: -1;
-}  
-.aurora:before, .aurora:after, .aurora-3 {  
-    content: '';
+    overflow: hidden;
+}
+.orb {
     position: absolute;
-    border-radius: 50%;  
-    filter: blur(150px);
-    opacity: 0.6;
-    mix-blend-mode: multiply;
-}  
-.aurora:before { background: #dbeafe; width: 800px; height: 800px; top: -10%; right: -100px; animation: float 20s infinite alternate; } 
-.aurora:after { background: #fae8ff; width: 700px; height: 700px; bottom: 5%; left: -150px; animation: float 25s infinite alternate-reverse; } 
-.aurora-3 { background: #e0f2fe; width: 600px; height: 600px; top: 40%; right: 15%; animation: float 18s infinite alternate; }
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.5;
+    animation: float 20s ease-in-out infinite;
+}
+.orb-1 { width: 600px; height: 600px; background: #ddd6fe; top: -10%; right: -5%; }
+.orb-2 { width: 500px; height: 500px; background: #cffafe; bottom: 10%; left: -10%; animation-delay: 5s; }
+.orb-3 { width: 400px; height: 400px; background: #fce7f3; top: 40%; left: 40%; animation-delay: 10s; opacity: 0.4; }
 
 @keyframes float { 
-    0% { transform: translate(0px, 0px) scale(1); }
-    100% { transform: translate(50px, 40px) scale(1.15); }
-}  
-
-/* Ultra Premium Crystalline Glassmorphism */
-.glass {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(37, 99, 235, 0.08);
-}  
-
-/* Phone Frame Simulation with Neon Ambience */
-.phone-shadow {
-    box-shadow: 0 0 0 12px #ffffff, 0 8px 0 12px #f1f5f9, 0 30px 80px rgba(99, 102, 241, 0.15);
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -50px) scale(1.1); }
+    66% { transform: translate(-30px, 40px) scale(0.9); }
 }
 
-/* Fluid Hover Effects for Bento Items */
+/* Light Premium Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 40px -10px rgba(30, 41, 59, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+.glass-strong {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 20px 50px -12px rgba(30, 41, 59, 0.08);
+}
+
+/* Premium 3D Phone Mockup */
+.phone-mock {
+    border-radius: 48px;
+    padding: 10px;
+    background: linear-gradient(145deg, #ffffff, #e2e8f0);
+    box-shadow: 
+        0 50px 100px -20px rgba(124, 58, 237, 0.25),
+        0 30px 60px -30px rgba(30, 41, 59, 0.2),
+        inset 0 2px 4px rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255,255,255,1);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.phone-mock:hover { transform: translateY(-10px) scale(1.02); }
+.phone-screen {
+    border-radius: 38px;
+    overflow: hidden;
+    background: #f1f5f9;
+    box-shadow: inset 0 0 0 2px rgba(15, 23, 42, 0.1);
+}
+.phone-notch {
+    position: absolute;
+    top: 18px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 26px;
+    background: #0f172a;
+    border-radius: 20px;
+    z-index: 20;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(120deg, #6366f1, #8b5cf6, #d946ef);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.4);
+    background-size: 200% auto;
+}
+.btn-primary:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.5);
+}
+.btn-secondary {
+    background: white;
+    color: #0f172a;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+.btn-secondary:hover {
+    border-color: #c7d2fe;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px 0 rgba(30, 41, 59, 0.05);
+}
+
+/* Bento Cards */
 .bento { 
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.03);
 }  
 .bento:hover { 
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 25px 50px -10px rgba(99, 102, 241, 0.15);
+    border-color: rgba(199, 210, 254, 1);
+}
+.bento:hover .icon-box {
+    transform: rotate(-5deg) scale(1.1);
+}
+.icon-box { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Screenshot Carousel */
+.shot {
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px -2px rgba(0,0,0,0.05);
+    background: white;
+}
+.shot:hover {
+    border-color: #8b5cf6;
     transform: translateY(-8px) scale(1.02);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 30px 60px rgba(99, 102, 241, 0.12);
-}  
-
-/* Infinite Shimmer Animation for Premium CTA Buttons */
-@keyframes shimmer {
-    100% { left: 125%; }
+    box-shadow: 0 20px 30px -10px rgba(139, 92, 246, 0.2);
 }
-.shimmer-btn {
-    position: relative;
-    overflow: hidden;
-}
-.shimmer-btn::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -75%;
-    width: 50%; height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-    transform: skewX(-25deg);
-    animation: shimmer 2.5s infinite ease-in-out;
+.shot.active {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
-/* Scroll reveal helper classes */
+/* Reveal Animation */
 .bento-reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .bento-reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Marquee */
+.marquee {
+    display: flex;
+    gap: 4rem;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
+}
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Section Tag */
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6366f1;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid #e0e7ff;
+    border-radius: 999px;
+    background: #eef2ff;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Pulse Dot */
+.pulse-dot {
+    position: relative;
+    width: 6px; height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+}
+.pulse-dot::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: #10b981;
+    opacity: 0.4;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.8); opacity: 0; }
+}
+
+/* FAQ Accordion */
+.faq-item { border-bottom: 1px solid #e2e8f0; }
+.faq-q { cursor: pointer; transition: color 0.3s ease; }
+.faq-q:hover { color: #6366f1; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+.faq-item.active .faq-a { max-height: 200px; padding-bottom: 1.5rem; }
+.faq-item.active .faq-icon { transform: rotate(45deg); }
+.faq-icon { transition: transform 0.3s ease; }
 </style>  
 </head>  
 <body class="antialiased">  
-<div class="aurora"><div class="aurora-3"></div></div>  
-
-<nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6">  
-<div class="max-w-7xl mx-auto mt-5 glass rounded-2xl px-6 py-4 flex justify-between items-center shadow-md border-b border-white/40">  
-<div class="flex items-center gap-3 group cursor-pointer">  
-<div class="relative">
-    <div class="absolute inset-0 bg-blue-500/20 blur-md rounded-xl group-hover:blur-lg transition-all"></div>
-    <img src="logo.png" class="relative w-10 h-10 rounded-xl transition-transform duration-500 group-hover:rotate-12 shadow-sm">  
+<div class="bg-stage">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 </div>
-<span class="font-black text-2xl tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent transition-all duration-300 hover:brightness-110">VU Study Mate</span>  
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6">  
+<div class="max-w-7xl mx-auto mt-5 glass-strong rounded-2xl px-6 py-3 flex justify-between items-center">  
+<div class="flex items-center gap-3 group cursor-pointer">  
+<img src="logo.png" class="relative w-10 h-10 rounded-xl transition-transform duration-500 group-hover:rotate-12 shadow-sm">  
+<span class="font-display font-bold text-xl tracking-tight text-slate-900">VU Study <span class="text-indigo-600">Mate</span></span>  
 </div>  
 <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
-class="shimmer-btn bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40 hover:scale-[1.04]">
-Download APK
+class="btn-primary px-5 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2">
+<i data-lucide="download" class="w-4 h-4"></i> Download APK
 </a>  
 </div>  
 </nav>  
 
-<section class="min-h-screen flex items-center pt-40 sm:pt-48 lg:pt-32 pb-16 lg:py-0">  
+<!-- HERO SECTION -->
+<section class="min-h-screen flex items-center pt-40 sm:pt-44 lg:pt-32 pb-16 lg:py-0">  
 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center w-full">  
-<div class="lg:col-span-7 space-y-6 text-center lg:text-left">  
-<div class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/60 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider text-blue-600 uppercase mx-auto lg:mx-0 shadow-sm animate-bounce">
-    <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>ALL ABOUT VU
+<div class="lg:col-span-7 space-y-8 text-center lg:text-left">  
+<div class="section-tag mx-auto lg:mx-0">
+    <span class="pulse-dot"></span> 2026 EDITION · ALL ABOUT VU
 </div>  
-<h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] text-slate-900">  
+<h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-slate-900">  
 Everything You Need<br>  
-<span class="bg-gradient-to-r from-blue-600 via-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-sm">For Virtual University</span>  
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500">For Virtual University</span>  
 </h1>  
-<p class="text-slate-500 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">  
-Handouts, Books, PDF Reader, LMS Access and Study Tools — all beautifully packed inside one colorful modern premium app.  
+<p class="text-slate-600 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">  
+Handouts, Books, PDF Reader, LMS Access and Study Tools — all beautifully packed inside one colorful modern premium app.
 </p>  
-<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">  
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">  
 <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
-class="shimmer-btn bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white hover:opacity-95 px-8 py-4 rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-xl shadow-slate-950/20 hover:scale-[1.04] hover:shadow-indigo-500/20">
-<i data-lucide="download" class="w-5 h-5 animate-pulse"></i> Download Now
+class="btn-primary px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-base">
+<i data-lucide="download" class="w-5 h-5"></i> Download Now
 </a>  
-<a href="#screens" class="glass text-slate-700 hover:bg-slate-50/80 px-8 py-4 rounded-2xl font-bold transition-all duration-300 text-center shadow-sm border border-indigo-100 hover:scale-[1.02]">
-Screenshots
+<a href="#screens" class="btn-secondary px-8 py-4 rounded-2xl font-bold text-center text-base flex items-center justify-center gap-2">
+<i data-lucide="eye" class="w-5 h-5"></i> View Interface
 </a>  
 </div>  
+<div class="flex items-center gap-6 justify-center lg:justify-start pt-4 text-slate-500 text-sm font-medium">
+    <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i> 100% Safe</div>
+    <div class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Fast UI</div>
+    <div class="flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4 text-indigo-500"></i> VU Focused</div>
+</div>
 </div>  
 
-<div class="lg:col-span-5 flex justify-center">  
-<div class="phone-shadow relative rounded-[40px] bg-white p-3 max-w-[300px] w-full transition-transform duration-500 hover:rotate-2">  
-<div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-slate-200 rounded-full z-10"></div>
-<div class="overflow-hidden rounded-[32px] bg-slate-50 aspect-[9/19] border border-slate-100 relative">
+<div class="lg:col-span-5 flex justify-center relative">  
+<!-- Floating Elements around Phone -->
+<div class="absolute top-10 -left-2 z-10 glass-strong px-4 py-2 rounded-xl text-xs font-bold text-slate-700 flex items-center gap-2 hidden md:flex animate-bounce">
+    <i data-lucide="wifi-off" class="w-4 h-4 text-indigo-600"></i> Offline Ready
+</div>
+<div class="absolute bottom-20 -right-2 z-10 glass-strong px-4 py-2 rounded-xl text-xs font-bold text-slate-700 flex items-center gap-2 hidden md:flex">
+    <i data-lucide="star" class="w-4 h-4 text-amber-500"></i> Premium UI
+</div>
+
+<div class="phone-mock max-w-[320px] w-full relative">  
+<div class="phone-notch"></div>
+<div class="phone-screen aspect-[9/19] relative">
     <img id="screen" src="1.jpg" class="w-full h-full object-cover transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform scale-100 opacity-100">  
 </div>
 </div>  
@@ -146,75 +288,335 @@ Screenshots
 </div>  
 </section>  
 
-<section class="max-w-6xl mx-auto px-6 py-6">  
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">  
-<div class="glass p-6 rounded-3xl text-center shadow-sm border-l-4 border-l-blue-500"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">100%</h3><p class="text-slate-500 text-sm mt-1 font-semibold">Free of Cost</p></div>  
-<div class="glass p-6 rounded-3xl text-center shadow-sm border-l-4 border-l-purple-500"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">0</h3><p class="text-slate-500 text-sm mt-1 font-semibold">No Annoying Ads</p></div>  
-<div class="glass p-6 rounded-3xl text-center shadow-sm border-l-4 border-l-cyan-500"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-cyan-600 to-blue-500 bg-clip-text text-transparent">Offline</h3><p class="text-slate-500 text-sm mt-1 font-semibold">Reading Mode</p></div>  
-<div class="glass p-6 rounded-3xl text-center shadow-sm border-l-4 border-l-emerald-500"><h3 class="text-3xl sm:text-4xl font-black bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">Fast</h3><p class="text-slate-500 text-sm mt-1 font-semibold">Instant Search</p></div>  
-</div>  
-</section>  
-
-<section id="screens" class="max-w-7xl mx-auto px-6 py-20">  
-<div class="text-center mb-12 space-y-2">
-    <h2 class="text-4xl font-black tracking-tight sm:text-5xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 bg-clip-text text-transparent">App Screenshots</h2>  
-    <p class="text-slate-500 font-medium">Click on any screenshot to preview it in the interactive live mock frame above.</p>
+<!-- MARQUEE STRIP -->
+<div class="py-6 border-y border-slate-200/60 overflow-hidden bg-white/40 backdrop-blur-sm">
+<div class="marquee font-display text-xl font-bold text-slate-400">
+    <span class="flex items-center gap-4">OFFLINE LIBRARY <i data-lucide="sparkles" class="w-4 h-4 text-pink-400"></i></span>
+    <span class="flex items-center gap-4">PDF READER <i data-lucide="sparkles" class="w-4 h-4 text-indigo-400"></i></span>
+    <span class="flex items-center gap-4">LMS ACCESS <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i></span>
+    <span class="flex items-center gap-4">INSTANT SEARCH <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i></span>
+    <span class="flex items-center gap-4">STUDY NOTES <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i></span>
+    <span class="flex items-center gap-4">OFFLINE LIBRARY <i data-lucide="sparkles" class="w-4 h-4 text-pink-400"></i></span>
+    <span class="flex items-center gap-4">PDF READER <i data-lucide="sparkles" class="w-4 h-4 text-indigo-400"></i></span>
+    <span class="flex items-center gap-4">LMS ACCESS <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i></span>
+    <span class="flex items-center gap-4">INSTANT SEARCH <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i></span>
+    <span class="flex items-center gap-4">STUDY NOTES <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i></span>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">  
-<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-all duration-300 shadow-md"><img src="1.jpg" onclick="show('1.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-500"></div>  
-<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-all duration-300 shadow-md"><img src="2.jpg" onclick="show('2.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-500"></div>  
-<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-all duration-300 shadow-md"><img src="3.jpg" onclick="show('3.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-500"></div>  
-<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-all duration-300 shadow-md"><img src="4.jpg" onclick="show('4.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-500"></div>  
-<div class="group cursor-pointer rounded-2xl overflow-hidden border-2 border-transparent hover:border-indigo-500 transition-all duration-300 shadow-md"><img src="5.jpg" onclick="show('5.jpg')" class="w-full h-auto transform group-hover:scale-105 transition-all duration-500"></div>  
+</div>
+
+<!-- STATS -->
+<section class="max-w-6xl mx-auto px-6 py-20">  
+<div class="grid grid-cols-2 md:grid-cols-4 gap-5 lg:gap-6">  
+<div class="glass p-6 rounded-3xl text-center">
+    <h3 class="font-display text-4xl sm:text-5xl font-bold text-indigo-600">100%</h3>
+    <p class="text-slate-600 text-sm mt-2 font-semibold">Free of Cost</p>
+</div>  
+<div class="glass p-6 rounded-3xl text-center">
+    <h3 class="font-display text-4xl sm:text-5xl font-bold text-pink-500">0</h3>
+    <p class="text-slate-600 text-sm mt-2 font-semibold">No Annoying Ads</p>
+</div>  
+<div class="glass p-6 rounded-3xl text-center">
+    <h3 class="font-display text-4xl sm:text-5xl font-bold text-emerald-500">Offline</h3>
+    <p class="text-slate-600 text-sm mt-2 font-semibold">Reading Mode</p>
+</div>  
+<div class="glass p-6 rounded-3xl text-center">
+    <h3 class="font-display text-4xl sm:text-5xl font-bold text-amber-500">Fast</h3>
+    <p class="text-slate-600 text-sm mt-2 font-semibold">Instant Search</p>
+</div>  
 </div>  
 </section>  
 
-<section class="max-w-7xl mx-auto px-6 py-12">  
-<div class="text-center mb-16">
-    <h2 class="text-4xl font-black tracking-tight sm:text-5xl text-slate-900">Powerful Features</h2>  
+<!-- MULTI PHONE SHOWCASE -->
+<section class="max-w-7xl mx-auto px-6 py-16 relative">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+            <div class="section-tag">01 · Crafted Experience</div>
+            <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Designed for <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Modern Students</span></h2>
+            <p class="text-slate-600 text-lg leading-relaxed">
+                Experience a flawless interface built with precision. Every pixel is tailored to give you a distraction-free reading environment, whether you're studying for finals or skimming through notes on the go.
+            </p>
+            <ul class="space-y-3 pt-4">
+                <li class="flex items-center gap-3 text-slate-700 font-medium">
+                    <div class="bg-indigo-100 text-indigo-600 p-2 rounded-lg"><i data-lucide="check" class="w-4 h-4"></i></div>
+                    Zero clutter reading mode
+                </li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium">
+                    <div class="bg-purple-100 text-purple-600 p-2 rounded-lg"><i data-lucide="check" class="w-4 h-4"></i></div>
+                    Seamless gesture navigation
+                </li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium">
+                    <div class="bg-pink-100 text-pink-600 p-2 rounded-lg"><i data-lucide="check" class="w-4 h-4"></i></div>
+                    Dark mode for late night study
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 3 Phone Overlap Mockup -->
+        <div class="relative h-[500px] hidden md:block">
+            <!-- Left Phone -->
+            <div class="phone-mock absolute top-10 left-0 w-[180px] z-10 opacity-90 transform scale-90 -rotate-6">
+                <div class="phone-notch" style="width:60px; height:16px; top:10px;"></div>
+                <div class="phone-screen aspect-[9/19]">
+                    <img src="3.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <!-- Right Phone -->
+            <div class="phone-mock absolute top-10 right-0 w-[180px] z-10 opacity-90 transform scale-90 rotate-6">
+                <div class="phone-notch" style="width:60px; height:16px; top:10px;"></div>
+                <div class="phone-screen aspect-[9/19]">
+                    <img src="4.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <!-- Center Phone (Hero) -->
+            <div class="phone-mock absolute top-0 left-1/2 transform -translate-x-1/2 w-[230px] z-20 shadow-2xl">
+                <div class="phone-notch" style="width:70px; height:18px; top:12px;"></div>
+                <div class="phone-screen aspect-[9/19]">
+                    <img src="2.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INTERACTIVE SCREENS -->
+<section id="screens" class="max-w-7xl mx-auto px-6 py-20">  
+<div class="text-center mb-14 space-y-4">
+    <div class="section-tag mx-auto">02 · Gallery</div>
+    <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">App <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Screenshots</span></h2>  
+    <p class="text-slate-500 max-w-xl mx-auto">Click any screenshot to preview it in the interactive live mock frame at the top.</p>
+</div>
+<!-- Updated Grid to fit 6 images perfectly (2 cols on mobile, 3 on tablet, 6 on desktop) -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">  
+<div class="shot cursor-pointer rounded-2xl overflow-hidden" onclick="selectShot(this)"><img src="1.jpg" onclick="show('1.jpg')" class="w-full h-auto"></div>  
+<div class="shot cursor-pointer rounded-2xl overflow-hidden" onclick="selectShot(this)"><img src="2.jpg" onclick="show('2.jpg')" class="w-full h-auto"></div>  
+<div class="shot cursor-pointer rounded-2xl overflow-hidden" onclick="selectShot(this)"><img src="3.jpg" onclick="show('3.jpg')" class="w-full h-auto"></div>  
+<div class="shot cursor-pointer rounded-2xl overflow-hidden" onclick="selectShot(this)"><img src="4.jpg" onclick="show('4.jpg')" class="w-full h-auto"></div>  
+<div class="shot cursor-pointer rounded-2xl overflow-hidden" onclick="selectShot(this)"><img src="5.jpg" onclick="show('5.jpg')" class="w-full h-auto"></div>  
+<div class="shot cursor-pointer rounded-2xl overflow-hidden" onclick="selectShot(this)"><img src="6.jpg" onclick="show('6.jpg')" class="w-full h-auto"></div>  
+</div>  
+</section>  
+
+<!-- BENTO FEATURES -->
+<section class="max-w-7xl mx-auto px-6 py-16">  
+<div class="text-center mb-16 space-y-4">
+    <div class="section-tag mx-auto">03 · Capabilities</div>
+    <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Powerful <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">Features</span></h2>  
 </div>
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">  
-<div class="glass p-8 rounded-3xl bento bento-reveal flex flex-col justify-between min-h-[200px] shadow-sm border-t-4 border-t-blue-500">
-    <div class="bg-blue-50 text-blue-600 p-3 rounded-2xl w-fit"><i data-lucide="book-open"></i></div>
-    <div class="mt-4"><h3 class="text-xl font-bold mb-2 text-slate-900">Offline Library</h3><p class="text-slate-500 text-sm leading-relaxed font-medium">Read your university books and notes anytime, anywhere without internet connection.</p></div>
+
+<div class="bento bento-reveal p-8 rounded-3xl flex flex-col justify-between min-h-[220px]">
+    <div class="flex items-start justify-between">
+        <div class="icon-box bg-indigo-50 text-indigo-600 p-3 rounded-2xl"><i data-lucide="book-open"></i></div>
+        <span class="font-display text-2xl text-slate-200 font-bold">01</span>
+    </div>
+    <div class="mt-6">
+        <h3 class="font-display text-xl font-bold mb-2 text-slate-900">Offline Library</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Read your university books and notes anytime, anywhere without internet connection.</p>
+    </div>
 </div>  
-<div class="glass p-8 rounded-3xl bento bento-reveal flex flex-col justify-between min-h-[200px] shadow-sm border-t-4 border-t-cyan-500">
-    <div class="bg-cyan-50 text-cyan-600 p-3 rounded-2xl w-fit"><i data-lucide="file-text"></i></div>
-    <div class="mt-4"><h3 class="text-xl font-bold mb-2 text-slate-900">Advanced PDF Reader</h3><p class="text-slate-500 text-sm leading-relaxed font-medium">Enhanced reading comfort with native night mode support, persistent bookmarks, and smart scroll.</p></div>
+
+<div class="bento bento-reveal p-8 rounded-3xl flex flex-col justify-between min-h-[220px]">
+    <div class="flex items-start justify-between">
+        <div class="icon-box bg-sky-50 text-sky-600 p-3 rounded-2xl"><i data-lucide="file-text"></i></div>
+        <span class="font-display text-2xl text-slate-200 font-bold">02</span>
+    </div>
+    <div class="mt-6">
+        <h3 class="font-display text-xl font-bold mb-2 text-slate-900">Advanced PDF Reader</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Enhanced reading comfort with native night mode support, persistent bookmarks, and smart scroll.</p>
+    </div>
 </div>  
-<div class="glass p-8 rounded-3xl bento bento-reveal flex flex-col justify-between min-h-[200px] shadow-sm border-t-4 border-t-purple-500">
-    <div class="bg-purple-50 text-purple-600 p-3 rounded-2xl w-fit"><i data-lucide="monitor"></i></div>
-    <div class="mt-4"><h3 class="text-xl font-bold mb-2 text-slate-900">LMS Access</h3><p class="text-slate-500 text-sm leading-relaxed font-medium">One-tap direct secure portal access to instantly track tasks, grades, and schedules.</p></div>
+
+<div class="bento bento-reveal p-8 rounded-3xl flex flex-col justify-between min-h-[220px]">
+    <div class="flex items-start justify-between">
+        <div class="icon-box bg-purple-50 text-purple-600 p-3 rounded-2xl"><i data-lucide="monitor"></i></div>
+        <span class="font-display text-2xl text-slate-200 font-bold">03</span>
+    </div>
+    <div class="mt-6">
+        <h3 class="font-display text-xl font-bold mb-2 text-slate-900">LMS Access</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">One-tap direct secure portal access to instantly track tasks, grades, and schedules.</p>
+    </div>
 </div>  
-<div class="glass p-8 rounded-3xl bento bento-reveal flex flex-col justify-between min-h-[200px] shadow-sm border-t-4 border-t-emerald-500">
-    <div class="bg-emerald-50 text-emerald-600 p-3 rounded-2xl w-fit"><i data-lucide="search"></i></div>
-    <div class="mt-4"><h3 class="text-xl font-bold mb-2 text-slate-900">Fast Intelligent Search</h3><p class="text-slate-500 text-sm leading-relaxed font-medium">Lightning-fast indexed search lets you pinpoint subjects and course materials instantly.</p></div>
+
+<div class="bento bento-reveal p-8 rounded-3xl flex flex-col justify-between min-h-[220px]">
+    <div class="flex items-start justify-between">
+        <div class="icon-box bg-emerald-50 text-emerald-600 p-3 rounded-2xl"><i data-lucide="search"></i></div>
+        <span class="font-display text-2xl text-slate-200 font-bold">04</span>
+    </div>
+    <div class="mt-6">
+        <h3 class="font-display text-xl font-bold mb-2 text-slate-900">Fast Intelligent Search</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Lightning-fast indexed search lets you pinpoint subjects and course materials instantly.</p>
+    </div>
 </div>  
-<div class="glass p-8 rounded-3xl bento bento-reveal flex flex-col justify-between min-h-[200px] shadow-sm border-t-4 border-t-pink-500">
-    <div class="bg-pink-50 text-pink-600 p-3 rounded-2xl w-fit"><i data-lucide="edit-3"></i></div>
-    <div class="mt-4"><h3 class="text-xl font-bold mb-2 text-slate-900">Personal Study Notes</h3><p class="text-slate-500 text-sm leading-relaxed font-medium">Create, manage, and smartly organize digital study pointers to fuel exam prep efficiency.</p></div>
+
+<div class="bento bento-reveal p-8 rounded-3xl flex flex-col justify-between min-h-[220px]">
+    <div class="flex items-start justify-between">
+        <div class="icon-box bg-pink-50 text-pink-600 p-3 rounded-2xl"><i data-lucide="edit-3"></i></div>
+        <span class="font-display text-2xl text-slate-200 font-bold">05</span>
+    </div>
+    <div class="mt-6">
+        <h3 class="font-display text-xl font-bold mb-2 text-slate-900">Personal Study Notes</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Create, manage, and smartly organize digital study pointers to fuel exam prep efficiency.</p>
+    </div>
 </div>  
+
+<div class="bento bento-reveal p-8 rounded-3xl flex flex-col justify-between min-h-[220px] bg-slate-900 border-none text-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500 rounded-full blur-3xl opacity-40"></div>
+    <div class="icon-box bg-white/10 text-white p-3 rounded-2xl relative z-10"><i data-lucide="rocket"></i></div>
+    <div class="mt-6 relative z-10">
+        <h3 class="font-display text-xl font-bold mb-2">And Much More</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">Discover the complete experience designed for VU students.</p>
+        <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="inline-flex items-center gap-2 text-indigo-400 font-bold text-sm hover:gap-3 transition-all">
+            Get the App <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+    </div>
+</div>  
+
 </div>  
 </section>  
 
+<!-- HOW IT WORKS -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-16 space-y-4">
+        <div class="section-tag mx-auto">04 · Workflow</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">How It Works</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 relative">
+        <div class="hidden md:block absolute top-8 left-[16%] right-[16%] h-0.5 border-t-2 border-dashed border-slate-300"></div>
+        <div class="text-center relative z-10">
+            <div class="w-16 h-16 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-100 mb-5">
+                <i data-lucide="download" class="w-7 h-7 text-indigo-600"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2 text-slate-900">Download App</h3>
+            <p class="text-slate-500 text-sm">Click the download button to get the latest APK file on your device.</p>
+        </div>
+        <div class="text-center relative z-10">
+            <div class="w-16 h-16 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-100 mb-5">
+                <i data-lucide="smartphone" class="w-7 h-7 text-purple-600"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2 text-slate-900">Install & Open</h3>
+            <p class="text-slate-500 text-sm">Allow installs from unknown sources in settings, then launch the app.</p>
+        </div>
+        <div class="text-center relative z-10">
+            <div class="w-16 h-16 mx-auto bg-white rounded-2xl flex items-center justify-center shadow-lg border border-slate-100 mb-5">
+                <i data-lucide="graduation-cap" class="w-7 h-7 text-pink-600"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2 text-slate-900">Start Studying</h3>
+            <p class="text-slate-500 text-sm">Access all VU handouts, books, and LMS right from your pocket.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center mb-16 space-y-4">
+        <div class="section-tag mx-auto">05 · Loved by Students</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">What Students Say</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass p-8 rounded-3xl">
+            <div class="flex gap-1 text-amber-400 mb-4">
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6">"Finally an app that has all VU handouts in one place! The offline reader works flawlessly during my commute."</p>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400"></div>
+                <div>
+                    <h4 class="font-bold text-sm text-slate-900">Ali Khan</h4>
+                    <p class="text-xs text-slate-500">BSCS Student</p>
+                </div>
+            </div>
+        </div>
+        <div class="glass p-8 rounded-3xl">
+            <div class="flex gap-1 text-amber-400 mb-4">
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6">"The interface is so premium and smooth. It feels like a high-end paid app but it's completely free. No ads at all!"</p>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-rose-400"></div>
+                <div>
+                    <h4 class="font-bold text-sm text-slate-900">Sara Ahmed</h4>
+                    <p class="text-xs text-slate-500">Masters IT</p>
+                </div>
+            </div>
+        </div>
+        <div class="glass p-8 rounded-3xl">
+            <div class="flex gap-1 text-amber-400 mb-4">
+                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-slate-700 text-sm leading-relaxed mb-6">"LMS access directly from the app is a game changer. I can check my grades and assignments without logging in every time."</p>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400"></div>
+                <div>
+                    <h4 class="font-bold text-sm text-slate-900">Bilal Mughal</h4>
+                    <p class="text-xs text-slate-500">BBA Student</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-3xl mx-auto px-6 py-20">
+    <div class="text-center mb-16 space-y-4">
+        <div class="section-tag mx-auto">06 · FAQ</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900">Frequently Asked Questions</h2>
+    </div>
+    <div class="space-y-4">
+        <div class="faq-item glass rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(this)">
+            <div class="faq-q flex justify-between items-center">
+                <span class="font-display font-bold text-lg text-slate-900">Is VU Study Mate completely free?</span>
+                <i data-lucide="plus" class="faq-icon w-5 h-5 text-indigo-600"></i>
+            </div>
+            <div class="faq-a text-slate-600 text-sm pt-0">
+                Yes! The app is 100% free with no hidden charges. There are no ads either, ensuring a distraction-free study experience.
+            </div>
+        </div>
+        <div class="faq-item glass rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(this)">
+            <div class="faq-q flex justify-between items-center">
+                <span class="font-display font-bold text-lg text-slate-900">Do I need internet to read books?</span>
+                <i data-lucide="plus" class="faq-icon w-5 h-5 text-indigo-600"></i>
+            </div>
+            <div class="faq-a text-slate-600 text-sm pt-0">
+                No, once you download the books or handouts inside the app, you can read them completely offline anytime.
+            </div>
+        </div>
+        <div class="faq-item glass rounded-2xl p-6 cursor-pointer" onclick="toggleFaq(this)">
+            <div class="faq-q flex justify-between items-center">
+                <span class="font-display font-bold text-lg text-slate-900">Is my LMS login secure?</span>
+                <i data-lucide="plus" class="faq-icon w-5 h-5 text-indigo-600"></i>
+            </div>
+            <div class="faq-a text-slate-600 text-sm pt-0">
+                Absolutely. The app does not store your credentials on any external server. It acts as a secure gateway directly to the VU LMS portal.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
 <section class="max-w-5xl mx-auto px-6 py-24">  
-<div class="glass rounded-[40px] p-12 text-center relative overflow-hidden shadow-lg border border-purple-100">  
-<div class="absolute -top-24 -left-24 w-72 h-72 bg-blue-200 rounded-full blur-[90px] opacity-70"></div>
-<div class="absolute -bottom-24 -right-24 w-72 h-72 bg-pink-200 rounded-full blur-[90px] opacity-70"></div>
-<div class="relative z-10 space-y-4">
-    <h2 class="text-4xl sm:text-5xl font-black tracking-tight bg-gradient-to-r from-slate-900 via-indigo-950 to-purple-950 bg-clip-text text-transparent">Ready To Boost Your Studies?</h2>  
-    <p class="text-slate-500 max-w-lg mx-auto text-base sm:text-lg font-medium">Download VU Study Mate now and orchestrate your complete learning dashboard from a single platform.</p>  
+<div class="glass-strong rounded-[40px] p-12 sm:p-16 text-center relative overflow-hidden">  
+<div class="absolute top-0 right-0 w-64 h-64 bg-indigo-200 rounded-full blur-3xl opacity-70"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-pink-200 rounded-full blur-3xl opacity-70"></div>
+<div class="relative z-10 space-y-5">
+    <div class="section-tag mx-auto">07 · Get Started</div>
+    <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight">Ready To Boost<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">Your Studies?</span></h2>  
+    <p class="text-slate-600 max-w-lg mx-auto text-base sm:text-lg">Download VU Study Mate now and orchestrate your complete learning dashboard from a single platform.</p>  
     <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk"  
-    class="shimmer-btn inline-flex bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-95 text-white px-10 py-4 rounded-2xl font-bold mt-6 transition-all duration-300 shadow-xl shadow-indigo-600/30 hover:scale-[1.04] items-center gap-2">
-    <i data-lucide="download" class="w-5 h-5 animate-bounce"></i> Download APK Now
+    class="btn-primary inline-flex px-10 py-4 rounded-2xl font-bold mt-4 items-center gap-2 text-base">
+    <i data-lucide="download" class="w-5 h-5"></i> Download APK Now
     </a>  
 </div>
 </div>  
 </section>  
 
-<footer class="py-12 text-center text-slate-400 border-t border-slate-200/60 space-y-1">  
-<p class="text-sm">Designed & Developed by <span class="font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">MUJTABA</span></p>  
-<p class="text-xs uppercase tracking-widest text-indigo-500 font-bold">ALL ABOUT VU</p>  
+<!-- FOOTER -->
+<footer class="py-12 text-center border-t border-slate-200/60 space-y-2 relative">  
+<div class="flex items-center justify-center gap-2 mb-2">
+    <img src="logo.png" class="w-7 h-7 rounded-lg">
+    <span class="font-display font-bold text-slate-900">VU Study Mate</span>
+</div>
+<p class="text-sm text-slate-500">Designed & Developed by <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-pink-500">MUJTABA</span></p>  
+<p class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold">ALL ABOUT VU</p>  
 </footer>  
 
 <script>  
@@ -232,6 +634,17 @@ function show(img){
     }, 180);
 }  
 
+// Highlight active screenshot
+function selectShot(element) {
+    document.querySelectorAll('.shot').forEach(el => el.classList.remove('active'));
+    element.classList.add('active');
+}
+
+// FAQ Accordion
+function toggleFaq(element) {
+    element.classList.toggle('active');
+}
+
 // Intersection Observer for Scroll Reveals
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -239,7 +652,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.classList.add('active');
         }
     });
-}, { threshold: 0.08 });
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.bento-reveal').forEach(el => observer.observe(el));
 
