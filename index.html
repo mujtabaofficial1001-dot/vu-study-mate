@@ -1627,6 +1627,38 @@
         </div>
     </footer>
 
+    <!-- Premium Download Progress Modal -->
+    <div class="download-modal-overlay" id="downloadModalOverlay">
+        <div class="download-modal">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div id="modalContentState">
+                <!-- Downloading State -->
+                <img src="logo.png" alt="VU Study Mate" class="modal-logo" id="modalStateLogo">
+                <h3 class="modal-title" id="modalStateTitle">Downloading...</h3>
+                <p class="modal-status-text" id="modalStateText">Preparing your academic files.</p>
+                
+                <div class="progress-percentage" id="modalProgressPercent">0%</div>
+                
+                <div class="progress-bar-container">
+                    <div class="modal-progress-bar" id="modalProgressBar"></div>
+                </div>
+                
+                <div class="progress-details" id="modalProgressDetails">0.0 MB / 17.2 MB</div>
+            </div>
+            
+            <div class="modal-action-area" id="modalActionArea" style="display: none;">
+                <button class="btn btn-primary" id="modalGuideBtn">How to Install ➜</button>
+                <button class="btn btn-secondary" id="modalDismissBtn">Done</button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for Interactive Components -->
     <script>
         // Header Scroll Shadow
@@ -1915,37 +1947,5 @@
             });
         });
     </script>
-
-    <!-- Premium Download Progress Modal -->
-    <div class="download-modal-overlay" id="downloadModalOverlay">
-        <div class="download-modal">
-            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            
-            <div id="modalContentState">
-                <!-- Downloading State -->
-                <img src="logo.png" alt="VU Study Mate" class="modal-logo" id="modalStateLogo">
-                <h3 class="modal-title" id="modalStateTitle">Downloading...</h3>
-                <p class="modal-status-text" id="modalStateText">Preparing your academic files.</p>
-                
-                <div class="progress-percentage" id="modalProgressPercent">0%</div>
-                
-                <div class="progress-bar-container">
-                    <div class="modal-progress-bar" id="modalProgressBar"></div>
-                </div>
-                
-                <div class="progress-details" id="modalProgressDetails">0.0 MB / 17.2 MB</div>
-            </div>
-            
-            <div class="modal-action-area" id="modalActionArea" style="display: none;">
-                <button class="btn btn-primary" id="modalGuideBtn">How to Install ➜</button>
-                <button class="btn btn-secondary" id="modalDismissBtn">Done</button>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
