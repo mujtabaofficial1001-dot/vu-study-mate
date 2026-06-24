@@ -313,6 +313,12 @@
             color: #0b0f19;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
         .menu-toggle {
             display: none;
             font-size: 24px;
@@ -1252,12 +1258,64 @@
         }
 
         @media (max-width: 768px) {
+            header .container {
+                flex-wrap: nowrap;
+                gap: 12px;
+            }
+
+            .logo-img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .logo-wrapper {
+                gap: 8px;
+            }
+
+            .brand-name {
+                font-size: 17px;
+            }
+
             nav {
-                display: none;
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                border-bottom: 1px solid var(--border-color);
+                padding: 24px;
+                box-shadow: var(--shadow-lg);
+                gap: 20px;
+                align-items: center;
+                z-index: 999;
+                
+                /* Glassmorphic Dropdown Transition */
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(-15px);
+                pointer-events: none;
+                transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                            transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                            visibility 0.35s;
+            }
+
+            header.scrolled nav {
+                top: 70px;
+            }
+
+            nav.mobile-open {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
             }
 
             .menu-toggle {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .hero-title {
@@ -1312,13 +1370,15 @@
                 <a href="#explorer">Explorer</a>
                 <a href="#screenshots">Screenshots</a>
                 <a href="#faq">FAQ</a>
+                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-primary nav-btn" download><i class="fa-solid fa-download"></i> Download APK</a>
+            </nav>
+            <div class="header-actions">
                 <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-primary nav-btn" download><i class="fa-solid fa-download"></i> Download APK</a>
-            </nav>
-            <div class="menu-toggle" id="menu-toggle">
-                <i class="fa-solid fa-bars"></i>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
             </div>
         </div>
     </header>
@@ -1831,31 +1891,22 @@
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
-        menuToggle.addEventListener('click', () => {
-            if(navMenu.style.display === 'flex') {
-                navMenu.style.display = 'none';
-            } else {
-                navMenu.style.display = 'flex';
-                navMenu.style.flexDirection = 'column';
-                navMenu.style.position = 'absolute';
-                navMenu.style.top = '80px';
-                navMenu.style.left = '0';
-                navMenu.style.width = '100%';
-                navMenu.style.background = document.body.classList.contains('dark') ? '#0B0F19' : 'white';
-                navMenu.style.padding = '20px';
-                navMenu.style.boxShadow = '0 10px 15px rgba(0,0,0,0.05)';
-                navMenu.style.gap = '20px';
-                navMenu.style.alignItems = 'center';
-                navMenu.style.borderBottom = '1px solid ' + (document.body.classList.contains('dark') ? '#223047' : '#E2E8F0');
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('mobile-open');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('mobile-open');
             }
         });
 
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navMenu.style.display = 'none';
-                }
+                navMenu.classList.remove('mobile-open');
             });
         });
     </script>
