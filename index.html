@@ -3,266 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VU Study Mate - The Ultimate VU Exam Preparation Companion</title>
-    <meta name="description" content="Download VU Study Mate. Get instant access to solved past papers, handouts, short notes, and study files for Virtual University Pakistan exams.">
+    <title>VU Study Mate - The Ultimate Virtual University Study Companion</title>
+    <meta name="description" content="Download VU Study Mate (APK) - the fastest, offline-ready application for Virtual University (VU) students. Access short notes, solved past papers, handouts, and more.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS VARIABLES & PREMIUM DESIGN SYSTEM */
         :root {
-            --primary: #002366; /* Royal Blue Pure */
-            --primary-light: #4169E1; /* Royal Blue Light */
-            --accent: #FFD700; /* Royal Gold */
-            --accent-dark: #E6C200;
-            --bg-light: #F8FAFC;
-            --card-bg: #FFFFFF;
-            --text-dark: #0F172A;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --primary-light: #e0e7ff;
+            --secondary: #0ea5e9;
+            --accent: #10b981;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;
+            --text-main: #0f172a;
             --text-muted: #475569;
-            --border-color: #E2E8F0;
-            --font-outfit: 'Outfit', sans-serif;
-            --font-poppins: 'Poppins', sans-serif;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow-sm: 0 4px 6px -1px rgba(0, 35, 102, 0.05), 0 2px 4px -2px rgba(0, 35, 102, 0.05);
-            --shadow-md: 0 10px 15px -3px rgba(0, 35, 102, 0.08), 0 4px 6px -4px rgba(0, 35, 102, 0.08);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 35, 102, 0.1), 0 8px 10px -6px rgba(0, 35, 102, 0.1);
-            --shadow-gold: 0 10px 20px -3px rgba(255, 215, 0, 0.3);
-            --shadow-glow: 0 0 20px rgba(65, 105, 225, 0.15);
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --max-width: 1280px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* DARK THEME CONSTANTS */
-        body.dark {
-            --bg-light: #0B0F19; /* Rich Deep Slate */
-            --card-bg: #161F30; /* Darker Slate Card */
-            --text-dark: #F1F5F9;
-            --text-muted: #94A3B8;
-            --border-color: #223047;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 25px rgba(65, 105, 225, 0.3);
-        }
-
+        /* Base Reset */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        html {
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-poppins);
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--background);
+            color: var(--text-main);
+            overflow-x: hidden;
             line-height: 1.6;
-            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-outfit);
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            color: var(--primary);
-            transition: color 0.4s ease;
+            letter-spacing: -0.02em;
         }
 
-        body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6 {
-            color: #FFFFFF;
-        }
-
-        /* PAGE WRAPPER TO PREVENT HORIZONTAL SCROLL */
-        .page-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* SCROLL PROGRESS INDICATOR */
-        .scroll-progress {
-            position: fixed;
+        /* Abstract Glow Blobs for Premium Aesthetic */
+        .bg-glow-container {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary-light), var(--accent));
-            z-index: 2000;
-            transition: width 0.1s ease;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        /* UTILITY CLASSES */
+        .bg-glow-1 {
+            position: absolute;
+            top: -10vw;
+            right: -10vw;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            top: 40vh;
+            left: -15vw;
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .bg-glow-3 {
+            position: absolute;
+            bottom: 10vh;
+            right: -10vw;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        /* Layout Container */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            font-family: var(--font-outfit);
-            font-weight: 700;
-            font-size: 16px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            box-shadow: 0 8px 20px -6px rgba(0, 35, 102, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 24px -6px rgba(0, 35, 102, 0.4);
-            filter: brightness(1.15);
-        }
-
-        .btn-accent {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--primary);
-            box-shadow: var(--shadow-gold);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-accent:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 28px -4px rgba(255, 215, 0, 0.45);
-            filter: brightness(1.05);
-        }
-
-        body.dark .btn-accent {
-            color: #0b0f19;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        body.dark .btn-outline {
-            color: white;
-            border-color: white;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        body.dark .btn-outline:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* BACKGROUND GLOWS */
-        .ambient-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(65, 105, 225, 0.07) 0%, rgba(0, 35, 102, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
-            transition: var(--transition);
-        }
-
-        body.dark .ambient-glow {
-            background: radial-gradient(circle, rgba(65, 105, 225, 0.14) 0%, rgba(0, 35, 102, 0) 70%);
-        }
-
-        .glow-1 { top: -100px; right: -100px; }
-        .glow-2 { top: 800px; left: -200px; }
-        .glow-3 { bottom: 100px; right: -100px; }
-
-        /* HEADER & NAVIGATION */
+        /* Header & Navigation */
         header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 80px;
+            right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.8);
             transition: var(--transition);
         }
 
-        body.dark header {
-            background: rgba(11, 15, 25, 0.85);
-            border-bottom-color: rgba(34, 48, 71, 0.8);
-        }
-
         header.scrolled {
-            height: 70px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
+            background: rgba(255, 255, 255, 0.9);
         }
 
-        body.dark header.scrolled {
-            background: rgba(11, 15, 25, 0.95);
-        }
-
-        header .container {
+        .nav-wrapper {
             display: flex;
-            height: 100%;
             align-items: center;
             justify-content: space-between;
+            height: 80px;
+            transition: var(--transition);
         }
 
-        .logo-wrapper {
+        header.scrolled .nav-wrapper {
+            height: 70px;
+        }
+
+        .logo-area {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            flex-shrink: 0;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
         }
 
-        .logo-img {
-            width: 44px;
+        .logo-area img {
             height: 44px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 35, 102, 0.15));
-        }
-
-        .brand-name {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: var(--font-outfit);
-            white-space: nowrap;
-        }
-
-        body.dark .brand-name {
-            background: linear-gradient(135deg, #FFFFFF, var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            width: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
         }
 
         nav {
@@ -271,89 +167,110 @@
             gap: 32px;
         }
 
-        nav a {
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
             text-decoration: none;
             color: var(--text-muted);
-            font-weight: 600;
-            font-size: 15px;
-            font-family: var(--font-outfit);
+            font-weight: 500;
+            font-size: 0.95rem;
             transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--primary-light);
-        }
-
-        body.dark nav a:hover {
-            color: white;
-        }
-
-        .nav-btn {
-            padding: 10px 20px;
-            font-size: 14px;
-        }
-
-        /* Theme Toggle Button */
-        .theme-toggle-btn {
-            background: rgba(0, 35, 102, 0.05);
-            border: 1px solid rgba(0, 35, 102, 0.1);
-            color: var(--primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            font-size: 18px;
-        }
-
-        body.dark .theme-toggle-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.15);
-            color: var(--accent);
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1);
-            background: var(--primary);
-            color: white;
-        }
-
-        body.dark .theme-toggle-btn:hover {
-            background: white;
-            color: #0b0f19;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-shrink: 0;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            color: var(--primary);
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        body.dark .menu-toggle {
-            color: white;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            padding: 160px 0 100px 0;
             position: relative;
-            overflow: hidden;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+        }
+
+        .btn-secondary {
+            background-color: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--background);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+        }
+
+        /* Mobile Nav Toggle */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-main);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px 0;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-grid {
@@ -367,63 +284,47 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: rgba(0, 35, 102, 0.05);
-            border: 1px solid rgba(0, 35, 102, 0.1);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 700;
+            padding: 6px 14px;
+            background-color: var(--primary-light);
             color: var(--primary);
-            margin-bottom: 20px;
-            font-family: var(--font-outfit);
-        }
-
-        body.dark .hero-badge {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .hero-badge i {
-            color: var(--accent-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.03em;
         }
 
         .hero-title {
-            font-size: 54px;
+            font-size: 3.5rem;
             line-height: 1.15;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            color: var(--text-main);
         }
 
         .hero-title span {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        body.dark .hero-title span {
-            background: linear-gradient(135deg, #60A5FA, #93C5FD);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
-            font-size: 17px;
+            font-size: 1.15rem;
             color: var(--text-muted);
             margin-bottom: 36px;
-            max-width: 550px;
+            max-width: 580px;
         }
 
-        .hero-btns {
+        .hero-ctas {
             display: flex;
             gap: 16px;
             margin-bottom: 40px;
         }
 
-        .app-stats {
+        .hero-stats {
             display: flex;
             gap: 40px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border);
             padding-top: 30px;
         }
 
@@ -432,1171 +333,914 @@
             flex-direction: column;
         }
 
-        .stat-num {
-            font-family: var(--font-outfit);
-            font-size: 28px;
+        .stat-value {
+            font-size: 1.8rem;
             font-weight: 800;
-            color: var(--primary);
-        }
-
-        body.dark .stat-num {
-            color: var(--accent);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
         }
 
         .stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
-        /* Mockup Container */
+        /* Phone Mockup Frame */
         .hero-mockup-wrapper {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
         }
 
-        .hero-mockup-bg {
-            position: absolute;
-            width: 110%;
-            height: 110%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.12) 0%, rgba(65, 105, 225, 0.05) 50%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        body.dark .hero-mockup-bg {
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, rgba(65, 105, 225, 0.1) 50%, rgba(0,0,0,0) 70%);
-        }
-
-        /* 3D PARALLAX DEVICE */
-        .phone-frame {
-            width: 330px;
-            height: 660px;
-            border-radius: 46px;
-            background: #0D131F;
-            padding: 10px;
-            box-shadow: 0 30px 60px -15px rgba(0, 35, 102, 0.3), 
-                        0 0 0 1px rgba(0, 35, 102, 0.1),
-                        inset 0 0 12px rgba(255, 255, 255, 0.15);
-            border: 8px solid #1E293B;
+        .phone-frame-container {
+            width: 310px;
+            height: 640px;
+            background: #090d16;
+            border: 12px solid #27272a;
+            border-radius: 42px;
+            box-shadow: var(--shadow-xl), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.4s ease;
-        }
-
-        body.dark .phone-frame {
-            border-color: #2D3748;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 
-                        0 0 0 1px rgba(255, 255, 255, 0.05),
-                        inset 0 0 12px rgba(255, 255, 255, 0.1);
-        }
-
-        .phone-frame:hover {
-            box-shadow: var(--shadow-glow);
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            border-radius: 34px;
-            background-color: #fff;
             overflow: hidden;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Glass reflection sheen */
-        .phone-screen::after {
+        .phone-frame-container::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 50%);
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .phone-notch {
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 120px;
-            height: 22px;
-            background: #000;
-            border-bottom-left-radius: 14px;
-            border-bottom-right-radius: 14px;
+            height: 25px;
+            background: #27272a;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
             z-index: 10;
         }
 
-        .phone-notch::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 4px;
-            background: #1A1A1A;
-            border-radius: 2px;
+        .phone-frame-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .phone-notch::after {
-            content: '';
+        .phone-frame-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        /* Floating App Badges on Hero */
+        .floating-badge {
             position: absolute;
-            top: 50%;
-            right: 25px;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background: #091A29;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 12px 18px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-badge-1 {
+            top: 20%;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .floating-badge-2 {
+            bottom: 25%;
+            right: -20px;
+            animation-delay: 1.5s;
+        }
+
+        .floating-badge-3 {
+            bottom: 5%;
+            left: -10px;
+            animation-delay: 3s;
+        }
+
+        .floating-badge-icon {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            border: 1px solid #1C2D3D;
-            box-shadow: inset 0 0 2px #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
         }
 
-        /* Side physical buttons details */
-        .phone-button {
-            position: absolute;
-            background: #1E293B;
-            border-radius: 2px;
-            z-index: -1;
-            transition: background-color 0.4s ease;
+        .f-icon-blue {
+            background-color: var(--primary-light);
+            color: var(--primary);
         }
 
-        body.dark .phone-button {
-            background: #2D3748;
+        .f-icon-cyan {
+            background-color: #e0f2fe;
+            color: var(--secondary);
         }
 
-        .phone-button.volume-up {
-            width: 4px;
-            height: 40px;
-            left: -12px;
-            top: 120px;
+        .f-icon-green {
+            background-color: #d1fae5;
+            color: var(--accent);
         }
 
-        .phone-button.volume-down {
-            width: 4px;
-            height: 40px;
-            left: -12px;
-            top: 175px;
+        .floating-badge-text h4 {
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
         }
 
-        .phone-button.power {
-            width: 4px;
-            height: 60px;
-            right: -12px;
-            top: 140px;
+        .floating-badge-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
-        .phone-home-bar {
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 110px;
-            height: 4px;
-            background: rgba(0, 0, 0, 0.35);
-            border-radius: 2px;
-            z-index: 10;
-            pointer-events: none;
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* Hero Image Slider */
-        .hero-slider {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .hero-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        /* FEATURES SECTION */
-        .features {
-            padding: 100px 0;
-            background-color: var(--card-bg);
-            position: relative;
-            transition: background-color 0.4s ease;
-        }
-
+        /* Features Section */
         .section-header {
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 60px auto;
         }
 
-        .section-header h2 {
-            font-size: 38px;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+        .section-tag {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
         }
 
-        .section-header p {
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
             color: var(--text-muted);
-            font-size: 16px;
+            font-size: 1.05rem;
+        }
+
+        .features {
+            padding: 100px 0;
+            background-color: #ffffff;
+            position: relative;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
         .feature-card {
-            background-color: var(--bg-light);
-            border: 1px solid var(--border-color);
+            background-color: var(--background);
             padding: 40px 30px;
-            border-radius: 24px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
         }
 
         .feature-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(65, 105, 225, 0.3);
+            transform: translateY(-5px);
+            background-color: var(--surface);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
         }
 
-        .feature-icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: rgba(0, 35, 102, 0.06);
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon-wrapper {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background-color: var(--surface);
+            box-shadow: var(--shadow-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
+            font-size: 1.5rem;
             color: var(--primary);
-            font-size: 24px;
+            border: 1px solid var(--border);
             transition: var(--transition);
         }
 
-        body.dark .feature-icon-box {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--accent);
-        }
-
-        .feature-card:hover .feature-icon-box {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        body.dark .feature-card:hover .feature-icon-box {
-            background: var(--accent);
-            color: #0b0f19;
+        .feature-card:hover .feature-icon-wrapper {
+            background: var(--primary-light);
+            border-color: transparent;
         }
 
         .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            color: var(--text-main);
         }
 
         .feature-card p {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            font-size: 14px;
             line-height: 1.6;
         }
 
-        /* INTERACTIVE TABBED FEATURES EXPLORER */
-        .interactive-explorer {
+        /* Showcase / Carousel Section */
+        .showcase {
             padding: 100px 0;
-            background-color: var(--bg-light);
-            transition: background-color 0.4s ease;
+            position: relative;
         }
 
-        .explorer-grid {
+        .showcase-layout {
             display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
-            gap: 60px;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
             align-items: center;
         }
 
-        .explorer-tabs-container {
+        /* Desktop App Showcase Container */
+        .showcase-slider-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            align-items: center;
+            position: relative;
         }
 
-        .explorer-tab {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 24px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: var(--transition);
+        .showcase-phone {
+            width: 290px;
+            height: 600px;
+            background: #090d16;
+            border: 10px solid #27272a;
+            border-radius: 38px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .showcase-phone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background: #27272a;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            z-index: 10;
+        }
+
+        .showcase-screen-slider {
+            width: 100%;
+            height: 100%;
             display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            text-align: left;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .explorer-tab:hover {
-            border-color: rgba(65, 105, 225, 0.3);
-            transform: translateY(-2px);
+        .showcase-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
         }
 
-        .explorer-tab.active {
-            border-color: var(--primary-light);
-            box-shadow: var(--shadow-md);
-            background: linear-gradient(135deg, var(--card-bg), rgba(65, 105, 225, 0.03));
+        .showcase-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        body.dark .explorer-tab.active {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, var(--card-bg), rgba(255, 215, 0, 0.02));
-        }
-
-        .explorer-tab-num {
-            font-family: var(--font-outfit);
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--primary-light);
-            background: rgba(65, 105, 225, 0.08);
+        .showcase-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             width: 48px;
             height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        body.dark .explorer-tab-num {
-            color: var(--accent);
-            background: rgba(255, 215, 0, 0.08);
-        }
-
-        .explorer-tab-content h3 {
-            font-size: 18px;
-            margin-bottom: 6px;
-        }
-
-        .explorer-tab-content p {
-            color: var(--text-muted);
-            font-size: 13.5px;
-        }
-
-        .explorer-mockup-pane {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .explorer-phone {
-            width: 310px;
-            height: 620px;
-            border-radius: 46px;
-            background: #0D131F;
-            padding: 10px;
-            box-shadow: var(--shadow-lg),
-                        inset 0 0 12px rgba(255, 255, 255, 0.15);
-            border: 8px solid #1E293B;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.4s ease;
-        }
-
-        body.dark .explorer-phone {
-            border-color: #2D3748;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 
-                        inset 0 0 12px rgba(255, 255, 255, 0.1);
-        }
-
-        .explorer-phone:hover {
-            box-shadow: var(--shadow-glow);
-        }
-
-        .explorer-screen-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.4s ease-in-out;
-        }
-
-        /* SCREENSHOTS SECTION */
-        .screenshots {
-            padding: 100px 0;
-            background-color: var(--card-bg);
-            transition: background-color 0.4s ease;
-        }
-
-        .screenshots-slider-container {
-            width: 100%;
-            padding: 20px 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .screenshots-track {
-            display: flex;
-            gap: 24px;
-            width: max-content;
-            animation: scrollTrack 35s linear infinite;
-        }
-
-        .screenshots-track:hover {
-            animation-play-state: paused;
-        }
-
-        .screenshot-item {
-            width: 250px;
-            height: 500px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            border: 4px solid var(--card-bg);
-            background-color: #eee;
-            transition: var(--transition);
-        }
-
-        .screenshot-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .screenshot-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
-        }
-
-        @keyframes scrollTrack {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-250px * 6 - 24px * 6)); }
-        }
-
-        /* INSTALLATION GUIDE TIMELINE */
-        .install-guide {
-            padding: 100px 0;
-            background-color: var(--bg-light);
-            transition: background-color 0.4s ease;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto 0 auto;
-            padding: 20px 0;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--border-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-
-        .timeline-container {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-        }
-
-        .timeline-container::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: var(--card-bg);
-            border: 4px solid var(--primary-light);
-            top: 15px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 50%;
-            z-index: 1;
-            transition: var(--transition);
-        }
-
-        body.dark .timeline-container::after {
-            border-color: var(--accent);
-        }
-
-        .left-timeline {
-            left: 0;
-        }
-
-        .right-timeline {
-            left: 50%;
-        }
-
-        .right-timeline::after {
-            left: -10px;
-        }
-
-        .timeline-content {
-            padding: 24px;
-            background-color: var(--card-bg);
-            position: relative;
-            border-radius: 18px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .timeline-content h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+            transition: var(--transition);
+            color: var(--text-main);
         }
 
-        .timeline-content p {
-            color: var(--text-muted);
-            font-size: 13.5px;
+        .showcase-nav-btn:hover {
+            background-color: var(--primary);
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-50%) scale(1.05);
         }
 
-        .timeline-content i {
-            color: var(--primary-light);
+        .showcase-prev {
+            left: -24px;
         }
 
-        body.dark .timeline-content i {
-            color: var(--accent);
+        .showcase-next {
+            right: -24px;
         }
 
-        .timeline-container:hover::after {
-            background-color: var(--accent);
-            transform: scale(1.2);
-        }
-
-        @media (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
-            .timeline-container {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            .timeline-container::after {
-                left: 21px;
-            }
-            .left-timeline, .right-timeline {
-                left: 0;
-            }
-        }
-
-        /* FAQ ACCORDION SECTION */
-        .faq {
-            padding: 100px 0;
-            background-color: var(--card-bg);
-            transition: background-color 0.4s ease;
-        }
-
-        .faq-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
+        /* Showcase text & metadata */
+        .showcase-details {
             display: flex;
             flex-direction: column;
-            gap: 16px;
         }
 
-        .faq-item {
-            background-color: var(--bg-light);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .faq-header {
-            padding: 22px 28px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-outfit);
-            font-weight: 700;
-            font-size: 16px;
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
-            color: var(--primary-light);
-        }
-
-        body.dark .faq-icon {
-            color: var(--accent);
-        }
-
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
-            padding: 0 28px;
-            color: var(--text-muted);
-            font-size: 14.5px;
-            line-height: 1.7;
-        }
-
-        .faq-item.active {
-            border-color: rgba(65, 105, 225, 0.3);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .faq-item.active .faq-header {
-            color: var(--primary-light);
-        }
-
-        body.dark .faq-item.active .faq-header {
-            color: var(--accent);
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-item.active .faq-content {
-            padding-bottom: 22px;
-        }
-
-        /* REVIEWS / TESTIMONIALS SECTION */
-        .reviews {
-            padding: 100px 0;
-            background-color: var(--bg-light);
-            transition: background-color 0.4s ease;
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .review-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .review-card:hover {
+        .screenshot-info-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
+            margin-bottom: 30px;
+            transition: var(--transition);
         }
 
-        .review-stars {
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-
-        .review-text {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .review-user {
+        .screenshot-info-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .user-avatar {
-            width: 44px;
-            height: 44px;
+        .screenshot-info-card h3 .slide-num {
+            font-size: 0.9rem;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        .screenshot-info-card p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Dots list */
+        .carousel-dots {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background-color: var(--border-hover);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            width: 28px;
+            border-radius: 10px;
+            background-color: var(--primary);
+        }
+
+        /* Installation Guide Section */
+        .installation {
+            padding: 100px 0;
+            background-color: #ffffff;
+        }
+
+        .installation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .step-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-family: var(--font-outfit);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            font-family: 'Outfit', sans-serif;
         }
 
-        .user-info h4 {
-            font-size: 15px;
-            color: var(--primary);
+        .step-content h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: var(--text-main);
         }
 
-        body.dark .user-info h4 {
-            color: white;
-        }
-
-        .user-info p {
-            font-size: 12px;
+        .step-content p {
+            font-size: 0.95rem;
             color: var(--text-muted);
         }
 
-        /* DOWNLOAD CALL-TO-ACTION */
-        .cta {
-            padding: 80px 0 100px 0;
-            background-color: var(--card-bg);
+        .installation-visual {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.03) 0%, rgba(14, 165, 233, 0.03) 100%);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: var(--radius-xl);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
             position: relative;
-            transition: background-color 0.4s ease;
         }
 
-        .cta-box {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 32px;
-            padding: 60px 40px;
-            color: white;
+        .install-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: var(--surface);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .install-box-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .install-box-text h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .install-box-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Call To Action (CTA) Banner */
+        .cta-section {
+            padding: 80px 0 100px 0;
+            position: relative;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 80px 60px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
             text-align: center;
-            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .cta-logo {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 24px auto;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        .cta-box h2 {
-            color: white;
-            font-size: 42px;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+        .cta-card::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        .cta-box p {
-            color: rgba(255, 255, 255, 0.8);
+        .cta-card h2 {
+            font-size: 3rem;
+            margin-bottom: 18px;
+            font-weight: 800;
+        }
+
+        .cta-card p {
+            font-size: 1.15rem;
             max-width: 600px;
             margin: 0 auto 36px auto;
-            font-size: 16px;
+            color: #94a3b8;
         }
 
-        .cta-download-btn {
-            font-size: 18px;
-            padding: 16px 36px;
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .cta-meta {
+        .cta-buttons .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+        }
+
+        .cta-buttons .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+
+        .cta-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .cta-card .version-text {
             margin-top: 20px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            color: #64748b;
         }
 
-        /* FOOTER */
+        /* Footer */
         footer {
-            background-color: #040914;
-            color: white;
+            background-color: var(--surface);
+            border-top: 1px solid var(--border);
             padding: 60px 0 30px 0;
-            border-top: 4px solid var(--accent);
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr;
             gap: 60px;
             margin-bottom: 40px;
         }
 
-        .footer-brand h3 {
-            color: white;
-            font-size: 20px;
-            margin-bottom: 16px;
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .footer-brand-logo img {
+            height: 38px;
+            border-radius: 8px;
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            max-width: 320px;
-            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 400px;
         }
 
-        .footer-links h4 {
-            color: var(--accent);
-            font-size: 16px;
-            margin-bottom: 20px;
+        .footer-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 80px;
+        }
+
+        .footer-nav-col h4 {
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 18px;
         }
 
-        .footer-links ul {
+        .footer-nav-col ul {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .footer-links ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links ul li a {
-            color: rgba(255, 255, 255, 0.7);
+        .footer-nav-col a {
             text-decoration: none;
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
             transition: var(--transition);
         }
 
-        .footer-links ul li a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .footer-contact h4 {
-            color: var(--accent);
-            font-size: 16px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-contact p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-contact i {
-            color: var(--accent);
+        .footer-nav-col a:hover {
+            color: var(--primary);
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border);
             padding-top: 30px;
-            text-align: center;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
 
-        .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            margin-left: 20px;
-            transition: var(--transition);
+        .footer-bottom p {
+            line-height: 1.6;
         }
 
-        .footer-bottom-links a:hover {
-            color: white;
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            line-height: 1.4;
+            max-width: 100%;
         }
 
-        /* BACK TO TOP BUTTON */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            border: 2px solid white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .showcase-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .showcase-slider-wrapper {
+                order: 2;
+            }
+            .showcase-details {
+                order: 1;
+                text-align: center;
+            }
+            .carousel-dots {
+                justify-content: center;
+            }
+            .installation-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
         }
 
-        body.dark .back-to-top {
-            background-color: var(--accent);
-            color: #0b0f19;
-            border-color: #0b0f19;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-4px);
-        }
-
-        /* RESPONSIVE BREAKPOINTS */
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .hero-grid {
                 grid-template-columns: 1fr;
                 gap: 50px;
                 text-align: center;
             }
-            
-            .hero-title {
-                font-size: 44px;
+            .hero-badge {
+                margin: 0 auto 20px auto;
             }
-
             .hero-desc {
-                margin: 0 auto 36px auto;
+                margin-left: auto;
+                margin-right: auto;
             }
-
-            .hero-btns {
+            .hero-ctas {
                 justify-content: center;
             }
-
-            .app-stats {
+            .hero-stats {
                 justify-content: center;
             }
-
-            .explorer-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
+            .floating-badge {
+                display: none; /* Hide floating badges on mobile screen to prevent layout clutter */
             }
-
-            .explorer-mockup-pane {
-                order: 2;
+            .mobile-nav-toggle {
+                display: block;
             }
-
-            .explorer-tabs-container {
-                order: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            /* Compact padding on mobile container to free up header space */
-            .container {
-                padding: 0 16px !important;
-            }
-
-            header .container {
-                flex-wrap: nowrap;
-                gap: 10px;
-            }
-
-            .logo-img {
-                width: 32px;
-                height: 32px;
-            }
-
-            .logo-wrapper {
-                gap: 6px;
-            }
-
-            .brand-name {
-                font-size: 15.5px;
-            }
-
-            .header-actions {
-                gap: 10px !important;
-            }
-
-            .theme-toggle-btn {
-                width: 34px !important;
-                height: 34px !important;
-                font-size: 14px !important;
-            }
-
-            .menu-toggle {
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
-                font-size: 20px !important;
-            }
-
             nav {
-                display: flex;
-                flex-direction: column;
                 position: absolute;
                 top: 80px;
                 left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.96);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+                right: 0;
+                background-color: var(--surface);
                 padding: 24px;
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                gap: 24px;
                 box-shadow: var(--shadow-lg);
-                gap: 20px;
-                align-items: center;
-                z-index: 999;
-                
-                /* Glassmorphic Dropdown Transition */
-                visibility: hidden;
                 opacity: 0;
-                transform: translateY(-15px);
+                transform: translateY(-10px);
                 pointer-events: none;
-                transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                            transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                            visibility 0.35s;
+                transition: var(--transition);
+                z-index: 999;
             }
-
-            body.dark nav {
-                background: rgba(22, 31, 48, 0.96);
-                border-bottom-color: rgba(34, 48, 71, 0.8);
-            }
-
-            header.scrolled nav {
-                top: 70px;
-            }
-
-            nav.mobile-open {
-                visibility: visible;
+            nav.open {
                 opacity: 1;
                 transform: translateY(0);
-                pointer-events: auto;
+                pointer-events: all;
             }
-
-            /* Mockup frames on mobile (slightly larger for premium visibility but fits perfectly) */
-            .phone-frame {
-                width: 280px !important;
-                height: 560px !important;
-            }
-
-            .explorer-phone {
-                width: 280px !important;
-                height: 560px !important;
-            }
-
-            .hero-title {
-                font-size: 32px;
-            }
-
-            .hero-btns {
+            .nav-links {
                 flex-direction: column;
                 align-items: center;
+                gap: 20px;
             }
-
-            .btn {
-                width: 100%;
-                max-width: 320px;
+            .features-grid {
+                grid-template-columns: 1fr;
             }
-
-            .cta-box {
-                padding: 40px 20px;
-                border-radius: 24px;
+            .cta-card {
+                padding: 50px 24px;
             }
-
-            .cta-box h2 {
-                font-size: 28px;
+            .cta-card h2 {
+                font-size: 2.2rem;
             }
-
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+                text-align: center;
             }
-
+            .footer-brand {
+                align-items: center;
+            }
+            .footer-nav {
+                justify-content: center;
+                gap: 40px;
+                flex-wrap: wrap;
+            }
             .footer-bottom {
                 flex-direction: column;
-                gap: 15px;
+                gap: 16px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress" id="scroll-bar"></div>
+    <!-- Ambient Glow Blobs -->
+    <div class="bg-glow-container">
+        <div class="bg-glow-1"></div>
+        <div class="bg-glow-2"></div>
+        <div class="bg-glow-3"></div>
+    </div>
 
-    <!-- HEADER / NAVIGATION -->
+    <!-- Header / Nav -->
     <header id="header">
         <div class="container">
-            <a href="#" class="logo-wrapper">
-                <img src="logo.png" alt="VU Study Mate Logo" class="logo-img">
-                <span class="brand-name">VU STUDY MATE</span>
-            </a>
-            <nav id="nav-menu">
-                <a href="#features">Features</a>
-                <a href="#explorer">Explorer</a>
-                <a href="#screenshots">Screenshots</a>
-                <a href="#faq">FAQ</a>
-                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-primary nav-btn" download><i class="fa-solid fa-download"></i> Download APK</a>
-            </nav>
-            <div class="header-actions">
-                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
-                    <i class="fa-solid fa-moon"></i>
+            <div class="nav-wrapper">
+                <a href="#" class="logo-area">
+                    <img src="logo.png" alt="VU Study Mate Logo">
+                    <span>VU Study Mate</span>
+                </a>
+                
+                <button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
+
+                <nav id="navbar">
+                    <ul class="nav-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#showcase">Screenshots</a></li>
+                        <li><a href="#installation">How it Works</a></li>
+                    </ul>
+                    <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-primary btn-sm">
+                        <!-- Download SVG Icon -->
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download APK
+                    </a>
+                </nav>
             </div>
         </div>
     </header>
 
-    <div class="page-wrapper">
-        <!-- Ambient Glow Blobs -->
-        <div class="ambient-glow glow-1"></div>
-        <div class="ambient-glow glow-2"></div>
-        <div class="ambient-glow glow-3"></div>
-
-        <!-- HERO SECTION -->
-        <section class="hero" id="home">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
                     <div class="hero-badge">
-                        <i class="fa-solid fa-star"></i> Perfect VU Preparation App 2026
+                        <span>🎓</span> Made for Virtual University Students
                     </div>
                     <h1 class="hero-title">
-                        Master Your VU Exams With <span>VU Study Mate</span>
+                        Ace Your Semesters with <span>VU Study Mate</span>
                     </h1>
                     <p class="hero-desc">
-                        Unlock high-quality study resources specifically optimized for Virtual University (VU) students. Download Solved Past Papers, Summarized Handouts, Short Notes, and Midterm/Finalterm preparations instantly.
+                        Say goodbye to scattered study files. Get short notes, handouts, and solved past papers in a super-fast, offline-ready Android app. Designed with zero-lag navigation to keep your focus on learning.
                     </p>
-                    <div class="hero-btns">
-                        <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-accent" download><i class="fa-solid fa-download"></i> Download APK (Free)</a>
-                        <a href="#features" class="btn btn-outline">Explore Features</a>
+                    <div class="hero-ctas">
+                        <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Free APK
+                        </a>
+                        <a href="#features" class="btn btn-secondary">Explore Features</a>
                     </div>
-                    <div class="app-stats">
+                    <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-num">5.0 ★</span>
-                            <span class="stat-label">Student Rating</span>
+                            <span class="stat-value">8</span>
+                            <span class="stat-label">Semesters Covered</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-num">100%</span>
-                            <span class="stat-label">Solved Papers</span>
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Offline Accessible</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-num">Free</span>
-                            <span class="stat-label">Unlimited Downloads</span>
+                            <span class="stat-value">0 Ads</span>
+                            <span class="stat-label">No Interruption</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="hero-mockup-wrapper">
-                    <div class="hero-mockup-bg"></div>
-                    <!-- 3D Interactive Parallax Device Frame -->
-                    <div class="phone-frame tilt-card" id="hero-device">
-                        <div class="phone-button volume-up"></div>
-                        <div class="phone-button volume-down"></div>
-                        <div class="phone-button power"></div>
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="hero-slider">
-                                <div class="hero-slide active" style="background-image: url('1.jpg');"></div>
-                                <div class="hero-slide" style="background-image: url('2.jpg');"></div>
-                                <div class="hero-slide" style="background-image: url('3.jpg');"></div>
-                                <div class="hero-slide" style="background-image: url('4.jpg');"></div>
-                                <div class="hero-slide" style="background-image: url('5.jpg');"></div>
-                                <div class="hero-slide" style="background-image: url('6.jpg');"></div>
-                            </div>
-                            <div class="phone-home-bar"></div>
+                    <!-- Floating Badge 1 -->
+                    <div class="floating-badge floating-badge-1">
+                        <div class="floating-badge-icon f-icon-blue">📝</div>
+                        <div class="floating-badge-text">
+                            <h4>Short Notes</h4>
+                            <p>Hand-crafted revision points</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 2 -->
+                    <div class="floating-badge floating-badge-2">
+                        <div class="floating-badge-icon f-icon-green">🎯</div>
+                        <div class="floating-badge-text">
+                            <h4>Solved Papers</h4>
+                            <p>Midterms & Finals solved</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 3 -->
+                    <div class="floating-badge floating-badge-3">
+                        <div class="floating-badge-icon f-icon-cyan">💾</div>
+                        <div class="floating-badge-text">
+                            <h4>Offline Study</h4>
+                            <p>Read files without internet</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone Bezel Mockup -->
+                    <div class="phone-frame-container">
+                        <div class="phone-frame-screen">
+                            <img src="1.jpg" alt="VU Study Mate Home Screen" id="heroImage">
                         </div>
                     </div>
                 </div>
@@ -1604,270 +1248,177 @@
         </div>
     </section>
 
-    <!-- FEATURES SECTION -->
+    <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <h2>Designed for High Scores</h2>
-                <p>Everything you need to clear your Virtual University degree with a high CGPA, all packaged inside a super lightweight Android app.</p>
+                <p class="section-tag">Powerful Utilities</p>
+                <h2 class="section-title">Everything You Need To Stand Out</h2>
+                <p class="section-desc">We analyzed student workflows to build tools that eliminate friction and boost preparation efficiency. Here's what makes VU Study Mate unique:</p>
             </div>
+
             <div class="features-grid">
+                <!-- Feature 1 -->
                 <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <i class="fa-solid fa-file-pdf"></i>
-                    </div>
-                    <h3>Past Papers Archive</h3>
-                    <p>Access solved and unsolved midterm & finalterm past papers compiled by VU experts to understand layout patterns.</p>
+                    <div class="feature-icon-wrapper">📚</div>
+                    <h3>Curated Study Handouts</h3>
+                    <p>Access official VU handouts and reference textbooks for all 8 semesters, organized clearly by course codes and chapters.</p>
                 </div>
+
+                <!-- Feature 2 -->
                 <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
-                    <h3>Summarized Notes</h3>
-                    <p>Read clean, chapter-wise short summaries of handouts that save you hours of reading dry textbooks.</p>
+                    <div class="feature-icon-wrapper">📂</div>
+                    <h3>Midterm & Final Papers</h3>
+                    <p>Study from a rich library of solved midterm and final-term past papers to get a clear sense of actual exam patterns.</p>
                 </div>
+
+                <!-- Feature 3 -->
                 <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <h3>Super Fast Loading</h3>
-                    <p>Zero clutter and optimized speed. Load, search, and preview study materials in milliseconds.</p>
+                    <div class="feature-icon-wrapper">⚡</div>
+                    <h3>Zero-Lag State Navigation</h3>
+                    <p>Built with localized NavState caching that renders files instantly. No white screens, stutters, or reload delays.</p>
                 </div>
+
+                <!-- Feature 4 -->
                 <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3>Semester Navigation</h3>
-                    <p>Content is beautifully sorted semester-wise, making it effortless to find your exact course subjects.</p>
+                    <div class="feature-icon-wrapper">📖</div>
+                    <h3>Offline Study Mode</h3>
+                    <p>Download handouts and short notes directly to your phone. Keep reading during load shedding or travel with zero data requirements.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">🔍</div>
+                    <h3>Quick Course Search</h3>
+                    <p>Instantly search for any VU subject code (e.g., CS101, ENG301) to access its study materials, notes, and files without manual browsing.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">🛡️</div>
+                    <h3>Clean, Ad-Free Learning</h3>
+                    <p>No intrusive popups or disruptive video ads. Focus fully on preparation with a clean user experience designed for study.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INTERACTIVE TABBED FEATURES EXPLORER -->
-    <section class="interactive-explorer" id="explorer">
+    <!-- Showcase / Carousel Section -->
+    <section class="showcase" id="showcase">
         <div class="container">
             <div class="section-header">
-                <h2>Interactive Feature Explorer</h2>
-                <p>Click through the tabs below to preview exactly how the application layouts look for each core feature category.</p>
+                <p class="section-tag">App Screenshots</p>
+                <h2 class="section-title">Take A Closer Look Inside</h2>
+                <p class="section-desc">Designed with Jetpack Compose engineering for a sleek, dark-themed Midnight interface that's easy on the eyes during late-night study sessions.</p>
             </div>
-            <div class="explorer-grid">
-                <div class="explorer-tabs-container">
-                    <div class="explorer-tab active" data-img="3.jpg">
-                        <div class="explorer-tab-num">01</div>
-                        <div class="explorer-tab-content">
-                            <h3>Real-Time Course Search</h3>
-                            <p>Instantly search and filter subjects using codes like CS501, MTH301, ENG101, etc.</p>
-                        </div>
-                    </div>
-                    <div class="explorer-tab" data-img="4.jpg">
-                        <div class="explorer-tab-num">02</div>
-                        <div class="explorer-tab-content">
-                            <h3>Solved Past Papers</h3>
-                            <p>Browse sorted midterm and finalterm papers side-by-side with complete summaries.</p>
-                        </div>
-                    </div>
-                    <div class="explorer-tab" data-img="5.jpg">
-                        <div class="explorer-tab-num">03</div>
-                        <div class="explorer-tab-content">
-                            <h3>Urdu & English Notifications</h3>
-                            <p>Read custom designed localized dialog alerts for important exam announcements.</p>
-                        </div>
-                    </div>
-                    <div class="explorer-tab" data-img="6.jpg">
-                        <div class="explorer-tab-num">04</div>
-                        <div class="explorer-tab-content">
-                            <h3>Classroom Sharing Card</h3>
-                            <p>Share download links with classmate groups using custom visual sharing badges.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="explorer-mockup-pane">
-                    <!-- 3D Interactive Parallax Device Frame -->
-                    <div class="explorer-phone tilt-card" id="explorer-device">
-                        <div class="phone-button volume-up"></div>
-                        <div class="phone-button volume-down"></div>
-                        <div class="phone-button power"></div>
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <img src="3.jpg" alt="Active Screen Mockup" class="explorer-screen-img" id="explorer-screen">
-                            <div class="phone-home-bar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- SCREENSHOTS GRID / AUTO-SLIDER -->
-    <section class="screenshots" id="screenshots">
-        <div class="container">
-            <div class="section-header">
-                <h2>App Screenshots</h2>
-                <p>Take a look at the modern, beautiful, and intuitive visual layout of the app designed to maximize study efficiency.</p>
-            </div>
-        </div>
-        <div class="screenshots-slider-container">
-            <div class="screenshots-track">
-                <!-- Screenshots repeated twice for seamless infinite scrolling loop -->
-                <div class="screenshot-item"><img src="1.jpg" alt="VU Study Mate App Slide 1"></div>
-                <div class="screenshot-item"><img src="2.jpg" alt="VU Study Mate App Slide 2"></div>
-                <div class="screenshot-item"><img src="3.jpg" alt="VU Study Mate App Slide 3"></div>
-                <div class="screenshot-item"><img src="4.jpg" alt="VU Study Mate App Slide 4"></div>
-                <div class="screenshot-item"><img src="5.jpg" alt="VU Study Mate App Slide 5"></div>
-                <div class="screenshot-item"><img src="6.jpg" alt="VU Study Mate App Slide 6"></div>
-                
-                <!-- Loop duplicates -->
-                <div class="screenshot-item"><img src="1.jpg" alt="VU Study Mate App Slide 1"></div>
-                <div class="screenshot-item"><img src="2.jpg" alt="VU Study Mate App Slide 2"></div>
-                <div class="screenshot-item"><img src="3.jpg" alt="VU Study Mate App Slide 3"></div>
-                <div class="screenshot-item"><img src="4.jpg" alt="VU Study Mate App Slide 4"></div>
-                <div class="screenshot-item"><img src="5.jpg" alt="VU Study Mate App Slide 5"></div>
-                <div class="screenshot-item"><img src="6.jpg" alt="VU Study Mate App Slide 6"></div>
-            </div>
-        </div>
-    </section>
+            <div class="showcase-layout">
+                <!-- Interactive Phone Carousel -->
+                <div class="showcase-slider-wrapper">
+                    <button class="showcase-nav-btn showcase-prev" id="carouselPrev" aria-label="Previous Slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    
+                    <div class="showcase-phone">
+                        <div class="showcase-screen-slider" id="carouselSlider">
+                            <div class="showcase-slide"><img src="1.jpg" alt="Screen 1"></div>
+                            <div class="showcase-slide"><img src="2.jpg" alt="Screen 2"></div>
+                            <div class="showcase-slide"><img src="3.jpg" alt="Screen 3"></div>
+                            <div class="showcase-slide"><img src="4.jpg" alt="Screen 4"></div>
+                            <div class="showcase-slide"><img src="5.jpg" alt="Screen 5"></div>
+                            <div class="showcase-slide"><img src="6.jpg" alt="Screen 6"></div>
+                        </div>
+                    </div>
 
-    <!-- TIMELINE INSTALLATION GUIDE -->
-    <section class="install-guide" id="installation">
-        <div class="container">
-            <div class="section-header">
-                <h2>Installation Guide</h2>
-                <p>Install the application on your Android phone safely in 3 easy steps.</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-container left-timeline">
-                    <div class="timeline-content">
-                        <h3><i class="fa-solid fa-download"></i> Step 1: Download APK</h3>
-                        <p>Click on the download button to save the secure application installer (.APK package) to your phone storage.</p>
-                    </div>
+                    <button class="showcase-nav-btn showcase-next" id="carouselNext" aria-label="Next Slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
                 </div>
-                <div class="timeline-container right-timeline">
-                    <div class="timeline-content">
-                        <h3><i class="fa-solid fa-gears"></i> Step 2: Allow Sources</h3>
-                        <p>If prompted by your browser or Android OS, enable "Install from Unknown Sources" or allow browser installations under Security Settings.</p>
+
+                <!-- Showcase active details -->
+                <div class="showcase-details">
+                    <div class="screenshot-info-card">
+                        <h3 id="slideTitle">
+                            <span class="slide-num" id="slideIndex">01</span>
+                            Dashboard Overview
+                        </h3>
+                        <p id="slideDesc">
+                            The central home panel organized by semester. Switch between midterms and final-term exam modes with a single click.
+                        </p>
                     </div>
-                </div>
-                <div class="timeline-container left-timeline">
-                    <div class="timeline-content">
-                        <h3><i class="fa-solid fa-circle-check"></i> Step 3: Run & Prepare</h3>
-                        <p>Open the downloaded package, click Install, register your credentials, and unlock thousands of solved past papers instantly!</p>
+
+                    <!-- Carousel Dots Indicators -->
+                    <div class="carousel-dots" id="carouselDots">
+                        <div class="dot active" data-index="0"></div>
+                        <div class="dot" data-index="1"></div>
+                        <div class="dot" data-index="2"></div>
+                        <div class="dot" data-index="3"></div>
+                        <div class="dot" data-index="4"></div>
+                        <div class="dot" data-index="5"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ ACCORDION SECTION -->
-    <section class="faq" id="faq">
+    <!-- How It Works / Installation Guide Section -->
+    <section class="installation" id="installation">
         <div class="container">
-            <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common student questions about downloading and preparing with the app.</p>
-            </div>
-            <div class="faq-wrapper">
-                <div class="faq-item">
-                    <div class="faq-header">
-                        Is this application fully free of cost?
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>Yes, VU Study Mate is 100% free. There are no paid courses or hidden subscriptions. All PDF handouts, summaries, solved past papers, and directories can be searched and downloaded completely for free.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-header">
-                        Can I view past papers offline?
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>Yes. Once you load and preview a document inside the app or download the PDF to your storage, you can view the papers offline anytime, anywhere, without an active internet connection.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-header">
-                        Does the app cover all VU program subjects?
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>The app contains preparation files and solved past papers for the majority of Virtual University degree program subjects, including BS Computer Science, BS Business Administration, Associate Degrees, and General courses.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-header">
-                        Is installing the APK file secure?
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>Absolutely. The APK package is compiled directly from the secure source code, hosted directly on GitHub Releases, and contains no adware, tracking modules, or security threats.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- STUDENT REVIEWS -->
-    <section class="reviews" id="reviews">
-        <div class="container">
-            <div class="section-header">
-                <h2>What Students Say</h2>
-                <p>Hear feedback from Virtual University class groups who prepare for exams using our study application.</p>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">
-                        "VU Study Mate replaced all my WhatsApp group files links. I found all solved past papers of CS501 in just 2 clicks! Absolutely highly recommended app."
+            <div class="installation-grid">
+                <div class="installation-info">
+                    <p class="section-tag">Quick Setup</p>
+                    <h2 class="section-title" style="margin-bottom: 24px;">How To Install The App</h2>
+                    <p class="section-desc" style="margin-bottom: 40px;">
+                        VU Study Mate is distributed as a secure Android APK package. Since it isn't listed on the Play Store, you can download it directly from our official release archive. Follow these simple steps:
                     </p>
-                    <div class="review-user">
-                        <div class="user-avatar">AH</div>
-                        <div class="user-info">
-                            <h4>Asad Habib</h4>
-                            <p>BS Computer Science (6th Sem)</p>
+                    
+                    <ul class="step-list">
+                        <li class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Download APK File</h3>
+                                <p>Click any download button on this page to pull the official `VU.STUDY.MATE.apk` file from our secure GitHub release.</p>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Enable Unknown Sources</h3>
+                                <p>Open your device Settings > Apps > Special App Access and toggle "Install Unknown Apps" for your browser if prompted.</p>
+                            </div>
+                        </li>
+                        <li class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Install and Excel</h3>
+                                <p>Tap the downloaded APK notification, click "Install," launch the app, choose your semester, and start studying!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="installation-visual">
+                    <div class="install-box">
+                        <div class="install-box-icon">✓</div>
+                        <div class="install-box-text">
+                            <h4>Safe and Secure</h4>
+                            <p>Every build is compiled directly from the open-source release code. Fully scanned and 100% clean.</p>
                         </div>
                     </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">
-                        "The summarized handouts notes are extremely gold for preparation. Made my concepts solid in midterm and got 3.8 CGPA. Thanks to VU Study Mate!"
-                    </p>
-                    <div class="review-user">
-                        <div class="user-avatar">SA</div>
-                        <div class="user-info">
-                            <h4>Saba Ali</h4>
-                            <p>BS Business Administration</p>
+
+                    <div class="install-box">
+                        <div class="install-box-icon">✓</div>
+                        <div class="install-box-text">
+                            <h4>Low Memory Usage</h4>
+                            <p>Optimized package size (under 15MB) ensuring it runs perfectly even on low-tier, older Android phones.</p>
                         </div>
                     </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">
-                        "The app is super clean and fast. Downloads saved papers automatically. Essential utility for every VU student in Pakistan!"
-                    </p>
-                    <div class="review-user">
-                        <div class="user-avatar">MK</div>
-                        <div class="user-info">
-                            <h4>Muhammad Kamran</h4>
-                            <p>Associate Degree in IT</p>
+
+                    <div class="install-box">
+                        <div class="install-box-icon">✓</div>
+                        <div class="install-box-text">
+                            <h4>Focused Study Workspace</h4>
+                            <p>Get a clean workspace without external distractions or heavy storage footprints, keeping your revision focused.</p>
                         </div>
                     </div>
                 </div>
@@ -1875,218 +1426,215 @@
         </div>
     </section>
 
-    <!-- DOWNLOAD CALL-TO-ACTION -->
-    <section class="cta">
+    <!-- Call To Action -->
+    <section class="cta-section">
         <div class="container">
-            <div class="cta-box">
-                <img src="logo.png" alt="VU Study Mate App Logo" class="cta-logo">
-                <h2>Elevate Your Exam Preparation Today</h2>
-                <p>Download the free Android companion app, get access to standard solved documents, and boost your university grades instantly.</p>
-                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-accent cta-download-btn" download><i class="fa-solid fa-download"></i> Download App Package (.APK)</a>
-                <div class="cta-meta">Size: ~5.8 MB | Requires Android 8.0+ | Secure Installation</div>
+            <div class="cta-card">
+                <h2>Unlock Better Grades Today</h2>
+                <p>Equip yourself with the tools, notes, and past papers necessary to ace your Virtual University exams. Start studying the smart way.</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="btn btn-primary btn-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download APK (v1.0)
+                    </a>
+                </div>
+                <div class="version-text">Compatible with Android 8.0 (Oreo) and above</div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>VU STUDY MATE</h3>
-                    <p>Providing Virtual University students with premium access to verified solved papers, handouts summaries, and lightweight exam resources.</p>
+                    <a href="#" class="footer-brand-logo">
+                        <img src="logo.png" alt="VU Study Mate Logo">
+                        <span>VU Study Mate</span>
+                    </a>
+                    <p>Designed to support Virtual University of Pakistan students with lightweight, offline-ready academic archives and curated study materials.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#screenshots">Screenshots</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Get In Touch</h4>
-                    <p><i class="fa-solid fa-envelope"></i> mujtabaofficial1001@gmail.com</p>
-                    <p><i class="fa-solid fa-phone"></i> +92 313 5939659</p>
+                <div class="footer-nav">
+                    <div class="footer-nav-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#showcase">Screenshots</a></li>
+                            <li><a href="#installation">Installation</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-col">
+                        <h4>Downloads</h4>
+                        <ul>
+                            <li><a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk">Direct APK Link</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 VU Study Mate. Developed for VU Students. All Rights Reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Use</a>
+                <div>
+                    <p>&copy; 2026 VU Study Mate. Created by Mujtoba Official.</p>
+                    <p class="footer-disclaimer">
+                        <strong>Disclaimer:</strong> VU Study Mate is an independent helper tool. It is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Virtual University of Pakistan (VU). The official Virtual University of Pakistan website can be found at vu.edu.pk.
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
-    </div> <!-- End page-wrapper -->
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="back-to-top" aria-label="Scroll to top">
-        <i class="fa-solid fa-chevron-up"></i>
-    </button>
-
-    <!-- JS FOR PREMIUM FUNCTIONALITY -->
+    <!-- JavaScript for Interactive Components -->
     <script>
-        // Hero image carousel transitions
-        const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-        let sliderInterval = setInterval(nextSlide, 3500);
-
-        // Header scrolled class & scroll progress indicator
-        const scrollProgress = document.getElementById('scroll-bar');
+        // Header Scroll Shadow
         const header = document.getElementById('header');
-        const backToTopBtn = document.getElementById('back-to-top');
-
         window.addEventListener('scroll', () => {
-            // Scroll shadow on header
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-
-            // Scroll indicator width
-            const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (totalScrollHeight > 0) {
-                const scrollPercent = (window.scrollY / totalScrollHeight) * 100;
-                scrollProgress.style.width = scrollPercent + '%';
-            }
-
-            // Back to top button visibility
-            if (window.scrollY > 400) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
         });
 
-        // Scroll back to top
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        // Mobile Nav Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navbar = document.getElementById('navbar');
+        navToggle.addEventListener('click', () => {
+            navbar.classList.toggle('open');
+            navToggle.classList.toggle('active');
         });
 
-        // Interactive Feature Explorer Tabs
-        const tabs = document.querySelectorAll('.explorer-tab');
-        const screenImg = document.getElementById('explorer-screen');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // remove active classes
-                tabs.forEach(t => t.classList.remove('active'));
-                
-                // set active
-                tab.classList.add('active');
-                
-                // update image with fade effect
-                const targetImg = tab.getAttribute('data-img');
-                screenImg.style.opacity = '0';
-                setTimeout(() => {
-                    screenImg.setAttribute('src', targetImg);
-                    screenImg.style.opacity = '1';
-                }, 150);
-            });
-        });
-
-        // 3D Parallax Tilt Effect on Mockups
-        const tiltCards = document.querySelectorAll('.tilt-card');
-        tiltCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const xc = rect.width / 2;
-                const yc = rect.height / 2;
-                const angleX = (yc - y) / 14;
-                const angleY = (x - xc) / 14;
-                card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            });
-        });
-
-        // FAQ Accordion Dropdowns
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const header = item.querySelector('.faq-header');
-            const content = item.querySelector('.faq-content');
-
-            header.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all others
-                faqItems.forEach(i => {
-                    i.classList.remove('active');
-                    i.querySelector('.faq-content').style.maxHeight = '0';
-                });
-
-                if (!isActive) {
-                    item.classList.add('active');
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                }
-            });
-        });
-
-        // Theme Toggle Functionality (Light / Dark Mode)
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark');
-            themeIcon.setAttribute('class', 'fa-solid fa-sun');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            if (document.body.classList.contains('dark')) {
-                document.body.classList.remove('dark');
-                themeIcon.setAttribute('class', 'fa-solid fa-moon');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.body.classList.add('dark');
-                themeIcon.setAttribute('class', 'fa-solid fa-sun');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-
-        // Mobile responsive hamburger menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('mobile-open');
-            const isOpen = navMenu.classList.contains('mobile-open');
-            menuToggle.querySelector('i').setAttribute('class', isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('mobile-open');
-                menuToggle.querySelector('i').setAttribute('class', 'fa-solid fa-bars');
-            }
-        });
-
-        const navLinks = navMenu.querySelectorAll('a');
+        // Close mobile nav when clicking a link
+        const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('mobile-open');
-                menuToggle.querySelector('i').setAttribute('class', 'fa-solid fa-bars');
+                navbar.classList.remove('open');
+                navToggle.classList.remove('active');
             });
         });
+
+        // Screenshot Slider Details Data
+        const slideData = [
+            {
+                title: 'Dashboard Overview',
+                desc: 'Access your coursework instantly. Choose semesters from 1 to 8 on a lightweight Jetpack Compose UI engineered for absolute performance and zero screen stutters.'
+            },
+            {
+                title: 'Subject Library',
+                desc: 'Easily view and search subjects assigned to your selected semester. Clean category layouts reduce cognitive clutter so you find your subjects in seconds.'
+            },
+            {
+                title: 'Solved Midterm Papers',
+                desc: 'Preparation made simple. Browse and search through comprehensive midterm past paper archives, complete with solved answers for fast-paced review.'
+            },
+            {
+                title: 'Final Exam Preparation',
+                desc: 'Detailed final exam past papers organized logically by semester code. Study anytime and check how previous questions were solved.'
+            },
+            {
+                title: 'Offline Study Center',
+                desc: 'Download your handouts, short notes, and midterm files to read on the go. Access your courses anywhere without consuming mobile data.'
+            },
+            {
+                title: 'Subject Search & Navigate',
+                desc: 'Browse and search subjects from Semester 1 to 8. Access your courses, midterms, and finals with a fast search index designed for students.'
+            }
+        ];
+
+        // Carousel / Slider Logic
+        const slider = document.getElementById('carouselSlider');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        const dots = document.querySelectorAll('#carouselDots .dot');
+        const slideTitle = document.getElementById('slideTitle');
+        const slideDesc = document.getElementById('slideDesc');
+        const slideIndexSpan = document.getElementById('slideIndex');
+        const heroImage = document.getElementById('heroImage');
+        
+        let currentSlide = 0;
+        const totalSlides = slideData.length;
+
+        function updateSlider() {
+            // Update slider translate
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, idx) => {
+                if (idx === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // Update text details with quick transitions
+            slideTitle.style.opacity = 0;
+            slideDesc.style.opacity = 0;
+
+            setTimeout(() => {
+                const formattedNum = String(currentSlide + 1).padStart(2, '0');
+                if (slideIndexSpan) slideIndexSpan.textContent = formattedNum;
+                // Update title node text (skip the span child)
+                slideTitle.innerHTML = `<span class="slide-num" id="slideIndex">${formattedNum}</span> ${slideData[currentSlide].title}`;
+                slideDesc.textContent = slideData[currentSlide].desc;
+                
+                slideTitle.style.opacity = 1;
+                slideDesc.style.opacity = 1;
+            }, 200);
+        }
+
+        // Event listeners for prev/next
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        });
+
+        // Dots click
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                currentSlide = parseInt(e.target.getAttribute('data-index'));
+                updateSlider();
+            });
+        });
+
+        // Optional: Auto slide every 8 seconds
+        let autoSlideInterval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }, 8000);
+
+        // Reset auto slide on manual interaction
+        const resetAutoSlide = () => {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }, 8000);
+        };
+
+        prevBtn.addEventListener('click', resetAutoSlide);
+        nextBtn.addEventListener('click', resetAutoSlide);
+        dots.forEach(dot => dot.addEventListener('click', resetAutoSlide));
+
+        // Let the hero mockup display different screenshots automatically as well
+        let heroImageIndex = 1;
+        setInterval(() => {
+            heroImageIndex = (heroImageIndex % 6) + 1;
+            heroImage.style.opacity = 0.5;
+            setTimeout(() => {
+                heroImage.src = `${heroImageIndex}.jpg`;
+                heroImage.style.opacity = 1;
+            }, 300);
+        }, 5000);
     </script>
 </body>
 </html>
