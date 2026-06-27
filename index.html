@@ -176,6 +176,11 @@
             list-style: none;
         }
 
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -1007,6 +1012,11 @@
         }
 
         /* --- Responsive Queries --- */
+        @media (max-width: 1300px) {
+            .slider-arrow.prev { left: -10px; }
+            .slider-arrow.next { right: -10px; }
+        }
+
         @media (max-width: 968px) {
             .hero {
                 padding: 120px 0 60px 0;
@@ -1032,8 +1042,11 @@
             }
 
             .showcase-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 30px;
+                width: 100%;
+            }
+
+            .showcase-item {
+                flex: 0 0 calc((100% - 30px) / 2);
             }
         }
 
@@ -1080,17 +1093,6 @@
                 text-align: center;
             }
 
-            @media (max-width: 1300px) {
-                .slider-arrow.prev { left: -10px; }
-                .slider-arrow.next { right: -10px; }
-            }
-
-            @media (max-width: 968px) {
-                .showcase-item {
-                    flex: 0 0 calc((100% - 30px) / 2);
-                }
-            }
-
             .showcase-item {
                 flex: 0 0 100%;
             }
@@ -1099,6 +1101,50 @@
                 width: 38px;
                 height: 38px;
                 font-size: 14px;
+            }
+            
+            .slider-arrow.prev { left: 10px; }
+            .slider-arrow.next { right: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 32px !important;
+                line-height: 1.25 !important;
+            }
+            .hero-badge {
+                font-size: 11px !important;
+                padding: 5px 12px !important;
+            }
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px !important;
+            }
+            .hero-cta .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .phone-chassis {
+                width: 250px !important;
+                height: 510px !important;
+                border-width: 8px !important;
+                border-radius: 32px !important;
+            }
+            .phone-screen-carousel img {
+                height: 100% !important;
+            }
+            .nav-btn {
+                padding: 8px 14px !important;
+                font-size: 12px !important;
+            }
+            .logo span {
+                font-size: 16px !important;
+            }
+            .download-popup {
+                width: 90% !important;
+                max-width: 350px !important;
+                padding: 24px 16px !important;
             }
         }
 
@@ -1263,6 +1309,126 @@
         a[href*=".apk"]:active {
             transform: scale(0.95) !important;
         }
+
+        /* --- CGPA Simulator Widget CSS --- */
+        .gpa-widget {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        .gpa-widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .gpa-title {
+            font-family: var(--font-head);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .gpa-badge {
+            background: rgba(30, 92, 255, 0.08);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gpa-display {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, rgba(30, 92, 255, 0.02) 0%, rgba(14, 165, 233, 0.02) 100%);
+            border-radius: 16px;
+            border: 1px dashed var(--border);
+        }
+
+        .gpa-value {
+            font-size: 44px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: var(--font-head);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .gpa-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gpa-sliders {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .slider-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .slider-name {
+            color: var(--text-main);
+        }
+
+        .slider-grade {
+            color: var(--accent);
+        }
+
+        .gpa-range-input {
+            width: 100%;
+            height: 6px;
+            background: var(--bg-dark-accent);
+            border-radius: 10px;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .gpa-range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(30, 92, 255, 0.3);
+            border: 2px solid #FFF;
+            transition: transform 0.1s;
+        }
+
+        .gpa-range-input::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
     </style>
 </head>
 <body>
@@ -1305,8 +1471,10 @@
                 <li><a href="#screens">App Screens</a></li>
                 <li><a href="#architecture">Architecture</a></li>
                 <li><a href="#faqs">FAQs</a></li>
-                <li><a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="nav-btn">Download APK</a></li>
             </ul>
+            <div class="nav-actions">
+                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="nav-btn">Download APK</a>
+            </div>
         </div>
     </nav>
 
@@ -1602,38 +1770,80 @@
         </div>
     </section>
 
-    <!-- Architecture & Secret Performance Section -->
+    <!-- Architecture & Smart Features Section -->
     <section id="architecture" class="tech-arch reveal">
         <div class="container tech-grid">
             <div class="tech-left">
-                <img src="promo_banner.png" alt="VU StudyMate Tech Architecture Banner">
+                <!-- Interactive GPA Simulator Widget -->
+                <div class="gpa-widget">
+                    <div class="gpa-widget-header">
+                        <div class="gpa-title">CGPA Target Simulator</div>
+                        <div class="gpa-badge">Interactive Tool</div>
+                    </div>
+                    
+                    <div class="gpa-display">
+                        <div class="gpa-value" id="gpa-sim-value">3.67</div>
+                        <div class="gpa-label">Estimated Semester GPA</div>
+                    </div>
+                    
+                    <div class="gpa-sliders">
+                        <!-- Course 1 -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-name">CS301 (Data Structures)</span>
+                                <span class="slider-grade">A (4.0)</span>
+                            </div>
+                            <input type="range" class="gpa-range-input" min="0" max="4" step="1" value="4">
+                        </div>
+                        
+                        <!-- Course 2 -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-name">MTH302 (Business Math)</span>
+                                <span class="slider-grade">B (3.0)</span>
+                            </div>
+                            <input type="range" class="gpa-range-input" min="0" max="4" step="1" value="3">
+                        </div>
+                        
+                        <!-- Course 3 -->
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-name">ENG101 (English Comp)</span>
+                                <span class="slider-grade">A (4.0)</span>
+                            </div>
+                            <input type="range" class="gpa-range-input" min="0" max="4" step="1" value="4">
+                        </div>
+                    </div>
+                </div>
             </div>
+            
             <div class="tech-right">
-                <h2>Behind the Scenes of <span>Semester Archive Pro</span></h2>
-                <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 14px;">The application is built on cutting-edge jetpack compose methodologies that ensure 60FPS scrolling and instant navigation.</p>
+                <span class="section-tag" style="background: rgba(30, 92, 255, 0.06); color: var(--primary); padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 16px;">App Ecosystem</span>
+                <h2>Designed to Help You <span>Score a 4.0 GPA</span></h2>
+                <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 14px;">VU StudyMate simplifies Virtual University complexities. No more searching through chaotic drives for solved past papers, or struggling with generic PDF viewers.</p>
                 <div class="tech-list">
                     <!-- Item 1 -->
                     <div class="tech-item">
                         <div class="tech-badge">01</div>
                         <div class="tech-text">
-                            <h4>State-Based Local Routing</h4>
-                            <p>Swaps UI contexts locally inside one Composable via AnimatedContent instead of heavy route packages. Zero lifecycle micro-stuttering.</p>
+                            <h4>One-Click Past Paper Vault</h4>
+                            <p>Direct access to fully compiled, search-indexed midterm and final-term solved papers. Spend less time hunting files and more time studying.</p>
                         </div>
                     </div>
                     <!-- Item 2 -->
                     <div class="tech-item">
                         <div class="tech-badge">02</div>
                         <div class="tech-text">
-                            <h4>Asynchronous Flows (Zero-CPU Lag)</h4>
-                            <p>Exposes combined Kotlin state flows processed on background threads. Dynamic search and scrolling do not block rendering threads.</p>
+                            <h4>Intelligent Handout Viewer</h4>
+                            <p>Integrated PDF reader designed to handle heavy VU handouts. Set bookmarks, add custom tags to important pages, and resume reading instantly.</p>
                         </div>
                     </div>
                     <!-- Item 3 -->
                     <div class="tech-item">
                         <div class="tech-badge">03</div>
                         <div class="tech-text">
-                            <h4>Room SQLite & Flow Streams</h4>
-                            <p>Reactive database queries automatically push library lists to view models, instantly updating UI checkmarks on file deletion.</p>
+                            <h4>Zero-Data Offline Library</h4>
+                            <p>Download your lecture slides, past paper sets, or short notes once, and read them offline inside the app's secure directory. Save data and study on the go.</p>
                         </div>
                     </div>
                 </div>
@@ -1965,6 +2175,46 @@
 
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
+
+        // GPA Calculator Widget Simulator
+        const gpaSliders = document.querySelectorAll('.gpa-range-input');
+        const gpaValueDisplay = document.getElementById('gpa-sim-value');
+        
+        const gradePoints = {
+            4: 'A (4.0)',
+            3: 'B (3.0)',
+            2: 'C (2.0)',
+            1: 'D (1.0)',
+            0: 'F (0.0)'
+        };
+
+        function calculateSimulatedGPA() {
+            let totalPoints = 0;
+            let count = gpaSliders.length;
+            
+            gpaSliders.forEach(slider => {
+                const val = parseFloat(slider.value);
+                totalPoints += val;
+                
+                // Find matching grade symbol
+                const gradeLabel = slider.parentElement.querySelector('.slider-grade');
+                if (gradeLabel) {
+                    gradeLabel.textContent = gradePoints[val] || 'B (3.0)';
+                }
+            });
+            
+            const finalGPA = (totalPoints / count).toFixed(2);
+            if (gpaValueDisplay) {
+                gpaValueDisplay.textContent = finalGPA;
+            }
+        }
+
+        gpaSliders.forEach(slider => {
+            slider.addEventListener('input', calculateSimulatedGPA);
+        });
+
+        // Initialize calculator
+        calculateSimulatedGPA();
     </script>
 </body>
 </html>
