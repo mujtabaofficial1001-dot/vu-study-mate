@@ -151,36 +151,72 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
             color: var(--text-heading);
             font-family: var(--font-head);
-            font-weight: 800;
-            font-size: clamp(18px, 4vw, 22px);
         }
 
         .logo-img-wrapper {
             position: relative;
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            padding: 2px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            padding: 2.5px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            box-shadow: 0 4px 12px var(--primary-glow);
+            box-shadow: 0 4px 16px var(--primary-glow);
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-img-wrapper {
+            transform: scale(1.05) rotate(-3deg);
+            box-shadow: 0 6px 20px rgba(0, 56, 226, 0.35);
         }
 
         .logo-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 9px;
             display: block;
+        }
+
+        .logo-text-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-brand {
+            font-size: clamp(20px, 4.5vw, 24px);
+            font-weight: 900;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-badge {
+            font-size: 9.5px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #EBF1FB;
+            border: 1px solid var(--border-hover);
+            padding: 3px 8px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-links {
@@ -1236,7 +1272,9 @@
                 <div class="logo-img-wrapper">
                     <img src="logo.png" alt="VU StudyMate Logo">
                 </div>
-                <span>VU StudyMate</span>
+                <div class="logo-text-group">
+                    <span class="logo-brand">VU <span class="logo-highlight">StudyMate</span></span>
+                </div>
             </a>
             
             <ul class="nav-links">
@@ -1246,15 +1284,9 @@
                 <li><a href="#faqs">FAQs</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <a href="https://github.com/mujtabaofficial1001-dot/vu-notes-storage/releases/download/v1.0/VU.STUDY.MATE.apk" class="nav-btn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Download APK
-                </a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
-            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
     </nav>
 
